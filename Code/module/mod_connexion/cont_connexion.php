@@ -10,7 +10,11 @@ class ContConnexion{
         $this->vue->form_ajout_vue();
     }
     public function connect(){
-        $this->modele->verif_pwd();
+        if ($this->modele->verif_pwd()){
+            header("Location: index.php");
+        } else {
+            $this->vue->form_failed();
+        }
     }
     public function deconnect(){
         $this->modele->decon_user();

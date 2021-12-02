@@ -9,4 +9,8 @@ class VueConnexion{
 </form>
         ';
     }
+
+    public function form_failed(){
+        echo "Mauvais mdp";
+    }
 }

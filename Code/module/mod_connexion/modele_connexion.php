@@ -6,7 +6,9 @@ class ModeleConnexion extends Connexion{
         $result = $selectPrep->fetchall();
         if (count($result) == 1){
             $_SESSION["login"]=$_POST['mail'];
-            header("Location: index.php");
+            return true;
+        } else {
+            return false;
         }
     }
     public function decon_user(){
