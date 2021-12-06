@@ -95,8 +95,8 @@ echo '
         </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu is-center">
-        <div class="navbar-start">
+    <div class="navbar-menu is-center">
+        <div class="navbar-start" id="categories">
             <div class="columns navbar-item">
               <div class="column">
               <a class="has-text-black">actualité</a>
