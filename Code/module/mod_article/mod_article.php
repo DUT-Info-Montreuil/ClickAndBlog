@@ -20,6 +20,12 @@ class ModArticle{
             case "detail":
                 $this->controlleur->details();
                 break;
+            case "form":
+                $this->controlleur->form_ajout();
+                break;
+            case "ajout":
+                $this->controlleur->ajout();
+                break;
             default:
                 echo "Valeur inconnue ";
                 break;
