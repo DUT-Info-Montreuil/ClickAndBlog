@@ -40,19 +40,19 @@ echo '
         <div class="navbar-start" id="categories">
             <div class="columns navbar-item">
               <div class="column">
-              <a class="has-text-black">actualité</a>
+              <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=actualite">actualité</a>
               </div>
               <div class="column">
-              <a class="has-text-black">sport</a>
+              <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=sport">sport</a>
               </div>
               <div class="column">
-              <a class="has-text-black">politique</a>
+              <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=politique">politique</a>
               </div>
               <div class="column">
-              <a class="has-text-black">santé</a>
+              <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=sante">santé</a>
               </div>
               <div class="column">
-              <a class="has-text-black">technologie</a>
+              <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=technologie">technologie</a>
               </div>
             </div>
         </div>

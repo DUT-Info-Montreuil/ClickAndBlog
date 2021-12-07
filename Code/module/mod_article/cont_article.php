@@ -21,6 +21,9 @@ class ContArticle{
     public function ajout(){
         $this->modele->ajout_article();
     }
+    public function categorie(){
+        $this->vue->affiche_liste($this->modele->getArticleBYCateg());
+    }
     public function bienvenue(){
         echo "Hello World ! ";
     }

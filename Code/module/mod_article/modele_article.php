@@ -24,4 +24,10 @@ class ModeleArticle extends Connexion{
             // Remplacer par FALSE
         }
     }
+
+    public function  getArticleBYCateg(): array{
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE categorie = ? AND etat=TRUE');
+        $selectPrep->execute(array($_GET['nom_categorie']));
+        return $result = $selectPrep->fetchall();
+    }
 }
