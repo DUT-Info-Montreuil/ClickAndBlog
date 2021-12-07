@@ -26,6 +26,9 @@ class ModArticle{
             case "ajout":
                 $this->controlleur->ajout();
                 break;
+            case "categorie":
+                $this->controlleur->categorie();
+                break;
             default:
                 echo "Valeur inconnue ";
                 break;
