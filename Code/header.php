@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="public/style/bulma.min.css">
     <!-- icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- Jquery -->
+    <script type="text/javascript" src="js/component/js/jquery.js"></script>
 </head>
 <body>
 <?php

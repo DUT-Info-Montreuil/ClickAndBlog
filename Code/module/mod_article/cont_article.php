@@ -24,6 +24,10 @@ class ContArticle{
     public function categorie(){
         $this->vue->affiche_liste($this->modele->getArticleBYCateg());
     }
+
+    public function envoie_image(){
+        $this->modele->env_img();
+    }
     public function bienvenue(){
         echo "Hello World ! ";
     }

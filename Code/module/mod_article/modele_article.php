@@ -30,4 +30,13 @@ class ModeleArticle extends Connexion{
         $selectPrep->execute(array($_GET['nom_categorie']));
         return $result = $selectPrep->fetchall();
     }
+
+    public function env_img(){
+        // Repertoire de destination du fichier
+        $repertoire = "/public/image/";
+        // Fichier envoyé
+        $fichier = $repertoire . basename($_FILES['fichier_env']['nom']);
+        $envOK  = 1;
+
+    }
 }
