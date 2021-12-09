@@ -23,7 +23,7 @@ echo '
         <a class="navbar-item" href="index.php">
               <div class="field is-grouped">
                 <p class="control">
-                    <a class="button is-light" href="index.php?module=mod_connexion">
+                    <a class="button is-light" href="#">
               <span class="icon">
                 <i class="fas fa-bars" style="color: #70a1ff"></i>
               </span>
@@ -38,8 +38,8 @@ echo '
         </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu is-center" >
-        <div class="navbar-start" >
+    <div id="navbarExampleTransparentExample" class="navbar-menu" >
+        <div class="navbar-start" id="categories">
             <div class="columns navbar-item">
               <div class="column">
               <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=actualite">actualité</a>
@@ -79,7 +79,7 @@ echo '
 </nav>
 <div>
          <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-         <h1 style="text-align: center"> Click & Blog </h1>
+         <h1 style="text-align: center; color: #70a1ff; font-size: larger"><a href="index.php"> Click & Blog </a></h1>
          <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
 </div>
 ';
@@ -97,8 +97,8 @@ echo '
         </div>
     </div>
 
-    <div class="navbar-menu is-center">
-        <div class="navbar-start" id="categories">
+    <div class="navbar-menu">
+        <div class="navbar-start " id="categories">
             <div class="columns navbar-item">
               <div class="column">
               <a class="has-text-black">actualité</a>
