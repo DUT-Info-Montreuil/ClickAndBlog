@@ -36,7 +36,7 @@ class VueConnexion{
         </div>
         <div class="field" style="width: 40%">
           <p class="control has-icons-left">
-             <input class="input" type="password" id="pass" name="pass" required placeholder="**********" />
+             <input class="input" type="password" id="pass" name="pass" onchange="check_pass()" required placeholder="**********" />
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -44,7 +44,7 @@ class VueConnexion{
         </div>
         <div class="field" style="width: 40%">
           <p class="control has-icons-left">
-             <input class="input" type="password" id="pass" name="confirm_pass" required placeholder="Confirmer" />
+             <input class="input" type="password" id="confirm_pass" name="confirm_pass" onchange="check_pass()" required placeholder="Confirmer" />
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -52,9 +52,7 @@ class VueConnexion{
         </div>
         <div class="field">
           <p class="control">
-            <button class="button is-info">
-              S'inscrire
-            </button>
+              <input class="button is-info" type="submit" name="submit"  value="S'inscrire"  id="submit" disabled/>
           </p>
         </div>
         </form>

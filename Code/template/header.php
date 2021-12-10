@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <!-- Jquery -->
     <script src="composants/Js/jquery.js"></script>
+    <!-- JS -->
+    <script defer src="scripts.js"></script>
 </head>
 <body>
 <?php
