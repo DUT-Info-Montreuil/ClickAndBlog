@@ -50,7 +50,7 @@ class VueProfil {
                     <div class="navbar-item">
                         <div class="field is-grouped">
                             <p class="control">
-                                <a class="button is-light" href="index.php?module=mod_connexion">
+                                <a class="button is-light" href="index.php?module=mod_connexion&action=creation">
                         <span class="icon">
                             <i class="fas fa-user" style="color: #70a1ff"></i>
                         </span>
@@ -64,7 +64,7 @@ class VueProfil {
                     <div class="navbar-item">
                         <div class="field is-grouped">
                             <p class="control">
-                                <a class="button is-light" href="index.php?module=mod_connexion">
+                                <a class="button is-light" href="index.php?module=mod_connexion&action=creation">
                         <span class="icon">
                             <i class="fas fa-user" style="color: #70a1ff"></i>
                         </span>

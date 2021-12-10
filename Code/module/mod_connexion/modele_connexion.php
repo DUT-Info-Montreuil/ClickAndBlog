@@ -11,6 +11,24 @@ class ModeleConnexion extends Connexion{
             return false;
         }
     }
+
+    public function verif_creation(){
+        try{
+            $nom = $_POST['lastname'];
+            $prenom = $_POST['firstname'];
+            $mail = $_POST['mail'];
+            $mdp = $_POST['pass'];
+            echo "<br>";
+            $requete = self::$bdd->prepare('INSERT INTO user_connect(login, password) VALUES(?,?)');
+            $requete->execute(array($mail,$mdp));
+            // $result = $requete->fetchAll();
+            return true;
+        }catch(PDOException $p){
+            echo $p->getCode().$p->getMessage();
+            return false;
+        }
+    }
+
     public function decon_user(){
         session_destroy();
     }
