@@ -6,17 +6,17 @@ class VueArticle
     {
         foreach ($tableaux as $row) {
             echo "
-<div class=\"card\" style=\"width:35%; border-radius:15px; margin: 1%; display: inline-block\">
+<div class=\"card\" id=\"card_article\">
   <div class=\"card-image\">
     <figure class=\"image is-4by3\">
-      <img src=\"{$row['image']}\" alt=\"{$row['alt_image']}\" style=\"border-radius:15px\">
+      <img src=\"{$row['image']}\" alt=\"{$row['alt_image']}\">
     </figure>
   </div>
  
-     <div style=\"margin-left: 5%\">
+     <div id=\"subtile_article\">
         <a>
-            <hr style=\"width:15%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;\">
-            <p class=\"subtitle\" style=\"color: #70a1ff\">{$row['categorie']}</p>
+            <hr>
+            <p class=\"subtitle\">{$row['categorie']}</p>
         </a>
      </div>
  
@@ -26,11 +26,12 @@ class VueArticle
         <p class=\"title is-4\">{$row['titre']}</p>
       </div>
     </div>
-
     <div class=\"content\">
+    <!-- TODO Mettre le debut de l'article -->
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris.
-      <a href=\"#\">#hashtag</a> <a href=\"#\">#hashtag2</a>
+      <a href=\"#\">#hashtag</a> 
+      <a href=\"#\">#hashtag2</a>
       <br>
       <time datetime=\"2016-1-1\">{$row['date']}</time>
     </div>

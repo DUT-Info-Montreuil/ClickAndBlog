@@ -1,11 +1,12 @@
 <?php
 session_start();
-require_once 'header.php';
+define('CONST_INCLUDE', NULL);
+require_once 'connexion.php';
+require_once 'vue_generique.php';
+Connexion::initConnexion();
 ?>
 <section class="container">
 <?php
-include_once 'connexion.php';
-Connexion::initConnexion();
 if(isset($_GET['module'])){
     switch ($_GET['module']){
         case "mod_article":
@@ -24,9 +25,8 @@ if(isset($_GET['module'])){
     include 'module/mod_article/mod_article.php';
     $article = new ModArticle();
 }
-?>
-</section>
-</body>
-</html>
 
-
+$contenuTampon = VueGenerique::getAffichage();
+require_once 'template/header.php';
+echo $contenuTampon;
+require_once 'template/footer.php';
