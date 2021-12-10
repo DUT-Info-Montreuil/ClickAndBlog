@@ -65,7 +65,7 @@ class VueArticle
 
     public static function form_ajout_article(){
         echo '
-        <form action="index.php?module=mod_article&action=ajout" method="post" class="form-example">
+        <form action="index.php?module=mod_article&action=ajout" method="post"  enctype="multipart/form-data" class="form-example">
   <div class="form-example">
     <label for="titre">Entrer le nom du titre: </label>
     <input type="text" name="titre" id="titre" required>
@@ -94,7 +94,7 @@ class VueArticle
         <label for="checkFalse">NON</label>
   </div>
   <div class="form-example">
-    <input type="submit" value="Envoyer">
+    <button type="submit" name="submit">Envoyer</button>
   </div>
 </form>
         ';
