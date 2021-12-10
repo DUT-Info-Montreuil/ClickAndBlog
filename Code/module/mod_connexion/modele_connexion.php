@@ -20,7 +20,7 @@ class ModeleConnexion extends Connexion{
             $mdp = $_POST['pass'];
             echo "<br>";
             $requete = self::$bdd->prepare('INSERT INTO user_connect(login, password) VALUES(?,?)');
-            $requete->execute(array($mail,$mdp));
+            $requete->execute(array($mail,hash('sha256',$mdp)));
             // $result = $requete->fetchAll();
             return true;
         }catch(PDOException $p){
