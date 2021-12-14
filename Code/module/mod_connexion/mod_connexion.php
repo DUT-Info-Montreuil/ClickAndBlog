@@ -17,6 +17,12 @@ class ModConnexion{
             case "deconnexion":
                 $this->controlleur->deconnect();
                 break;
+            case "creation":
+                $this->controlleur->vue_creation();
+                break;
+            case "validation":
+                $this->controlleur->create();
+                break;
         }
     }
 
