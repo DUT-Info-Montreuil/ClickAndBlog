@@ -25,8 +25,8 @@ if(isset($_GET['module'])){
     include 'module/mod_article/mod_article.php';
     $article = new ModArticle();
 }
-
-$contenuTampon = VueGenerique::getAffichage();
+//TODO
+$contenuTampon = $article->getControlleur()->getVue()->getAffichage();
 require_once 'template/header.php';
 echo $contenuTampon;
 require_once 'template/footer.php';

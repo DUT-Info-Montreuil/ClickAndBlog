@@ -1,11 +1,10 @@
 <?php
 include_once 'cont_connexion.php';
-class ModConnexion {
-    private $action;
-    private $controlleur;
+class ModGenerique{
+    protected $action;
+    protected $controlleur;
     public function __construct() {
         $this->controlleur = new ContConnexion();
-//        parent::__Construct();
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
         } else {

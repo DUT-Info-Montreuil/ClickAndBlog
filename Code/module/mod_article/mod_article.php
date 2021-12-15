@@ -35,4 +35,13 @@ class ModArticle{
         }
 
     }
+
+    /**
+     * @return ContArticle
+     */
+    public function getControlleur(): ContArticle
+    {
+        return $this->controlleur;
+    }
+
 }
