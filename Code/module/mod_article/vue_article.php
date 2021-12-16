@@ -1,7 +1,13 @@
 <?php
 
-class VueArticle
+class VueArticle extends VueGenerique
 {
+
+    public function __Construct()
+    {
+        parent::__Construct();
+    }
+
     public static function affiche_liste($tableaux)
     {
         foreach ($tableaux as $row) {
