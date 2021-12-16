@@ -31,5 +31,21 @@ class ContConnexion{
         }
     }
 
+        /**
+     * @return ModeleArticle
+     */
+    public function getModele(): ModeleConnexion
+    {
+        return $this->modele;
+    }
+
+    /**
+     * @return VueArticle
+     */
+    public function getVue(): VueConnexion
+    {
+        return $this->vue;
+    }
+
 }
 ?>

@@ -23,10 +23,9 @@ if(isset($_GET['module'])){
     }
 } else {
     include 'module/mod_article/mod_article.php';
-    $article = new ModArticle();
+    $main = new ModArticle();
 }
-//TODO
-$contenuTampon = $article->getControlleur()->getVue()->getAffichage();
+$contenuTampon = $main->getControlleur()->getVue()->getAffichage();
 require_once 'template/header.php';
 echo $contenuTampon;
 require_once 'template/footer.php';
