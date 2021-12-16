@@ -4,9 +4,7 @@ define('CONST_INCLUDE', NULL);
 require_once 'connexion.php';
 require_once 'vue_generique.php';
 Connexion::initConnexion();
-?>
-<section class="container">
-<?php
+
 if(isset($_GET['module'])){
     switch ($_GET['module']){
         case "mod_article":
@@ -27,5 +25,8 @@ if(isset($_GET['module'])){
 }
 $contenuTampon = $main->getControlleur()->getVue()->getAffichage();
 require_once 'template/header.php';
+?>
+<section class="container">
+<?php
 echo $contenuTampon;
 require_once 'template/footer.php';
