@@ -29,7 +29,7 @@ class VueArticle extends VueGenerique
               <div class="card-content">
                 <div class="media">
                   <div class="media-content">
-                  <a href="index.php?module=mod_article&action=detail&id={$row['id']}">
+                  <a href="index.php?module=mod_article&action=detail&id=<?=$row['id']?>">
                     <p class="title is-4"><?=$row['titre']?></p>
                     </a>
                   </div>

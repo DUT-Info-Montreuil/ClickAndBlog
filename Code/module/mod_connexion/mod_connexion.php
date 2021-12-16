@@ -1,8 +1,7 @@
 <?php
 include_once 'cont_connexion.php';
-class ModConnexion{
-    private $action;
-    private $controlleur;
+require_once 'module/mod_generique.php';
+class ModConnexion extends ModGenerique{
     public function __construct() {
         $this->controlleur = new ContConnexion();
 //        parent::__Construct();
