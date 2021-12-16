@@ -1,6 +1,6 @@
 <?php
 include_once 'cont_connexion.php';
-class ModConnexion {
+class ModConnexion{
     private $action;
     private $controlleur;
     public function __construct() {
@@ -26,6 +26,9 @@ class ModConnexion {
                 break;
         }
     }
-
+    public function getControlleur()
+    {
+        return $this->controlleur;
+    }
 }
 ?>

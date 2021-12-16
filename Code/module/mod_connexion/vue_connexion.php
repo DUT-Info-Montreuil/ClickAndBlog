@@ -1,5 +1,5 @@
 <?php
-class VueConnexion{
+class VueConnexion extends vueGenerique{
     public function form_ajout_vue(){
         ?>
         <div>
