@@ -24,7 +24,7 @@ class ModeleArticle extends Connexion{
             $typeAutoriser = array('jpg','png','jpeg');
             if (in_array($image_extension,$typeAutoriser)){
                 $selectPrep = self::$bdd->prepare("INSERT INTO article(titre, contenu, image, alt_image, date, time_read,etat) VALUES(?,?,?,?,?,?,?)");
-                if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$fichier_destination,$_POST['alt_image'],$_POST['date'],(strlen($_POST['contenue'])/250),$_POST['etat']))){
+                if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$fichier_destination,$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat']))){
                     move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
                 } else {
                     // Return Code 1
@@ -55,5 +55,22 @@ class ModeleArticle extends Connexion{
         $fichier = $repertoire . basename($_FILES['fichier_env']['nom']);
         $envOK  = 1;
 
+    }
+
+    private function temps_lecture($content)
+    {
+        $bbcode = $search = array (
+            '/(\[b\])(.*?)(\[\/b\])/',
+            '/(\[i\])(.*?)(\[\/i\])/',
+            '/(\[u\])(.*?)(\[\/u\])/',
+            '/(\[ul\])(.*?)(\[\/ul\])/',
+            '/(\[li\])(.*?)(\[\/li\])/',
+            '/(\[url=)(.*?)(\])(.*?)(\[\/url\])/',
+            '/(\[url\])(.*?)(\[\/url\])/'
+        );
+        // Nettoie le elements BBcode pour avoir que le texte pur et ne pas etre biaisés lors du calcul.
+        $clean_content_bbcode = preg_replace($bbcode,"$2",$content);
+        $word_count = str_word_count( $clean_content_bbcode);
+        return ceil( $word_count / 250);
     }
 }

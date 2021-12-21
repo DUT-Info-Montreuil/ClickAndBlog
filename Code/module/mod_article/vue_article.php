@@ -42,7 +42,10 @@ class VueArticle extends VueGenerique
                   <a href="#">#hashtag</a> 
                   <a href="#">#hashtag2</a>
                   <br>
+                    <i class="far fa-calendar"></i>
                   <time datetime="2016-1-1"><?=$row['date']?></time>
+                    <i class="far fa-clock"></i>
+                    <span><?=$row['time_read']?> min</span>
                 </div>
               </div>
             </div>
