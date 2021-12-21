@@ -6,7 +6,8 @@
     width:35%;
     border-radius:15px;
     margin: 1%;
-    display: inline-block
+    display: inline-flex;
+    flex-direction: column;
 }
 .card-image>figure>img{
     border-radius:15px;
