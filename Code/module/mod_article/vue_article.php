@@ -1,3 +1,4 @@
+
 <?php
 
 class VueArticle extends VueGenerique
@@ -61,14 +62,13 @@ class VueArticle extends VueGenerique
               <div class="content is-medium">
                 <h2 class="subtitle is-4"><?=$row['date']?></h2>
                 <h1 class="title"><?=$row['titre']?></h1>
-                <p><?=$row['contenue']?></p>
+                <p><?= self::bbc2html($row['contenu']) ?></p>
               </div>
             </div>
           </div>
         <?php
         }
     }
-
     public static function form_ajout_article(){
       ?>
         <form action="index.php?module=mod_article&action=ajout" method="post"  enctype="multipart/form-data" class="form-example">
@@ -105,4 +105,30 @@ class VueArticle extends VueGenerique
         </form>
       <?php
     }
+
+    private static function bbc2html($contenu)
+    {
+        $search = array (
+            '/(\[b\])(.*?)(\[\/b\])/',
+            '/(\[i\])(.*?)(\[\/i\])/',
+            '/(\[u\])(.*?)(\[\/u\])/',
+            '/(\[ul\])(.*?)(\[\/ul\])/',
+            '/(\[li\])(.*?)(\[\/li\])/',
+            '/(\[url=)(.*?)(\])(.*?)(\[\/url\])/',
+            '/(\[url\])(.*?)(\[\/url\])/'
+        );
+
+        $replace = array (
+            '<strong>$2</strong>',
+            '<em>$2</em>',
+            '<u>$2</u>',
+            '<ul>$2</ul>',
+            '<li>$2</li>',
+            '<a href="$2" target="_blank">$4</a>',
+            '<a href="$2" target="_blank">$2</a>'
+        );
+
+        return preg_replace($search, $replace, $contenu);
+    }
+
 }

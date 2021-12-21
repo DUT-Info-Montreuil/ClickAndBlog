@@ -23,18 +23,22 @@ class ModeleArticle extends Connexion{
         if (!empty($_FILES["image"]["tmp_name"])){
             $typeAutoriser = array('jpg','png','jpeg');
             if (in_array($image_extension,$typeAutoriser)){
-                $selectPrep = self::$bdd->prepare("INSERT INTO article(titre, contenue, image, alt_image, date, time_read,etat) VALUES(?,?,?,?,?,?,?)");
+                $selectPrep = self::$bdd->prepare("INSERT INTO article(titre, contenu, image, alt_image, date, time_read,etat) VALUES(?,?,?,?,?,?,?)");
                 if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$fichier_destination,$_POST['alt_image'],$_POST['date'],(strlen($_POST['contenue'])/250),$_POST['etat']))){
                     move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
                 } else {
+                    // Return Code 1
                     $messageRetour = "Impossible d'envoyer le fichier sur le serveur\n";
                 }
             } else {
+                // Return Code 2
                 $messageRetour = "Mauvais format de fichier seul les types de jpg et png ainsi que les types jpeg\n";
             }
         } else {
+            // Return Code 3
             $messageRetour = "Veuillez choisir un fichier a envoyé\n";
         }
+        // return Code 4
         return $messageRetour;
     }
 
