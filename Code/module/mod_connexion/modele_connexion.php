@@ -1,7 +1,7 @@
 <?php
 class ModeleConnexion extends Connexion{
     public function verif_pwd(){
-        $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE login=? AND password=?');
+        $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE email=? AND password=?');
         $selectPrep->execute(array($_POST['mail'],hash('sha256',$_POST['pass'])));
         $result = $selectPrep->fetchall();
         if (count($result) == 1){
@@ -19,7 +19,7 @@ class ModeleConnexion extends Connexion{
             $mail = $_POST['mail'];
             $mdp = $_POST['pass'];
             echo "<br>";
-            $requete = self::$bdd->prepare('INSERT INTO user_connect(login, password) VALUES(?,?)');
+            $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password) VALUES(?,?)');
             $requete->execute(array($mail,hash('sha256',$mdp)));
             // $result = $requete->fetchAll();
             return true;

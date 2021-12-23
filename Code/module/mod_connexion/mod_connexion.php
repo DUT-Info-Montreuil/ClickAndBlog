@@ -12,7 +12,7 @@ class ModConnexion extends ModGenerique{
         }
         switch($this->action){
             case "connexion":
-                $this->controlleur->connect();
+                $this->controlleur->vue_connexion();
                 break;
             case "deconnexion":
                 $this->controlleur->deconnect();
@@ -22,6 +22,9 @@ class ModConnexion extends ModGenerique{
                 break;
             case "validation":
                 $this->controlleur->create();
+                break;
+            case "validation_connexion":
+                $this->controlleur->connect();
                 break;
         }
     }

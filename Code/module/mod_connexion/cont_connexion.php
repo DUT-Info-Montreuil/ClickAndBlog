@@ -23,6 +23,10 @@ class ContConnexion{
         $this->vue->form_ajout_vue();
     }
 
+    public function vue_connexion(){
+        $this->vue->form_connexion_vue();
+    }
+
     public function create(){
         if ($this->modele->verif_creation()){
             header("Location: index.php");

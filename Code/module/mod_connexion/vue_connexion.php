@@ -56,8 +56,43 @@ class VueConnexion extends vueGenerique{
           </p>
         </div>
         </form>
-        <h2>Vous avez déja un compte ?  <a class=" has-text-info"> Connectez-vous </a></h2>
+        <h2>Vous avez déja un compte ?  <a href="index.php?module=mod_connexion&action=connexion" class=" has-text-info"> Connectez-vous </a></h2>
 <?php
+    }
+    public function form_connexion_vue($valide = ''){
+        ?>
+        <div>
+            <h1 class="title">
+                Se connecter
+            </h1>
+        </div>
+        <form action="index.php?module=mod_connexion&action=connexion&action=validation_connexion" method="post">
+            <div class="field" style="width: 40%">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" id="mail" name="mail" placeholder="mail@gmail.com" required/>
+                    <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+                    <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+                </p>
+            </div>
+            <div class="field" style="width: 40%">
+                <p class="control has-icons-left">
+                    <input class="input" type="password" id="pass" name="pass" required placeholder="**********" />
+                    <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <input class="button is-info" type="submit" name="submit"  value="Se connecter"  id="submit"/>
+                </p>
+            </div>
+        </form>
+        <?php
     }
 
     public function form_failed(){
