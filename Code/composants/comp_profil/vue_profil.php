@@ -60,19 +60,37 @@ class VueProfil {
                     </div>
                 </div>
                 <?php else: ?>
+                    <?php
+                    var_dump($_SESSION['login']);
+                    ?>
                     <div class="navbar-end ">
-                    <div class="navbar-item">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <a class="button is-light" href="index.php?module=mod_connexion&action=creation">
-                        <span class="icon">
-                            <i class="fas fa-user" style="color: #70a1ff"></i>
-                        </span>
-                                </a>
-                            </p>
+                        <div class="navbar-item">
+                            <div class="dropdown is-hoverable">
+                                <div class="dropdown-trigger">
+                                    <div class="field is-grouped">
+                                        <p class="control">
+                                            <a class="button is-light" href="#">
+                                            <span class="icon">
+                                                <i class="fas fa-user" style="color: #70a1ff"></i>
+                                            </span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="dropdown-menu menu_deroulant" id="dropdown-menu4" role="menu">
+                                    <div class="dropdown-content has-background-grey-light">
+                                        <a href="#" class="dropdown-item">
+                                            Profil
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a href="index.php?module=mod_connexion&action=deconnexion" class="dropdown-item">
+                                            se deconnecter
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endif ?>
 
             </nav>
