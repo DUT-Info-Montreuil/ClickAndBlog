@@ -15,6 +15,10 @@ if(isset($_GET['module'])){
             include 'module/mod_connexion/mod_connexion.php';
             $main = new ModConnexion();
             break;
+        case "mod_recherche":
+            include 'module/mod_recherche/mod_recherche.php';
+            $main = new ModRecherche();
+            break;
         default:
             echo "Erreur";
             break;

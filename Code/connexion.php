@@ -16,5 +16,4 @@ class Connexion{
         self::$bdd = new PDO(self::$dns,self::$user,self::$password);
     }
 }
-
 ?>
