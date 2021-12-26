@@ -2,6 +2,10 @@
     margin-left: auto;
 }
 
+.menu_deroulant>div{
+    color: #70a1ff;
+}
+
 #card_article{
     width:35%;
     border-radius:15px;
