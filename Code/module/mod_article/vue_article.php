@@ -53,23 +53,29 @@ class VueArticle extends VueGenerique
         }
     }
 
-    public static function affiche_detail($tableaux)
+    public static function affiche_detail($tableaux) //page article
     {
         foreach ($tableaux as $row) {
           ?>
             <div class="columns">
-            <div class="column is-8 is-offset-2">
-            <figure class="image is-16by9">
-              <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">
-            </figure>
-              <div class="content is-medium">
-                <h2 class="subtitle is-4"><?=$row['date']?></h2>
-                <h1 class="title"><?=$row['titre']?></h1>
-                <p><?= self::bbc2html($row['contenu']) ?></p>
-              </div>
+                <div class="column is-8 is-offset-2">
+                <figure class="image is-16by9">
+                  <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">
+                </figure>
+                  <div class="content is-medium">
+                    <h2 class="subtitle is-4"><?=$row['date']?></h2>
+                    <h1 class="title"><?=$row['titre']?></h1>
+                    <p><?= self::bbc2html($row['contenu']) ?></p>
+                  </div>
+                </div>
             </div>
-          </div>
-        <?php
+            <div class="container">
+            <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
+            <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+            <p class="has-text-centered" style="margin-bottom: 2%">Aucun commentaires</p>
+            </div>
+            <?php
+
         }
     }
     public static function form_ajout_article(){
