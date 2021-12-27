@@ -14,8 +14,8 @@
     <!-- Jquery -->
     <script src="composants/Js/Jquery/jquery.js"></script>
     <!-- Jquery UI TODO:Ajouter les fichier physique-->
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <!-- TinyMCE -->
     <script src="composants/Js/TinyMce/tinymce.min.js"></script>
     <!-- JS -->

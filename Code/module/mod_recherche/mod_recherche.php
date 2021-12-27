@@ -12,6 +12,9 @@ class ModRecherche extends ModGenerique
                 case "search":
                     $this->controlleur->search();
                     break;
+                case "recommendation":
+                    $this->controlleur->affichage();
+                    break;
                 default:
                     echo 'Val inconnue';
                     break;
