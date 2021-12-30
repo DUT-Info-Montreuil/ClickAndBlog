@@ -29,10 +29,3 @@ hr{
 .subtile{
     color: #70a1ff;
 }
-footer {
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    z-index:1;
-    width:100%;
-}
