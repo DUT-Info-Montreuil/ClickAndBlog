@@ -4,7 +4,6 @@ require_once 'module/mod_generique.php';
 class ModConnexion extends ModGenerique{
     public function __construct() {
         $this->controlleur = new ContConnexion();
-//        parent::__Construct();
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
         } else {

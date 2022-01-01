@@ -70,11 +70,18 @@ class VueArticle extends VueGenerique
                 </div>
             </div>
             <div class="container">
+<!--            <a href="index.php?module=mod_commentaire&action=liste&id=--><?//=$row['id']?><!--">-->
             <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
+<!--            </a>-->
             <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+            <!--
             <p class="has-text-centered" style="margin-bottom: 2%">Aucun commentaires</p>
             </div>
+            -->
             <?php
+//            require_once('module/mod_commentaire/mod_commentaire.php');
+//            $main = new ModCommentaire();
+//            $contenuTampon = $main->getControlleur()->getVue()->getAffichage();
 
         }
     }
