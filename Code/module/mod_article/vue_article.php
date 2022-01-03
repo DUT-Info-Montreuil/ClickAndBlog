@@ -13,7 +13,7 @@ class VueArticle extends VueGenerique
     {
         foreach ($tableaux as $row) {
           ?>
-            <div class="card" id="card_article">
+            <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
               <div class="card-image">
                 <figure class="image is-4by3">
                   <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">
@@ -24,6 +24,9 @@ class VueArticle extends VueGenerique
                     <a>
                         <hr>
                         <p class="subtitle"><?=$row['categorie']?></p>
+                    </a>
+                    <a href="index.php" class="is-pulled-right">
+                        <i class="far fa-bookmark subtitle"></i>
                     </a>
                 </div>
             
