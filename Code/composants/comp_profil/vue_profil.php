@@ -65,20 +65,20 @@ class VueProfil {
                     ?>
                     <div class="navbar-end ">
                         <div class="navbar-item">
-                            <div class="dropdown is-hoverable">
+                            <div class="dropdown is-hoverable is-right">
                                 <div class="dropdown-trigger">
                                     <div class="field is-grouped">
                                         <p class="control">
                                             <a class="button is-light" href="#">
                                             <span class="icon">
-                                                <i class="fas fa-user" style="color: #70a1ff"></i>
+                                                <i class="fas fa-user" style="color: #70a1ff" ></i>
                                             </span>
                                             </a>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="dropdown-menu menu_deroulant" id="dropdown-menu4" role="menu">
-                                    <div class="dropdown-content has-background-grey-light">
+                                    <div class="dropdown-content has-background-light">
                                         <a href="#" class="dropdown-item">
                                             Profil
                                         </a>

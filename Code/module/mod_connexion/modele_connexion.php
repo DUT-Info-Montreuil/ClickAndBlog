@@ -31,6 +31,7 @@ class ModeleConnexion extends Connexion{
 
     public function decon_user(){
         session_destroy();
+        header('Location: index.php');
     }
 }
 ?>
