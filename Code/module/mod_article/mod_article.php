@@ -1,8 +1,7 @@
 <?php
 include_once('cont_article.php');
-class ModArticle{
-    private $action;
-    private $controlleur;
+require_once 'module/mod_generique.php';
+class ModArticle extends ModGenerique{
     public function __construct() {
         $this->controlleur = new ContArticle();
         if(isset($_GET['action'])){
@@ -35,4 +34,13 @@ class ModArticle{
         }
 
     }
+
+    /**
+     * @return ContArticle
+     */
+    public function getControlleur(): ContArticle
+    {
+        return $this->controlleur;
+    }
+
 }

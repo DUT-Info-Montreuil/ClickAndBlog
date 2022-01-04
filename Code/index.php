@@ -1,11 +1,10 @@
 <?php
 session_start();
-require_once 'header.php';
-?>
-<section class="container">
-<?php
-include_once 'connexion.php';
+define('CONST_INCLUDE', NULL);
+require_once 'connexion.php';
+require_once 'vue_generique.php';
 Connexion::initConnexion();
+
 if(isset($_GET['module'])){
     switch ($_GET['module']){
         case "mod_article":
@@ -16,17 +15,26 @@ if(isset($_GET['module'])){
             include 'module/mod_connexion/mod_connexion.php';
             $main = new ModConnexion();
             break;
+        case "mod_recherche":
+            include 'module/mod_recherche/mod_recherche.php';
+            $main = new ModRecherche();
+            break;
+        case "mod_favoris":
+            include 'module/mod_favoris/mod_favoris.php';
+            $main = new ModFavoris();
+            break;
         default:
             echo "Erreur";
             break;
     }
 } else {
     include 'module/mod_article/mod_article.php';
-    $article = new ModArticle();
+    $main = new ModArticle();
 }
+$contenuTampon = $main->getControlleur()->getVue()->getAffichage();
+require_once 'template/header.php';
 ?>
-</section>
-</body>
-</html>
-
-
+<section class="container">
+<?php
+echo $contenuTampon;
+require_once 'template/footer.php';
