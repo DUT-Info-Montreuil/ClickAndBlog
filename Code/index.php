@@ -19,6 +19,10 @@ if(isset($_GET['module'])){
             include 'module/mod_recherche/mod_recherche.php';
             $main = new ModRecherche();
             break;
+        case "mod_favoris":
+            include 'module/mod_favoris/mod_favoris.php';
+            $main = new ModFavoris();
+            break;
         default:
             echo "Erreur";
             break;
