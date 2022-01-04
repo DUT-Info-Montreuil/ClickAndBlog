@@ -60,9 +60,6 @@ class VueProfil {
                     </div>
                 </div>
                 <?php else: ?>
-                    <?php
-                    var_dump($_SESSION['login']);
-                    ?>
                     <div class="navbar-end ">
                         <div class="navbar-item">
                             <div class="dropdown is-hoverable is-right">
