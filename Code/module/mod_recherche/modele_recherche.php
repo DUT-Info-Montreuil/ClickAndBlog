@@ -5,7 +5,7 @@ class ModeleRecherche extends Connexion {
         $selectPrep->execute();
         $result = array();
         while($article = $selectPrep->fetch(PDO::FETCH_OBJ)) {
-            $result[] =array('value' => $article->id,'label' => $article->titre,'date' => $article->date);
+            $result[] = array('value' => $article->id,'label' => $article->titre,'date' => $article->date);
         }
         return json_encode($result);
     }

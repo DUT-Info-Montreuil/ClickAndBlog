@@ -4,23 +4,21 @@ class VueRecherche extends VueGenerique
 {
     public function affiche_moteur_recherche($val)
     {
-        echo "<script type=\"text/javascript\">
+        ?>
+        <script type="text/javascript">
             $(document).ready(function(){
                 $('#productName').autocomplete({
                 search: function(event, ui){
-      $('.results ul').empty();        
-    },
-                    source: $val
-                     ";?>
+                    $('.results ul').empty();        
+                },
+                source: <?=$val?>         
             }).data('ui-autocomplete')._renderItem = function(ul, item){
-    	return $('<li/>')
-     	.data('item.autocomplete', item)
-    	.append('<div class="card" id="card_article">'+'<div class="card-content">'+'<div class="media">'+
+                return $('<li/>')
+                .data('item.autocomplete', item)
+                .append('<div class="card" id="card_article">'+'<div class="card-content">'+'<div class="media">'+
                         '<div class="media-content">'+
                             '<a href="index.php?module=mod_article&action=detail&id='+item.value+'">'+item.label+'</a>' + '<date> '+item.date+' </date>' + '</div>'+'</div>'+'</div>'+'</div>'
-
-     	)
-     	.appendTo($('.results ul'));  };
+            ).appendTo($('.results ul'));  };
             });
         </script>
         <div class="field has-addons">
