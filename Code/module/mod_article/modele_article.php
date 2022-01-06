@@ -48,6 +48,12 @@ class ModeleArticle extends Connexion{
         return $result = $selectPrep->fetchall();
     }
 
+    public function getCommentaires(): array{
+        $selectPrep = self::$bdd->prepare('SELECT * FROM commentaire');
+        $selectPrep->execute();
+        return $result = $selectPrep->fetchall();
+    }
+
     public function env_img(){
         // Repertoire de destination du fichier
         $repertoire = "/public/image/";

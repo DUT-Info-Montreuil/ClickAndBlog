@@ -17,20 +17,4 @@ class ContCommentaire{
     public function ajout(){
         $this->modele->ajout_commentaire();
     }
-
-    /**
-     * @return ModeleCommentaire
-     */
-    public function getModele(): ModeleCommentaire
-    {
-        return $this->modele;
-    }
-
-    /**
-     * @return VueCommentaire
-     */
-    public function getVue(): VueCommentaire
-    {
-        return $this->vue;
-    }
 }

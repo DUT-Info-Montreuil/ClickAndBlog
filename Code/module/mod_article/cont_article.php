@@ -2,6 +2,7 @@
 include_once('modele_article.php');
 include_once ('vue_article.php');
 include_once('module/mod_favoris/modele_favoris.php');
+include_once('module/mod_commentaire/cont_commentaire.php');
 class ContArticle{
     private $modele;
     private $vue;
@@ -24,6 +25,8 @@ class ContArticle{
     }
     public function details(){
         $this->vue->affiche_detail($this->modele->getDetail());
+        $this->vue->form_commentaire();
+//        $this->vue->affiche_commentaire($this->modele->getCommentaires());
     }
     public function form_ajout(){
         $this->vue->form_ajout_article();

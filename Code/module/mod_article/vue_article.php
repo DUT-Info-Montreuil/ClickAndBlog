@@ -88,12 +88,6 @@ class VueArticle extends VueGenerique
             </div>
             -->
             <?php
-//            require_once './composants/comp_commentaire/cont_commentaire.php';
-//            $main = new ContCommentaire();
-//            $main->affiche();
-//            $contenuTampon = $main->getControlleur()->getVue()->getAffichage();
-//            echo $contenuTampon;
-
         }
     }
     public static function form_ajout_article(){
@@ -125,6 +119,30 @@ class VueArticle extends VueGenerique
             <label for="checkTrue">OUI</label>
             <input type="radio" name="etat" id="checkFalse" value="0">
                 <label for="checkFalse">NON</label>
+          </div>
+          <div class="form-example">
+            <button type="submit" name="submit">Envoyer</button>
+          </div>
+        </form>
+      <?php
+    }
+
+    public static function affiche_commentaires($tableaux)
+    {
+        foreach ($tableaux as $row) {
+          ?>
+            Les commentaires s'afficheront ici
+          <?php
+        }
+    }
+
+    public static function form_commentaire(){
+      ?>
+        <form action="index.php?module=mod_article&action=ajout" method="post" class="form-example">
+          <div class="form-example">
+              <div class="control">
+                  <textarea class="textarea" placeholder="laissez un commentaire :)"></textarea>
+              </div>
           </div>
           <div class="form-example">
             <button type="submit" name="submit">Envoyer</button>
