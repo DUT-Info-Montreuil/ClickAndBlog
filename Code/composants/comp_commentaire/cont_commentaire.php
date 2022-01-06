@@ -7,15 +7,13 @@ class ContCommentaire{
     public function __construct() {
         $this->modele = new ModeleCommentaire();
         $this->vue = new VueCommentaire();
-
     }
-    public function liste(){
+
+    public function affiche(){
+        $this->vue->form_ajout_commentaire();
         $this->vue->affiche_liste($this->modele->getListe());
     }
 
-    public function form_ajout(){
-        $this->vue->form_ajout_commentaire();
-    }
     public function ajout(){
         $this->modele->ajout_commentaire();
     }

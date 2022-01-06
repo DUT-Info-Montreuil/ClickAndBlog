@@ -82,9 +82,11 @@ class VueArticle extends VueGenerique
             </div>
             -->
             <?php
-//            require_once('module/mod_commentaire/mod_commentaire.php');
-//            $main = new ModCommentaire();
+//            require_once './composants/comp_commentaire/cont_commentaire.php';
+//            $main = new ContCommentaire();
+//            $main->affiche();
 //            $contenuTampon = $main->getControlleur()->getVue()->getAffichage();
+//            echo $contenuTampon;
 
         }
     }
