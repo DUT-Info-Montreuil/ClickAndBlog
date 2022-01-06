@@ -1,6 +1,6 @@
 
 <?php
-
+include_once('module/mod_favoris/modele_favoris.php');
 class VueArticle extends VueGenerique
 {
 
@@ -25,9 +25,15 @@ class VueArticle extends VueGenerique
                         <hr>
                         <p class="subtitle"><?=$row['categorie']?></p>
                     </a>
+                    <?php if(isset($_SESSION['login']) && (new ModeleFavoris)->verifArticleFav($row['id'])): ?>
+                    <a href="index.php?module=mod_favoris&action=retirer_article&idArticle=<?=$row['id']?>" class="is-pulled-right">
+                        <i class="fas fa-bookmark"></i>
+                    </a>
+                    <?php elseif(isset($_SESSION['login'])): ?>
                     <a href="index.php?module=mod_favoris&action=ajout_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
                         <i class="far fa-bookmark subtitle"></i>
                     </a>
+                    <?php endif ?>
                 </div>
             
               <div class="card-content">
@@ -44,6 +50,7 @@ class VueArticle extends VueGenerique
                         Phasellus nec iaculis mauris.
                   <a href="#">#hashtag</a> 
                   <a href="#">#hashtag2</a>
+
                   <br>
                     <i class="far fa-calendar"></i>
                   <time datetime="2016-1-1"><?=$row['date']?></time>
