@@ -32,7 +32,14 @@ class ContArticle{
         $this->modele->ajout_article();
     }
     public function categorie(){
-        $this->vue->affiche_liste($this->modele->getArticleBYCateg());
+        foreach ($this->modele->getArticleBYCateg() as $value){
+            if(isset($_SESSION['login'])){
+                $this->vue->affiche_liste($value,$this->fav_verif->verifArticleFav($value['id']));
+            } else {
+                $this->vue->affiche_liste($value,false);
+            }
+
+        }
     }
 
     public function envoie_image(){
