@@ -1,6 +1,5 @@
 
 <?php
-include_once('module/mod_favoris/modele_favoris.php');
 class VueArticle extends VueGenerique
 {
 
@@ -9,9 +8,9 @@ class VueArticle extends VueGenerique
         parent::__Construct();
     }
 
-    public static function affiche_liste($tableaux)
+    public static function affiche_liste($row,$fav)
     {
-        foreach ($tableaux as $row) {
+        //foreach ($tableaux as $row) {
           ?>
             <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
               <div class="card-image">
@@ -25,7 +24,7 @@ class VueArticle extends VueGenerique
                         <hr>
                         <p class="subtitle"><?=$row['categorie']?></p>
                     </a>
-                    <?php if(isset($_SESSION['login']) && (new ModeleFavoris)->verifArticleFav($row['id'])): ?>
+                    <?php if(isset($_SESSION['login']) && $fav == true): ?>
                     <a href="index.php?module=mod_favoris&action=supp_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
                         <i class="fas fa-bookmark"></i>
                     </a>
@@ -60,7 +59,7 @@ class VueArticle extends VueGenerique
               </div>
             </div>
           <?php
-        }
+        //}
     }
 
     public static function affiche_detail($tableaux) //page article

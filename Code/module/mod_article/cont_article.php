@@ -1,16 +1,26 @@
 <?php
 include_once('modele_article.php');
 include_once ('vue_article.php');
+include_once('module/mod_favoris/modele_favoris.php');
 class ContArticle{
     private $modele;
     private $vue;
+    private $fav_verif;
     public function __construct() {
         $this->modele = new ModeleArticle();
+        $this->fav_verif = new ModeleFavoris();
         $this->vue = new VueArticle();
 
     }
     public function liste(){
-        $this->vue->affiche_liste($this->modele->getListe());
+        foreach ($this->modele->getListe() as $value){
+            if(isset($_SESSION['login'])){
+                $this->vue->affiche_liste($value,$this->fav_verif->verifArticleFav($value['id']));
+            } else {
+                $this->vue->affiche_liste($value,false);
+            }
+
+        }
     }
     public function details(){
         $this->vue->affiche_detail($this->modele->getDetail());
