@@ -11,13 +11,16 @@ class ContFavoris{
     public function bookmark(){
         $this->modele->add_bookmark();
     }
-    public function getModele(): ModeleConnexion
+    public function delete_bookmark(){
+        $this->modele->dell_bookmark();
+    }
+    public function getModele(): ModeleFavoris
     {
         return $this->modele;
     }
 
 
-    public function getVue(): VueConnexion
+    public function getVue(): VueFavoris
     {
         return $this->vue;
     }

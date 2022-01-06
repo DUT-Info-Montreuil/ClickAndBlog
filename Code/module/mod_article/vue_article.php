@@ -25,7 +25,7 @@ class VueArticle extends VueGenerique
                         <hr>
                         <p class="subtitle"><?=$row['categorie']?></p>
                     </a>
-                    <a href="index.php" class="is-pulled-right">
+                    <a href="index.php?module=mod_favoris&action=ajout_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
                         <i class="far fa-bookmark subtitle"></i>
                     </a>
                 </div>
