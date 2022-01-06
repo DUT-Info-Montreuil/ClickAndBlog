@@ -6,7 +6,8 @@ class ModeleFavoris extends Connexion{
         //return $result = $selectPrep->fetchall();
     }
     public function dell_bookmark(){
-
+        $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
     }
     public function verifArticleFav($resp): bool
     {

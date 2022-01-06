@@ -26,7 +26,7 @@ class VueArticle extends VueGenerique
                         <p class="subtitle"><?=$row['categorie']?></p>
                     </a>
                     <?php if(isset($_SESSION['login']) && (new ModeleFavoris)->verifArticleFav($row['id'])): ?>
-                    <a href="index.php?module=mod_favoris&action=retirer_article&idArticle=<?=$row['id']?>" class="is-pulled-right">
+                    <a href="index.php?module=mod_favoris&action=supp_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
                         <i class="fas fa-bookmark"></i>
                     </a>
                     <?php elseif(isset($_SESSION['login'])): ?>
