@@ -11,7 +11,6 @@ class ContArticle{
         $this->modele = new ModeleArticle();
         $this->fav_verif = new ModeleFavoris();
         $this->vue = new VueArticle();
-
     }
     public function liste(){
         foreach ($this->modele->getListe() as $value){
@@ -26,7 +25,7 @@ class ContArticle{
     public function details(){
         $this->vue->affiche_detail($this->modele->getDetail());
         $this->vue->form_commentaire();
-//        $this->vue->affiche_commentaire($this->modele->getCommentaires());
+        $this->vue->affiche_commentaire($this->modele->getCommentaires());
     }
     public function form_ajout(){
         $this->vue->form_ajout_article();

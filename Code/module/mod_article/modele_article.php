@@ -62,7 +62,7 @@ class ModeleArticle extends Connexion{
         $envOK  = 1;
 
     }
-
+    
     private function temps_lecture($content)
     {
         $bbcode = $search = array (

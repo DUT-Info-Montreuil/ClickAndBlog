@@ -127,16 +127,16 @@ class VueArticle extends VueGenerique
       <?php
     }
 
-    public static function affiche_commentaires($tableaux)
+    public function affiche_commentaire($tableaux)
     {
         foreach ($tableaux as $row) {
           ?>
-            Les commentaires s'afficheront ici
+          <?=$row['contenu']?>
           <?php
         }
     }
 
-    public static function form_commentaire(){
+    public function form_commentaire(){
       ?>
         <form action="index.php?module=mod_article&action=ajout" method="post" class="form-example">
           <div class="form-example">
