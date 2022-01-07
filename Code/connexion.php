@@ -8,7 +8,7 @@ class Connexion{
     // private static $password  = '5Q[=LO}uk=.f';
 
       /***** IUT de Montreuil */
-      private static $dns = 'mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201660';
+      private static $dns = 'mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201660;charset=utf8';
       private static $user = 'dutinfopw201660';
       private static $password  = 'munupeby';
 

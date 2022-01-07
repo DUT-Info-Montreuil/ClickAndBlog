@@ -49,8 +49,8 @@ class ModeleArticle extends Connexion{
     }
 
     public function getCommentaires(): array{
-        $selectPrep = self::$bdd->prepare('SELECT * FROM commentaire');
-        $selectPrep->execute();
+        $selectPrep = self::$bdd->prepare('SELECT * FROM commentaire where idArticle = ?');
+        $selectPrep->execute(array($_GET['id']));
         return $result = $selectPrep->fetchall();
     }
 
@@ -62,7 +62,6 @@ class ModeleArticle extends Connexion{
         $envOK  = 1;
 
     }
-    
     private function temps_lecture($content)
     {
         $bbcode = $search = array (
