@@ -129,26 +129,57 @@ class VueArticle extends VueGenerique
 
     public function affiche_commentaire($tableaux)
     {
+      if(count($tableaux)==0){
+        echo"rien";
+      }
+      else{
+        ?>
+        <?php
         foreach ($tableaux as $row) {
           ?>
-          <?=$row['contenu']?>
-          <?php
+          <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="<?=//methode pour prendre la photo de profil?>">
+            </p>
+          </figure>
+          <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Barbara Middleton</strong>
+                  <br>
+                  <?=$row['contenu']?>
+                  <br>
+                  <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                </p>
+          </div>
+        </article>
+        <br>
+        <?php
         }
-    }
-
-    public function form_commentaire(){
-      ?>
-        <form action="index.php?module=mod_article&action=ajout" method="post" class="form-example">
-          <div class="form-example">
-              <div class="control">
-                  <textarea class="textarea" placeholder="laissez un commentaire :)"></textarea>
-              </div>
+        ?>
+        </article>
+        <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="field">
+              <p class="control">
+                <textarea class="textarea" placeholder="Add a comment..."></textarea>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button">Post comment</button>
+              </p>
+            </div>
           </div>
-          <div class="form-example">
-            <button type="submit" name="submit">Envoyer</button>
-          </div>
-        </form>
-      <?php
+        </article>
+        <?php
+      }
     }
 
     private static function bbc2html($contenu)

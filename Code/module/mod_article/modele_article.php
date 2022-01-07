@@ -54,6 +54,12 @@ class ModeleArticle extends Connexion{
         return $result = $selectPrep->fetchall();
     }
 
+    public function getPhotoProfil(): array{//TODO
+        $selectPrep = self::$bdd->prepare('SELECT photoProfil FROM commentaire join user_connect on commentaire.id_user = user_connet.id where id_user = ?');
+        $selectPrep->execute(array($_GET['id']));
+        return $result = $selectPrep->fetchall();
+    }
+
     public function env_img(){
         // Repertoire de destination du fichier
         $repertoire = "/public/image/";
