@@ -13,9 +13,6 @@ class ModCommentaire extends ModGenerique{
             case "liste":
                 $this->controlleur->liste();
                 break;
-            case "form":
-                $this->controlleur->form_ajout();
-                break;
             case "ajout":
                 $this->controlleur->ajout();
                 break;

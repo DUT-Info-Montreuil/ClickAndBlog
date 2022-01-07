@@ -130,17 +130,25 @@ class VueArticle extends VueGenerique
     public function affiche_commentaire($tableaux)
     {
       if(count($tableaux)==0){
-        echo"rien";
+        echo"Soyez le premier à commenter !";
       }
       else{
         ?>
+        <div class="column is-8 is-offset-2">
         <?php
         foreach ($tableaux as $row) {
           ?>
           <article class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="<?=//methode pour prendre la photo de profil?>">
+               <?php
+                if(isset($_SESSION)){
+                    $photo = ModeleArticle::getPhotoProfil();
+                }else{
+                    $photo = 'public/image/photo-avatar-profil.png';
+                }
+              ?>
+              <img src="<?=$photo?>" alt="logo">
             </p>
           </figure>
           <div class="media-content">
@@ -162,7 +170,14 @@ class VueArticle extends VueGenerique
         <article class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png">
+              <?php
+                if(isset($_SESSION)){
+                    $photo = ModeleArticle::getPhotoProfil();
+                }else{
+                    $photo = 'public/image/photo-avatar-profil.png';
+                }
+              ?>
+              <img src="<?=$photo?>" alt="logo">
             </p>
           </figure>
           <div class="media-content">
@@ -172,12 +187,19 @@ class VueArticle extends VueGenerique
               </p>
             </div>
             <div class="field">
-              <p class="control">
-                <button class="button">Post comment</button>
-              </p>
+              <form action="index.php?module=mod_commentaire&action=ajout" method="post">
+                  <div class="field">
+                      <p class="control">
+                          <input class="button is-info" type="submit" name="submit"  value="en cours de maintenance"  id="submit" disabled/>
+                      </p>
+                  </div>
             </div>
+
+          </div>
+            </form>
           </div>
         </article>
+         </div>
         <?php
       }
     }

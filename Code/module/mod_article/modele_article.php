@@ -54,8 +54,8 @@ class ModeleArticle extends Connexion{
         return $result = $selectPrep->fetchall();
     }
 
-    public function getPhotoProfil(): array{//TODO
-        $selectPrep = self::$bdd->prepare('SELECT photoProfil FROM commentaire join user_connect on commentaire.id_user = user_connet.id where id_user = ?');
+    public static function getPhotoProfil(): array{//TODO
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM commentaire INNER JOIN user_connect on commentaire.id_user = user_connect.id where commentaire.idArticle = ?');
         $selectPrep->execute(array($_GET['id']));
         return $result = $selectPrep->fetchall();
     }
