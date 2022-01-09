@@ -11,7 +11,7 @@ class ModeleFavoris extends Connexion{
     }
     public function verifArticleFav($resp): bool
     {
-        $selectPrep = self::$bdd->prepare('SELECT * FROM favoris INNER JOIN article ON favoris.url = article.id WHERE user_id = ? AND article.id = ?');
+        $selectPrep = self::$bdd->prepare('SELECT * FROM favoris INNER JOIN article ON favoris.url = article.id WHERE favoris.user_id = ? AND article.id = ?');
         $selectPrep->execute(array($_SESSION['id'],$resp));
         $result = $selectPrep->fetchall();
         if (count($result) == 1){
