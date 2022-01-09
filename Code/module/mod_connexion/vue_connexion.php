@@ -105,7 +105,11 @@ class VueConnexion extends VueGenerique {
         $this->form_connexion_vue("is-danger");
     }
 
-    public function creation_failed(){
-        echo "erreur creation";
+    public function creation_failed($code_erreur){
+        if ($code_erreur == 1){
+            echo "L'adresse mail existe deja !";
+        }else{
+            echo "erreur creation";
+        }
     }
 }

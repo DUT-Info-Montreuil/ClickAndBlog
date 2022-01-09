@@ -28,10 +28,11 @@ class ContConnexion{
     }
 
     public function create(){
-        if ($this->modele->verif_creation()){
+        $result = $this->modele->verif_creation();
+        if ($result == 0){
             header("Location: index.php");
         } else {
-            $this->vue->creation_failed();
+            $this->vue->creation_failed($result);
         }
     }
 
