@@ -85,17 +85,16 @@ class ModeleArticle extends Connexion{
         return ceil( $word_count / 250);
     }
     public function add_like(){
-        $selectPrep = self::$bdd->prepare('UPDATE article SET nbLikes = article.nbLikes + 1 WHERE article.id = ?');
-        $selectPrep->execute(array($_GET['idArticle']));
+        $selectPrep = self::$bdd->prepare('INSERT INTO like_article(user_id, article_id) VALUES(?,?)');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
     }
     public function retirer_like(){
-        $selectPrep = self::$bdd->prepare('UPDATE article SET nbLikes = article.nbLikes - 1');
-        $selectPrep->execute();
+        $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
     }
     public function add_bookmark(){
         $selectPrep = self::$bdd->prepare('INSERT INTO favoris(user_id, url) VALUES(?,?)');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
-        //return $result = $selectPrep->fetchall();
     }
     public function dell_bookmark(){
         $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
