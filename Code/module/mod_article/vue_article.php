@@ -25,11 +25,11 @@ class VueArticle extends VueGenerique
                         <p class="subtitle"><?=$row['categorie']?></p>
                     </a>
                     <?php if(isset($_SESSION['login']) && $fav == true): ?>
-                    <a href="index.php?module=mod_favoris&action=supp_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
+                    <a href="index.php?module=mod_article&action=supp_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
                         <i class="fas fa-bookmark"></i>
                     </a>
                     <?php elseif(isset($_SESSION['login'])): ?>
-                    <a href="index.php?module=mod_favoris&action=ajout_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
+                    <a href="index.php?module=mod_article&action=ajout_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
                         <i class="far fa-bookmark subtitle"></i>
                     </a>
                     <?php endif ?>
@@ -72,9 +72,17 @@ class VueArticle extends VueGenerique
                   <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">
                 </figure>
                   <div class="content is-medium">
-                    <h2 class="subtitle is-4"><?=$row['date']?></h2>
-                    <h1 class="title"><?=$row['titre']?></h1>
-                    <p><?= self::bbc2html($row['contenu']) ?></p>
+                      <!-- Button Likes -->
+                      <a href="index.php?module=mod_article&action=ajout_like&idArticle=<?=$row['id']?>">
+                      <button class="button is-danger">
+                          <i class="far fa-heart">
+                          <span><?=$row['nbLikes']?></span>
+                          </i>
+                      </button>
+                      </a>
+                      <h2 class="subtitle is-4"><?=$row['date']?></h2>
+                      <h1 class="title"><?=$row['titre']?></h1>
+                      <p><?= self::bbc2html($row['contenu']) ?></p>
                   </div>
                 </div>
             </div>
@@ -196,7 +204,7 @@ class VueArticle extends VueGenerique
             </div>
 
           </div>
-            </form>
+            </article>
           </div>
         </article>
          </div>

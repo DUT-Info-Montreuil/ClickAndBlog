@@ -84,4 +84,33 @@ class ModeleArticle extends Connexion{
         $word_count = str_word_count( $clean_content_bbcode);
         return ceil( $word_count / 250);
     }
+    public function add_like(){
+        $selectPrep = self::$bdd->prepare('UPDATE article SET nbLikes = article.nbLikes + 1 WHERE article.id = ?');
+        $selectPrep->execute(array($_GET['idArticle']));
+    }
+    public function retirer_like(){
+        $selectPrep = self::$bdd->prepare('UPDATE article SET nbLikes = article.nbLikes - 1');
+        $selectPrep->execute();
+    }
+    public function add_bookmark(){
+        $selectPrep = self::$bdd->prepare('INSERT INTO favoris(user_id, url) VALUES(?,?)');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+        //return $result = $selectPrep->fetchall();
+    }
+    public function dell_bookmark(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+    }
+    public function verifArticleFav($resp): bool
+    {
+        $selectPrep = self::$bdd->prepare('SELECT * FROM favoris INNER JOIN article ON favoris.url = article.id WHERE favoris.user_id = ? AND article.id = ?');
+        $selectPrep->execute(array($_SESSION['id'],$resp));
+        $result = $selectPrep->fetchall();
+        if (count($result) == 1){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

@@ -23,10 +23,10 @@ class VueRecherche extends VueGenerique
         </script>
         <div class="field has-addons">
             <div class="control">
-                <input class="input" type="text" id="productName" name="term">
+                <input class="input is-rounded" type="text" id="productName" name="term">
             </div>
             <div class="control">
-                <a class="button is-info">
+                <a class="button is-info is-rounded">
                     Rechercher
                 </a>
             </div>
