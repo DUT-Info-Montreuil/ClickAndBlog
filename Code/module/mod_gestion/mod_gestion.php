@@ -10,8 +10,8 @@ class ModGestion extends ModGenerique{
             $this->controlleur;
         }
         switch($this->action){
-            case "password":
-                $this->controlleur->vue_password();
+            case "profil":
+                $this->controlleur->vue_profil();
                 break;
         }
     }

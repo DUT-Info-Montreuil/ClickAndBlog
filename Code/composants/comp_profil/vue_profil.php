@@ -76,7 +76,7 @@ class VueProfil {
                                 </div>
                                 <div class="dropdown-menu menu_deroulant" id="dropdown-menu4" role="menu">
                                     <div class="dropdown-content has-background-light">
-                                        <a href="#" class="dropdown-item">
+                                        <a href="index.php?module=mod_gestion&action=profil" class="dropdown-item">
                                             Profil
                                         </a>
                                         <hr class="dropdown-divider">
