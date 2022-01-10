@@ -3,8 +3,8 @@ include_once('modele_article.php');
 include_once ('vue_article.php');
 include_once('module/mod_commentaire/cont_commentaire.php');
 class ContArticle{
-    private ModeleArticle $modele;
-    private VueArticle $vue;
+    private $modele;
+    privatew $vue;
     public function __construct() {
         $this->modele = new ModeleArticle();
         $this->vue = new VueArticle();
