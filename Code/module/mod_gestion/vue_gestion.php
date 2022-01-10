@@ -28,10 +28,11 @@ class VueGestion extends VueGenerique {
     public function vue_profil()
     {
         ?>
-            <div class="field">
+        <form action="index.php?module=mod_connexion&action=connexion" method="post">
+        <div class="field">
                 <label class="label is-medium">Modifiez vos informations :</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-medium" type="email" placeholder="Nom">
+                    <input class="input is-medium" type="text" id="nom" name="nom" placeholder="Nom">
                     <span class="icon is-medium is-left">
                           <i class="fas fa-user"></i>
                     </span>
@@ -43,7 +44,7 @@ class VueGestion extends VueGenerique {
 
         <div class="field">
             <div class="control has-icons-left has-icons-right">
-                <input class="input is-medium" type="email" placeholder="Prénom">
+                <input class="input is-medium" type="text" id="prenom" name="prenom" placeholder="Prénom">
                 <span class="icon is-medium is-left">
                           <i class="fas fa-user"></i>
                     </span>
@@ -55,7 +56,7 @@ class VueGestion extends VueGenerique {
 
         <div class="field">
             <div class="control has-icons-left has-icons-right">
-                <input class="input is-medium" type="email" placeholder="Nom d'utilisateur">
+                <input class="input is-medium" type="text" id="username" name="username" placeholder="Nom d'utilisateur">
                 <span class="icon is-medium is-left">
                           <i class="fas fa-user"></i>
                     </span>
@@ -64,6 +65,15 @@ class VueGestion extends VueGenerique {
                     </span>
             </div>
         </div>
+
+        <div class="field">
+            <p class="control">
+                <button class="button is-info">
+                    Sauvegarder
+                </button>
+            </p>
+        </div>
+        </form>
         <?php
     }
 
