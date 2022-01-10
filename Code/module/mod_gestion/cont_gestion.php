@@ -9,7 +9,7 @@ class ContGestion{
         $this->vue = new VueGestion();
     }
 
-        /**
+     /**
      * @return ModeleGestion
      */
     public function getModele(): ModeleGestion
