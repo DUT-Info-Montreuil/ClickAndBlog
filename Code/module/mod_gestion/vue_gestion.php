@@ -28,7 +28,7 @@ class VueGestion extends VueGenerique {
     public function vue_profil()
     {
         ?>
-        <form action="index.php?module=mod_connexion&action=connexion" method="post">
+        <form action="index.php?module=mod_gestion&action=sauvegarde" method="post">
         <div class="field">
                 <label class="label is-medium">Modifiez vos informations :</label>
                 <div class="control has-icons-left has-icons-right">

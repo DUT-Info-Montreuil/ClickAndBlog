@@ -15,6 +15,11 @@ class ContGestion{
         $this->vue->vue_profil();
     }
 
+    public function sauvegarde()
+    {
+        $this->modele->sauvegarde();
+    }
+
      /**
      * @return ModeleGestion
      */

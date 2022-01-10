@@ -13,6 +13,9 @@ class ModGestion extends ModGenerique{
             case "profil":
                 $this->controlleur->vue_profil();
                 break;
+            case "sauvegarde":
+                $this->controlleur->sauvegarde();
+                break;
         }
     }
     public function getControlleur()

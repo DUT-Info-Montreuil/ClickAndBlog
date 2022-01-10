@@ -150,11 +150,11 @@ class VueArticle extends VueGenerique
           <figure class="media-left">
             <p class="image is-64x64">
                <?php
-                if(isset($_SESSION)){
-                    $photo = ModeleArticle::getPhotoProfil();
-                }else{
+//                if(isset($_SESSION)){
+//                    $photo = ModeleArticle::getPhotoProfil();
+//                }else{
                     $photo = 'public/image/photo-avatar-profil.png';
-                }
+//                }
               ?>
               <img src="<?=$photo?>" alt="logo">
             </p>
@@ -179,11 +179,11 @@ class VueArticle extends VueGenerique
           <figure class="media-left">
             <p class="image is-64x64">
               <?php
-                if(isset($_SESSION)){
-                    $photo = ModeleArticle::getPhotoProfil();
-                }else{
+//                if(isset($_SESSION)){
+//                    $photo = ModeleArticle::getPhotoProfil();
+//                }else{
                     $photo = 'public/image/photo-avatar-profil.png';
-                }
+//                }
               ?>
               <img src="<?=$photo?>" alt="logo">
             </p>
