@@ -4,7 +4,7 @@ include_once ('vue_article.php');
 include_once('module/mod_commentaire/cont_commentaire.php');
 class ContArticle{
     private $modele;
-    privatew $vue;
+    private $vue;
     public function __construct() {
         $this->modele = new ModeleArticle();
         $this->vue = new VueArticle();
