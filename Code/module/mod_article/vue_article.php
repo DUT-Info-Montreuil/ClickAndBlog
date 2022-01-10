@@ -73,6 +73,7 @@ class VueArticle extends VueGenerique
                 </figure>
                   <div class="content is-medium">
                       <!-- Button Likes -->
+                    <?php if(isset($_SESSION['login'])):?>
                       <a href="index.php?module=mod_article&action=ajout_like&idArticle=<?=$row['id']?>">
                       <button class="button is-danger">
                           <i class="far fa-heart">
@@ -80,6 +81,13 @@ class VueArticle extends VueGenerique
                           </i>
                       </button>
                       </a>
+            <?php else: ?>
+                <span>
+                    <i class="far fa-heart">
+                        <span><?=$row['nbLikes']?></span>
+                    </i>
+                </span>
+                    <?php endif ?>
                       <h2 class="subtitle is-4"><?=$row['date']?></h2>
                       <h1 class="title"><?=$row['titre']?></h1>
                       <p><?= self::bbc2html($row['contenu']) ?></p>
@@ -150,11 +158,11 @@ class VueArticle extends VueGenerique
           <figure class="media-left">
             <p class="image is-64x64">
                <?php
-                if(isset($_SESSION)){
-                    $photo = ModeleArticle::getPhotoProfil();
-                }else{
+                //if(isset($_SESSION)){
+                    //$photo = ModeleArticle::getPhotoProfil();
+                //}else{
                     $photo = 'public/image/photo-avatar-profil.png';
-                }
+                //}
               ?>
               <img src="<?=$photo?>" alt="logo">
             </p>
@@ -179,11 +187,11 @@ class VueArticle extends VueGenerique
           <figure class="media-left">
             <p class="image is-64x64">
               <?php
-                if(isset($_SESSION)){
-                    $photo = ModeleArticle::getPhotoProfil();
-                }else{
+                //if(isset($_SESSION)){
+                    //$photo = ModeleArticle::getPhotoProfil();
+                //}else{
                     $photo = 'public/image/photo-avatar-profil.png';
-                }
+                //}
               ?>
               <img src="<?=$photo?>" alt="logo">
             </p>

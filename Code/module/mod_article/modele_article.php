@@ -54,7 +54,7 @@ class ModeleArticle extends Connexion{
         return $result = $selectPrep->fetchall();
     }
 
-    public static function getPhotoProfil(): array{//TODO
+    public static function getPhotoProfil(): array{
         $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM commentaire INNER JOIN user_connect on commentaire.id_user = user_connect.id where commentaire.idArticle = ?');
         $selectPrep->execute(array($_GET['id']));
         return $result = $selectPrep->fetchall();
@@ -85,6 +85,7 @@ class ModeleArticle extends Connexion{
         return ceil( $word_count / 250);
     }
     public function add_like(){
+        // Pour verif si utilisateur existe c'est ici !!!!
         $selectPrep = self::$bdd->prepare('INSERT INTO like_article(user_id, article_id) VALUES(?,?)');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
     }
@@ -112,4 +113,5 @@ class ModeleArticle extends Connexion{
         }
 
     }
+
 }
