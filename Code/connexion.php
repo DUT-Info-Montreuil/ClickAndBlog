@@ -13,7 +13,13 @@ class Connexion{
 //      private static $password  = 'munupeby';
 
     public static function initConnexion(){
-        self::$bdd = new PDO(self::$dns,self::$user,self::$password);
+        try{
+            self::$bdd = new PDO(self::$dns,self::$user,self::$password);
+            self::$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $p) {
+            echo $p->getCode() . $p->getMessage();
+        }
+
     }
 }
 ?>

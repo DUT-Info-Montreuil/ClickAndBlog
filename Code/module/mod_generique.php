@@ -1,5 +1,5 @@
 <?php
-include_once 'module/mod_connexion/cont_connexion.php';
+include_once 'module/mod_connexion/cont_gestion.php';
 class ModGenerique{
     protected $action;
     protected $controlleur;
