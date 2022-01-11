@@ -28,7 +28,6 @@ class VueGestion extends VueGenerique {
         </div>
         <?php
     }
-
     public function vue_profil()
     {
         ?>
@@ -89,7 +88,6 @@ class VueGestion extends VueGenerique {
             </a>
         <?php
     }
-
     public function vue_article()
     {
         ?>

@@ -96,6 +96,7 @@ class VueArticle extends VueGenerique
                     </i>
                 </span>
                     <?php endif ?>
+                      <button class="button is-warning">Signalez</button>
                       <h2 class="subtitle is-4"><?=$row['date']?></h2>
                       <h1 class="title"><?=$row['titre']?></h1>
                       <p><?= self::bbc2html($row['contenu']) ?></p>
