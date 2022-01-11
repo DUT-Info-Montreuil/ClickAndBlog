@@ -117,12 +117,16 @@ class VueArticle extends VueGenerique
             <label for="contenue">Entrer un contenue: </label>
             <textarea id="contenue" cols="86" rows ="20" name="contenue"></textarea>
           </div>
+            <div class="form-example">
+                <label for="categories_art">Entrer la catégorie de l'article : </label>
+                <input type="text" name="categories_art" id="categories_art">
+            </div>
           <div class="form-example">
                 <label for="image">Image a envoyer : </label>
             <input type="file" name="image" id="image">
           </div>
           <div class="form-example">
-                <label for="alt_image">Entrer la description de l\'image : </label>
+                <label for="alt_image">Entrer la description de l'image : </label>
             <input type="text" name="alt_image" id="alt_image">
           </div>
           <div class="form-example">
@@ -130,11 +134,11 @@ class VueArticle extends VueGenerique
             <input type="date" name="date" id="date">
           </div>
           <div class="form-example">
-                <label>Publiez l\'article : </label>
+                <label>Publiez l'article : </label>
             <input type="radio" name="etat" id="checkTrue" value="1">
             <label for="checkTrue">OUI</label>
             <input type="radio" name="etat" id="checkFalse" value="0">
-                <label for="checkFalse">NON</label>
+              <label for="checkFalse">NON</label>
           </div>
           <div class="form-example">
             <button type="submit" name="submit">Envoyer</button>

@@ -23,8 +23,8 @@ class ModeleArticle extends Connexion{
         if (!empty($_FILES["image"]["tmp_name"])){
             $typeAutoriser = array('jpg','png','jpeg');
             if (in_array($image_extension,$typeAutoriser)){
-                $selectPrep = self::$bdd->prepare("INSERT INTO article(titre, contenu, image, alt_image, date, time_read,etat) VALUES(?,?,?,?,?,?,?)");
-                if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$fichier_destination,$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat']))){
+                $selectPrep = self::$bdd->prepare("INSERT INTO article(titre, contenu,categorie, image, alt_image, date, time_read,etat,user_id) VALUES(?,?,?,?,?,?,?,?,?)");
+                if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$_POST['categories_art'],$fichier_destination,$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat'],$_SESSION['id']))){
                     move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
                 } else {
                     // Return Code 1
