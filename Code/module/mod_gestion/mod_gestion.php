@@ -16,8 +16,8 @@ class ModGestion extends ModGenerique{
             case "article":
                 $this->controlleur->affichage_form_art();
                 break;
-            case "sauvegarde":
-                $this->controlleur->sauvegarde();
+            case "sauvegarde_profil":
+                $this->controlleur->sauvegarde_profil();
                 break;
         }
     }
