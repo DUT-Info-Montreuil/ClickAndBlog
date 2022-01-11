@@ -135,7 +135,7 @@ class VueArticle extends VueGenerique
                     $photo = 'public/image/photo-avatar-profil.png';
                 }
               ?>
-              <img src="<?=$photo[0]['photoProfil']?>" alt="logo">
+              <img class="is-rounded" src="<?=$photo[0]['photoProfil']?>" alt="logo">
             </p>
           </figure>
           <div class="media-content">
