@@ -11,8 +11,8 @@ class VueGestion extends VueGenerique {
                 </figure>
             </div>
             <div class="media-content">
-                <p class="title is-4">Prénom Nom</p>
-                <p class="subtitle is-6">@username</p>
+                <p class="title is-4"><?=$_SESSION["prenom"]," ",$_SESSION["nom"]?></p>
+                <p class="subtitle is-6">@<?=$_SESSION["username"]?></p>
             </div>
         </div>
         <div class="tabs is-centered">

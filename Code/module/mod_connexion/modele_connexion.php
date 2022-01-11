@@ -13,6 +13,9 @@ class ModeleConnexion extends Connexion
 //                DEBUG
 //                var_dump($row['id']);
                 $_SESSION["id"] = $row['id'];
+                $_SESSION["nom"] = $row['nom'];
+                $_SESSION["prenom"] = $row['prenom'];
+                $_SESSION["username"] = $row['username'];
             }
             return true;
         } else {
