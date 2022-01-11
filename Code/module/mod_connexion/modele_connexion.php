@@ -10,8 +10,6 @@ class ModeleConnexion extends Connexion
         if (count($result) == 1) {
             $_SESSION["login"] = $_POST['mail'];
             foreach ($result as $row) {
-//                DEBUG
-//                var_dump($row['id']);
                 $_SESSION["id"] = $row['id'];
                 $_SESSION["nom"] = $row['nom'];
                 $_SESSION["prenom"] = $row['prenom'];

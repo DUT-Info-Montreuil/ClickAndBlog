@@ -1,7 +1,7 @@
 <?php
 class VueGestion extends VueGenerique {
 
-    public function vue_menu()
+    public function vue_menu($infos)
     {
         ?>
         <div id="vue_gestion" class="media">
@@ -11,8 +11,10 @@ class VueGestion extends VueGenerique {
                 </figure>
             </div>
             <div class="media-content">
-                <p class="title is-4"><?=$_SESSION["prenom"]," ",$_SESSION["nom"]?></p>
-                <p class="subtitle is-6">@<?=$_SESSION["username"]?></p>
+<!--                <p class="title is-4">--><?//=$_SESSION["prenom"]," ",$_SESSION["nom"]?><!--</p>-->
+<!--                <p class="subtitle is-6">@--><?//=$_SESSION["username"]?><!--</p>-->
+                <p class="title is-4"><?=$infos[0]['nom']," ",$infos[0]['prenom']?></p>
+                <p class="subtitle is-6">@<?=$infos[0]['username']?></p>
             </div>
         </div>
         <div class="tabs is-centered">
