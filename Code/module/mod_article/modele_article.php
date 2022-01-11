@@ -88,18 +88,22 @@ class ModeleArticle extends Connexion{
         // Pour verif si utilisateur existe c'est ici !!!!
         $selectPrep = self::$bdd->prepare('INSERT INTO like_article(user_id, article_id) VALUES(?,?)');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+        header('Location: index.php?module=mod_article&action=detail&id='.$_GET['idArticle']);
     }
     public function retirer_like(){
         $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+        header('Location: index.php?module=mod_article&action=detail&id='.$_GET['idArticle']);
     }
     public function add_bookmark(){
         $selectPrep = self::$bdd->prepare('INSERT INTO favoris(user_id, url) VALUES(?,?)');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+        header('Location: index.php');
     }
     public function dell_bookmark(){
         $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+        header('Location: index.php');
     }
     public function verifArticleFav($resp): bool
     {
