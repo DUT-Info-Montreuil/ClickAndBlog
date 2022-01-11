@@ -19,8 +19,14 @@ class ContArticle{
         }
     }
     public function details(){
-        $this->vue->affiche_detail($this->modele->getDetail());
-        $this->vue->affiche_commentaire($this->modele->getCommentaires());
+        foreach ($this->modele->getDetail() as $row){
+            if(isset($_SESSION['login'])){
+                $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']));
+            } else {
+                $this->vue->affiche_detail($row,false);
+            }
+            $this->vue->affiche_commentaire($this->modele->getCommentaires());
+        }
     }
     public function ajout(){
         $this->modele->ajout_article();
@@ -33,6 +39,9 @@ class ContArticle{
     }
     public function ajt_like(){
         $this->modele->add_like();
+    }
+    public  function retir_like(){
+        $this->modele->retirer_like();
     }
 
     public function categorie(){

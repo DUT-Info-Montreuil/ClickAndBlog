@@ -62,9 +62,9 @@ class VueArticle extends VueGenerique
         //}
     }
 
-    public static function affiche_detail($tableaux) //page article
+    public static function affiche_detail($row,$like) //page article
     {
-        foreach ($tableaux as $row) {
+        //foreach ($tableaux as $row) {
           ?>
             <div class="columns">
                 <div class="column is-8 is-offset-2">
@@ -73,7 +73,15 @@ class VueArticle extends VueGenerique
                 </figure>
                   <div class="content is-medium">
                       <!-- Button Likes -->
-                    <?php if(isset($_SESSION['login'])):?>
+                      <?php if(isset($_SESSION['login']) && $like == true):?>
+                      <a href="index.php?module=mod_article&action=supp_like&idArticle=<?=$row['id']?>">
+                          <button class="button is-danger">
+                              <i class="fas fa-heart">
+                                  <span><?=$row['nbLikes']?></span>
+                              </i>
+                          </button>
+                      </a>
+                    <?php elseif(isset($_SESSION['login'])):?>
                       <a href="index.php?module=mod_article&action=ajout_like&idArticle=<?=$row['id']?>">
                       <button class="button is-danger">
                           <i class="far fa-heart">
@@ -104,7 +112,7 @@ class VueArticle extends VueGenerique
             </div>
             -->
             <?php
-        }
+        //}
     }
     public function affiche_commentaire($tableaux)
     {

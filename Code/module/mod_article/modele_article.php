@@ -91,7 +91,7 @@ class ModeleArticle extends Connexion{
         header('Location: index.php?module=mod_article&action=detail&id='.$_GET['idArticle']);
     }
     public function retirer_like(){
-        $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE favoris.user_id = ? AND url = ?');
+        $selectPrep = self::$bdd->prepare('DELETE FROM like_article WHERE like_article.user_id = ? AND like_article.article_id = ?');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
         header('Location: index.php?module=mod_article&action=detail&id='.$_GET['idArticle']);
     }
@@ -115,7 +115,17 @@ class ModeleArticle extends Connexion{
         } else {
             return false;
         }
-
+    }
+    public function verifLike($resp): bool
+    {
+        $selectPrep = self::$bdd->prepare('SELECT * FROM like_article WHERE user_id = ? AND article_id = ?');
+        $selectPrep->execute(array($_SESSION['id'],$resp));
+        $result = $selectPrep->fetchall();
+        if (count($result) == 1){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
