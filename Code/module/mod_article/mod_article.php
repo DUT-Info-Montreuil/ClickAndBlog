@@ -22,9 +22,6 @@ class ModArticle extends ModGenerique
             case "detail":
                 $this->controlleur->details();
                 break;
-            case "form":
-                $this->controlleur->form_ajout();
-                break;
             case "ajout":
                 $this->controlleur->ajout();
                 break;

@@ -22,9 +22,6 @@ class ContArticle{
         $this->vue->affiche_detail($this->modele->getDetail());
         $this->vue->affiche_commentaire($this->modele->getCommentaires());
     }
-    public function form_ajout(){
-        $this->vue->form_ajout_article();
-    }
     public function ajout(){
         $this->modele->ajout_article();
     }

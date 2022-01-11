@@ -14,6 +14,9 @@ class ContGestion{
     {
         $this->vue->vue_profil();
     }
+    public function affichage_form_art(){
+        $this->vue->vue_article();
+    }
 
     public function sauvegarde()
     {
