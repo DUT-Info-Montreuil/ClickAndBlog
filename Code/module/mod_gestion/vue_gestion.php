@@ -81,6 +81,15 @@ class VueGestion extends VueGenerique {
          <?php
     }
 
+    public function vue_compte()
+    {
+        ?>
+            <a href="index.php?module=mod_gestion&action=delete_compte">         
+                <button class="button is-danger ">Supprimer compte</button>
+            </a>
+        <?php
+    }
+
     public function vue_article()
     {
         ?>

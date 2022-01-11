@@ -24,6 +24,13 @@ class ModeleGestion extends Connexion
         return $result;
     }
 
+    public function delete_compte()
+    {
+        $selectPrep = self::$bdd->prepare('DELETE FROM user_connect where id = ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        header('Location: index.php?module=mod_connexion&action=deconnexion');
+    }
+
 }
 
 ?>

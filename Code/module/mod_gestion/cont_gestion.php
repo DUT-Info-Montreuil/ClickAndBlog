@@ -23,6 +23,16 @@ class ContGestion{
         $this->modele->sauvegarde_profil();
     }
 
+    public function delete_compte()
+    {
+        $this->modele->delete_compte();
+    }
+
+    public function vue_compte()
+    {
+        $this->vue->vue_compte();
+    }
+
      /**
      * @return ModeleGestion
      */

@@ -19,6 +19,12 @@ class ModGestion extends ModGenerique{
             case "sauvegarde_profil":
                 $this->controlleur->sauvegarde_profil();
                 break;
+            case "delete_compte":
+                $this->controlleur->delete_compte();
+                break;
+            case "compte":
+                $this->controlleur->vue_compte();
+                break;
         }
     }
     public function getControlleur()
