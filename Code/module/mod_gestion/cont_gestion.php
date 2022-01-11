@@ -7,7 +7,7 @@ class ContGestion{
     public function __construct() {
         $this->modele = new ModeleGestion();
         $this->vue = new VueGestion();
-        $this->vue->vue_menu();
+        $this->vue->vue_menu($this->modele->get_infos());
     }
 
     public function vue_profil()
