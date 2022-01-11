@@ -18,9 +18,9 @@ class ContGestion{
         $this->vue->vue_article();
     }
 
-    public function sauvegarde()
+    public function sauvegarde_profil()
     {
-        $this->modele->sauvegarde();
+        $this->modele->sauvegarde_profil();
     }
 
      /**
