@@ -27,6 +27,10 @@ if(isset($_GET['module'])){
             include 'module/mod_gestion/mod_gestion.php';
             $main = new ModGestion();
             break;
+        case "mod_commentaire":
+            include 'module/mod_commentaire/mod_commentaire.php';
+            $main = new ModCommentaire();
+            break;
         default:
             echo "Erreur";
             break;

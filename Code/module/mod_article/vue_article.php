@@ -129,13 +129,13 @@ class VueArticle extends VueGenerique
           <figure class="media-left">
             <p class="image is-64x64">
                <?php
-                //if(isset($_SESSION)){
-                    //$photo = ModeleArticle::getPhotoProfil();
-                //}else{
+                if(isset($_SESSION)){
+                    $photo = ModeleArticle::getPhotoProfil();
+                }else{
                     $photo = 'public/image/photo-avatar-profil.png';
-                //}
+                }
               ?>
-              <img src="<?=$photo?>" alt="logo">
+              <img src="<?=$photo[0]['photoProfil']?>" alt="logo">
             </p>
           </figure>
           <div class="media-content">
@@ -158,26 +158,26 @@ class VueArticle extends VueGenerique
           <figure class="media-left">
             <p class="image is-64x64">
               <?php
-                //if(isset($_SESSION)){
-                    //$photo = ModeleArticle::getPhotoProfil();
-                //}else{
-                    $photo = 'public/image/photo-avatar-profil.png';
-                //}
+              if(isset($_SESSION)){
+                  $photo = ModeleArticle::getPhotoProfil();
+              }else{
+                  $photo = 'public/image/photo-avatar-profil.png';
+              }
               ?>
-              <img src="<?=$photo?>" alt="logo">
+              <img class="is-rounded" src="<?=$photo[0]['photoProfil']?>" alt="logo">
             </p>
           </figure>
           <div class="media-content">
             <div class="field">
               <p class="control">
-                <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                <input class="textarea" id="comment" name="comment" placeholder="Add a comment..."></input>
               </p>
             </div>
             <div class="field">
               <form action="index.php?module=mod_commentaire&action=ajout" method="post">
                   <div class="field">
                       <p class="control">
-                          <input class="button is-info" type="submit" name="submit"  value="en cours de maintenance"  id="submit" disabled/>
+                          <input class="button is-info" type="submit" name="submit"  value="Publier"  id="submit"/>
                       </p>
                   </div>
             </div>

@@ -55,9 +55,10 @@ class ModeleArticle extends Connexion{
     }
 
     public static function getPhotoProfil(): array{
-        $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM commentaire INNER JOIN user_connect on commentaire.id_user = user_connect.id where commentaire.idArticle = ?');
+        $selectPrep = self::$bdd->prepare('SELECT DISTINCT user_connect.photoProfil FROM user_connect JOIN commentaire on user_connect.id = commentaire.id_user where commentaire.idArticle = ?');
         $selectPrep->execute(array($_GET['id']));
-        return $result = $selectPrep->fetchall();
+        $result = $selectPrep->fetchall();
+        return $result;
     }
 
     public function env_img(){
