@@ -20,6 +20,7 @@ class VueGestion extends VueGenerique {
                 <li><a href="index.php?module=mod_gestion&action=profil">Profil</a></li>
                 <li><a href="index.php?module=mod_gestion&action=compte">Compte</a></li>
                 <li><a href="index.php?module=mod_gestion&action=securite">Sécurité</a></li>
+                <li><a href="index.php?module=mod_article&action=form">Article</a></li>
             </ul>
         </div>
         <?php
