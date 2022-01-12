@@ -6,3 +6,11 @@ function check_pass() {
         document.getElementById('submit').disabled = true;
     }
 }
+function check_update_pass() {
+    if (document.getElementById('password').value ==
+        document.getElementById('confirm_pass_update').value) {
+        document.getElementById('submit_pw').disabled = false;
+    } else {
+        document.getElementById('submit_pw').disabled = true;
+    }
+}
