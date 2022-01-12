@@ -23,20 +23,30 @@ class ContGestion{
         $this->modele->sauvegarde_profil();
     }
 
+    public function sauvegarde_securite()
+    {
+        $this->modele->sauvegarde_securite();
+    }
+
     public function delete_compte()
     {
         $this->modele->delete_compte();
     }
 
-    public function vue_compte()
+    public function gestion_compte()
     {
         $this->vue->vue_compte();
+    }
+
+    public function gestion_securite()
+    {
+        $this->vue->vue_securite();
     }
 
      /**
      * @return ModeleGestion
      */
-    public function getModele(): ModeleGestion
+    public function getModele()
     {
         return $this->modele;
     }
@@ -44,7 +54,7 @@ class ContGestion{
     /**
      * @return VueGestion
      */
-    public function getVue(): VueGestion
+    public function getVue()
     {
         return $this->vue;
     }

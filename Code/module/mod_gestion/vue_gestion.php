@@ -28,6 +28,7 @@ class VueGestion extends VueGenerique {
         </div>
         <?php
     }
+
     public function vue_profil()
     {
         ?>
@@ -88,6 +89,59 @@ class VueGestion extends VueGenerique {
             </a>
         <?php
     }
+
+    public function vue_securite()
+    {
+        ?>
+        <form action="index.php?module=mod_gestion&action=sauvegarde_securite" method="post">
+            <div class="field" style="width: 50%">
+                <label class="label is-medium">Modifiez vos informations :</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-medium" type="password" id="current" name="current" placeholder="Mot de passe actuel">
+                    <span class="icon is-medium is-left">
+                          <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                          <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field" style="width: 50%">
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-medium" type="password" id="password" name="password" placeholder="Nouveau mot de passe">
+                    <span class="icon is-medium is-left">
+                          <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                          <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field" style="width: 50%">
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-medium" type="password" id="confirm_update_pass" name="confirm_update_pass" placeholder="Confirmer nouveau mot de passe">
+                    <span class="icon is-medium is-left">
+                          <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                          <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <p class="control">
+                    <button class="button is-info">
+                        Sauvegarder
+                    </button>
+                </p>
+            </div>
+        </form>
+        <?php
+    }
+
     public function vue_article()
     {
         ?>

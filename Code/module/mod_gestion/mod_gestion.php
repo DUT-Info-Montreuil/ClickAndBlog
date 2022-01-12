@@ -23,7 +23,13 @@ class ModGestion extends ModGenerique{
                 $this->controlleur->delete_compte();
                 break;
             case "compte":
-                $this->controlleur->vue_compte();
+                $this->controlleur->gestion_compte();
+                break;
+            case "securite":
+                $this->controlleur->gestion_securite();
+                break;
+            case "sauvegarde_securite":
+                $this->controlleur->sauvegarde_securite();
                 break;
         }
     }

@@ -14,6 +14,28 @@ class ModeleGestion extends Connexion
         header('Location: index.php?module=mod_gestion&action=profil');
     }
 
+    public function sauvegarde_securite()
+    {
+        $current = $_POST['current'];
+        $password = $_POST['password'];
+        $id = $_SESSION['id'];
+        var_dump($current, $password, $id);
+        $check_user_exist = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ? and password = ?');
+        $check_user_exist->execute(array($id, $current));
+        $result = $check_user_exist->fetchAll();
+        if (count($result) < 1) {
+            echo "mdp incorrect";
+        } else {
+            try {
+                $requete = self::$bdd->prepare('UPDATE user_connect SET password = ? where id = ?');
+                $requete->execute(array(hash('sha256', $password), $id));
+            } catch (PDOException $p) {
+                echo $p->getCode() . $p->getMessage();
+            }
+        }
+        header('Location: index.php?module=mod_connexion&action=deconnexion');
+    }
+
     public function get_infos()
     {
         $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ?');
