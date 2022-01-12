@@ -132,8 +132,9 @@ class VueGestion extends VueGenerique {
             </div>
 
             <div class="field">
+                <h1>!!!!!! Changez pas de mot de passe, il me reste un truc à réger</h1>
                 <p class="control">
-                    <button class="button is-info">
+                    <button class="button is-danger">
                         Sauvegarder
                     </button>
                 </p>
