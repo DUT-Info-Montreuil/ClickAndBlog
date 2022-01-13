@@ -189,7 +189,9 @@ class VueGestion extends VueGenerique {
             <div class="field">
                 <h1>!!!!!! Changez pas de mot de passe, il me reste un truc à réger</h1>
                 <p class="control">
-                    <input class="button is-danger" type="submit_pw" name="submit"  value="Sauvegarder"  id="submit" disabled/>
+                    <button class="button is-info" id="submit_pw" name="submit"  value="Sauvegarder">
+                        Sauvegarder
+                    </button>
                 </p>
             </div>
         </form>

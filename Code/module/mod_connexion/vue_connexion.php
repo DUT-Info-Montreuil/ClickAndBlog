@@ -16,18 +16,34 @@ class VueConnexion extends VueGenerique {
                 </div>
                 <form action="index.php?module=mod_connexion&action=connexion&action=validation" method="post">
                     <div class="field" style="width: 40%">
+                        <label class="label">Nom</label>
                         <p>
                             <input class="input" type="text" id="name" name="lastname" placeholder="Nom" required/>
                         </p>
                     </div>
 
                     <div class="field" style="width: 40%">
+                        <label class="label">Prénom</label>
                         <p>
                             <input class="input" type="text" id="name" name="firstname" placeholder="Prenom" required/>
                         </p>
                     </div>
 
                     <div class="field" style="width: 40%">
+                        <label class="label">Nom d'utilisateur</label>
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" id="username" name="username" placeholder="nom d'utilisateur" required/>
+                            <span class="icon is-small is-left">
+                          <i class="fas fa-user"></i>
+                        </span>
+                            <span class="icon is-small is-right">
+                          <i class="fas fa-check"></i>
+                        </span>
+                        </p>
+                    </div>
+
+                    <div class="field" style="width: 40%">
+                        <label class="label">Email</label>
                         <p class="control has-icons-left has-icons-right">
                             <input class="input" type="email" id="mail" name="mail" placeholder="mail@gmail.com" required/>
                             <span class="icon is-small is-left">
@@ -38,7 +54,9 @@ class VueConnexion extends VueGenerique {
                     </span>
                         </p>
                     </div>
+
                     <div class="field" style="width: 40%">
+                        <label class="label">Mot de passe</label>
                         <p class="control has-icons-left">
                             <input class="input" type="password" id="pass" name="pass" onchange="check_pass()" required placeholder="**********" />
                             <span class="icon is-small is-left">
@@ -47,6 +65,7 @@ class VueConnexion extends VueGenerique {
                         </p>
                     </div>
                     <div class="field" style="width: 40%">
+                        <label class="label">Confirmer mot de passe</label>
                         <p class="control has-icons-left">
                             <input class="input" type="password" id="confirm_pass" name="confirm_pass" onchange="check_pass()" required placeholder="Confirmer" />
                             <span class="icon is-small is-left">
