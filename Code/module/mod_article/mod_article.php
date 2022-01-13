@@ -37,6 +37,9 @@ class ModArticle extends ModGenerique
             case "ajout_like":
                 $this->controlleur->ajt_like();
                 break;
+            case "ajout_signalement":
+                $this->controlleur->add_signalement();
+                break;
             case "supp_like":
                 $this->controlleur->retir_like();
                 break;

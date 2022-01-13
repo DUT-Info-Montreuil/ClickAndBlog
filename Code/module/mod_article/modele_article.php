@@ -128,5 +128,19 @@ class ModeleArticle extends Connexion{
             return false;
         }
     }
-
+    public function verifSignalement($resp): bool{
+        $selectPrep = self::$bdd->prepare('SELECT * FROM signalement WHERE user_id = ? AND article_id = ?');
+        $selectPrep->execute(array($_SESSION['id'],$resp));
+        $result = $selectPrep->fetchall();
+        if (count($result) == 1){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function ajt_signalement(){
+        $selectPrep = self::$bdd->prepare('INSERT INTO signalement(user_id, article_id) VALUES(?,?)');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
+        header('Location: index.php');
+    }
 }

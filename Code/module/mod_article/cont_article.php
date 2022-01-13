@@ -12,7 +12,9 @@ class ContArticle{
     public function liste(){
         foreach ($this->modele->getListe() as $value){
             if(isset($_SESSION['login'])){
-                $this->vue->affiche_liste($value,$this->modele->verifArticleFav($value['id']));
+                if($this->modele->verifSignalement($value['id']) == FALSE){
+                    $this->vue->affiche_liste($value,$this->modele->verifArticleFav($value['id']));
+                }
             } else {
                 $this->vue->affiche_liste($value,false);
             }
@@ -21,11 +23,15 @@ class ContArticle{
     public function details(){
         foreach ($this->modele->getDetail() as $row){
             if(isset($_SESSION['login'])){
-                $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']));
+                if ($this->modele->verifSignalement($row['id']) == FALSE){
+                    $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']));
+                    $this->vue->affiche_commentaire($this->modele->getCommentaires());
+                } else {
+                    $this->vue->afficheArtIndiponible();
+                }
             } else {
                 $this->vue->affiche_detail($row,false);
             }
-            $this->vue->affiche_commentaire($this->modele->getCommentaires());
         }
     }
     public function ajout(){
@@ -39,6 +45,9 @@ class ContArticle{
     }
     public function ajt_like(){
         $this->modele->add_like();
+    }
+    public function add_signalement(){
+        $this->modele->ajt_signalement();
     }
     public  function retir_like(){
         $this->modele->retirer_like();

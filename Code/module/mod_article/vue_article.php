@@ -96,7 +96,11 @@ class VueArticle extends VueGenerique
                     </i>
                 </span>
                     <?php endif ?>
-                      <button class="button is-warning">Signalez</button>
+                      <a href="index.php?module=mod_article&action=ajout_signalement&idArticle=<?=$row['id']?>">
+                      <button class="button is-warning">
+                          <i class="fas fa-exclamation-triangle"></i>
+                      </button>
+                      </a>
                       <h2 class="subtitle is-4"><?=$row['date']?></h2>
                       <h1 class="title"><?=$row['titre']?></h1>
                       <p><?= self::bbc2html($row['contenu']) ?></p>
@@ -215,6 +219,13 @@ class VueArticle extends VueGenerique
         );
 
         return preg_replace($search, $replace, $contenu);
+    }
+    public function afficheArtIndiponible(){
+        ?>
+        <div class="notification is-danger">
+            Vous n'êtes pas en capacité d'accéder a cet article, car vous l'avez signalé si jamais il s'agit d'une erreur n'hésitez pas à nous contacter.
+        </div>
+<?php
     }
 
 }
