@@ -133,15 +133,9 @@ class ModeleArticle extends Connexion{
         }
     }
     public function add_articlePayant(){
-        $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE id=? AND user_id=? AND etat=TRUE');
-        $selectPrep->execute(array($_GET['idArticle'],$_SESSION['id']));
-        $result = $selectPrep->fetchall();
-        if (count($result) ==  1){
             $selectPrepare = self::$bdd->prepare('INSERT INTO payant(user_id, article_id) VALUES(?,?)');
             $selectPrepare->execute(array($_SESSION['id'],$_GET['idArticle']));
-        } else {
-            return 1;
-        }
+        header('Location: index.php?module=mod_article&action=detail&id='.$_GET['idArticle']);
     }
 
     public function verifArticlePayant($resp){

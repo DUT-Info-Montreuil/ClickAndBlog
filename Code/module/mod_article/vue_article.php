@@ -106,16 +106,21 @@ class VueArticle extends VueGenerique
                       <p><?php
                       if(count($result) >= 1){
                           if (isset($_SESSION['login'])){
-                              foreach ($result as $row){
-                                  if ($row['user_id'] == $_SESSION['id']){
-                                      echo self::bbc2html($row['contenu']);
-                                  } else {
-                                      ?>
-                                      <div class="notification is-success">
-                                          Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
-                                      </div>
-                                          <?php
+                              $retour_val=false;
+                              foreach ($result as $row_retour){
+                                  if ($row_retour['user_id'] == $_SESSION['id']){
+                                      $retour_val = true;
+                                      break;
                                   }
+                              }
+                              if ($retour_val == true){
+                                  echo self::bbc2html($row['contenu']);
+                              }else{
+                                  ?>
+                                  <div class="notification is-success">
+                                      Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
+                                  </div>
+                                  <?php
                               }
                           } else { ?>
                               <div class="notification is-success">
@@ -132,7 +137,6 @@ class VueArticle extends VueGenerique
                 <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
                 <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
             </div>
-            -->
             <?php
         //}
         } else {
