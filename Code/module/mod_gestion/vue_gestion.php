@@ -14,7 +14,8 @@ class VueGestion extends VueGenerique {
 <!--                <p class="title is-4">--><?//=$_SESSION["prenom"]," ",$_SESSION["nom"]?><!--</p>-->
 <!--                <p class="subtitle is-6">@--><?//=$_SESSION["username"]?><!--</p>-->
                 <p class="title is-4"><?=$infos[0]['nom']," ",$infos[0]['prenom']?></p>
-                <p class="subtitle is-6">@<?=$infos[0]['username']?></p>
+                <p class="subtitle is-6"><?=$infos[0]['username']?></p>
+                <P class="subtitle is-6"><?=$infos[0]['bio']?></p>
             </div>
         </div>
         <div class="tabs is-centered">
@@ -64,6 +65,15 @@ class VueGestion extends VueGenerique {
                 <span class="icon is-medium is-left">
                           <i class="fas fa-user"></i>
                     </span>
+                <span class="icon is-medium is-right">
+                          <i class="fas fa-check"></i>
+                    </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control has-icons-left has-icons-right">
+                <textarea class="textarea" id="bio" name="bio" placeholder="bio"></textarea>
                 <span class="icon is-medium is-right">
                           <i class="fas fa-check"></i>
                     </span>

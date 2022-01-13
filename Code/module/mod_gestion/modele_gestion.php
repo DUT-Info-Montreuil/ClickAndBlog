@@ -11,6 +11,8 @@ class ModeleGestion extends Connexion
         $selectPrep->execute(array($_POST['prenom'], $_SESSION['id']));
         $selectPrep = self::$bdd->prepare('UPDATE user_connect SET username = ? where id = ?');
         $selectPrep->execute(array($_POST['username'], $_SESSION['id']));
+        $selectPrep = self::$bdd->prepare('UPDATE user_connect SET bio = ? where id = ?');
+        $selectPrep->execute(array($_POST['bio'], $_SESSION['id']));
         header('Location: index.php?module=mod_gestion&action=profil');
     }
 
@@ -41,7 +43,7 @@ class ModeleGestion extends Connexion
         $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ?');
         $selectPrep->execute(array($_SESSION['id']));
         while ($user = $selectPrep->fetch(PDO::FETCH_OBJ)) {
-            $result[] = array('nom' => $user->nom, 'prenom' => $user->prenom, 'username' => $user->username);
+            $result[] = array('nom' => $user->nom, 'prenom' => $user->prenom, 'username' => $user->username, 'bio' => $user->bio);
         }
         return $result;
     }
