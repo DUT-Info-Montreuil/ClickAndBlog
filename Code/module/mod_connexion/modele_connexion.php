@@ -18,6 +18,22 @@ class ModeleConnexion extends Connexion
         }
     }
 
+    public function auto_connexion($mail, $password)
+    {
+        $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE email=? AND password=?');
+        $selectPrep->execute(array($mail, hash('sha256', $password)));
+        $result = $selectPrep->fetchall();
+        if (count($result) == 1) {
+            $_SESSION["login"] = $mail;
+            foreach ($result as $row) {
+                $_SESSION["id"] = $row['id'];
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function verif_creation()
     {
         $nom = $_POST['lastname'];
@@ -35,7 +51,7 @@ class ModeleConnexion extends Connexion
             try {
                 $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom) VALUES(?,?, ?, ?, ?)');
                 $requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom));
-
+                $this->auto_connexion($mail, $mdp);
                 return 0;
             } catch (PDOException $p) {
                 echo $p->getCode() . $p->getMessage();
