@@ -203,7 +203,6 @@ class VueGestion extends VueGenerique {
             </div>
 
             <div class="field">
-                <h1>!!!!!! Changez pas de mot de passe, il me reste un truc à réger</h1>
                 <p class="control">
                     <button class="button is-info" id="submit_pw" name="submit"  value="Sauvegarder">
                         Sauvegarder
