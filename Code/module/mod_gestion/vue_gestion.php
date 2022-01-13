@@ -94,51 +94,57 @@ class VueGestion extends VueGenerique {
     public function vue_compte($favoris)
     {
         ?>
-            <a href="index.php?module=mod_gestion&action=delete_compte">         
+        <p class="title is-4">Vous retrouverez ici vos favoris ainsi que l'option pour supprimer votre compte</p>
+        <div class="media-content">
+            <p class="subtitle is-4">Mes Favoris : </p>
+            <?php
+            foreach ($favoris as $row) {
+                ?>
+                <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
+                    <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">
+                    </figure>
+                    </div>
+                
+                    <div id="subtile_article">
+                        <a>
+                            <hr>
+                            <p class="subtitle"><?=$row['categorie']?></p>
+                        </a>
+                    </div>
+                
+                    <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                        <a href="index.php?module=mod_article&action=detail&id=<?=$row['url']?>">
+                        <p class="title is-4"><?=$row['titre']?></p>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="content">
+                    <!-- TODO Mettre le debut de l'article -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus nec iaculis mauris.
+                        <a href="#">#hashtag</a> 
+                        <a href="#">#hashtag2</a>
+    
+                        <br>
+                        <i class="far fa-calendar"></i>
+                        <time datetime="2016-1-1"><?=$row['date']?></time>
+                        <i class="far fa-clock"></i>
+                        <span><?=$row['time_read']?> min</span>
+                    </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+          </div>
+          <a href="index.php?module=mod_gestion&action=delete_compte">         
                 <button class="button is-danger ">Supprimer compte</button>
             </a>
-        <?php
-        foreach ($favoris as $row) {
-            ?>
-              <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">
-                  </figure>
-                </div>
-              
-                  <div id="subtile_article">
-                      <a>
-                          <hr>
-                          <p class="subtitle"><?=$row['categorie']?></p>
-                      </a>
-                  </div>
-              
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                    <a href="index.php?module=mod_article&action=detail&id=<?=$row['url']?>">
-                      <p class="title is-4"><?=$row['titre']?></p>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="content">
-                  <!-- TODO Mettre le debut de l'article -->
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Phasellus nec iaculis mauris.
-                    <a href="#">#hashtag</a> 
-                    <a href="#">#hashtag2</a>
-  
-                    <br>
-                      <i class="far fa-calendar"></i>
-                    <time datetime="2016-1-1"><?=$row['date']?></time>
-                      <i class="far fa-clock"></i>
-                      <span><?=$row['time_read']?> min</span>
-                  </div>
-                </div>
-              </div>
-            <?php
-          }
+          <?php
     }
 
     
