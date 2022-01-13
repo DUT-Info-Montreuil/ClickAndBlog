@@ -11,10 +11,6 @@ class ModeleConnexion extends Connexion
             $_SESSION["login"] = $_POST['mail'];
             foreach ($result as $row) {
                 $_SESSION["id"] = $row['id'];
-//                $_SESSION["nom"] = $row['nom'];
-//                $_SESSION["prenom"] = $row['prenom'];
-//                $_SESSION["username"] = $row['username'];
-//                $_SESSION["username"] = $row['username'];
             }
             return true;
         } else {
