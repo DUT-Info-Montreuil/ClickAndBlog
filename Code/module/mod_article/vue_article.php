@@ -158,7 +158,7 @@ class VueArticle extends VueGenerique
       else{
           $ind = 0;
         foreach ($tableaux as $row) {
-          ?>
+            ?>
           <article class="media">
           <figure class="media-left">
             <p class="image is-64x64">
@@ -206,6 +206,7 @@ class VueArticle extends VueGenerique
               <img class="is-rounded" src="<?=$photo[0]['photoProfil']?>" alt="logo">
             </p>
           </figure>
+                  <form action="index.php?module=mod_commentaire&action=ajout&id=<?=$_GET['id']?>" method="post">
           <div class="media-content">
             <div class="field">
               <p class="control">
@@ -213,14 +214,16 @@ class VueArticle extends VueGenerique
               </p>
             </div>
             <div class="field">
-              <form action="index.php?module=mod_commentaire&action=ajout" method="post">
                   <div class="field">
                       <p class="control">
-                          <input class="button is-info" type="submit" name="submit"  value="Publier"  id="submit"/>
+                          <button class="button is-info" type="submit" name="submit" value="Publier"  id="submit">
+                              Sauvegarder
+                          </button>
                       </p>
                   </div>
             </div>
           </div>
+                  </form>
             </article>
           </div>
         </article>
