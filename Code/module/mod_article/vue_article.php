@@ -108,26 +108,25 @@ class VueArticle extends VueGenerique
                 </div>
             </div>
             <div class="container">
-<!--            <a href="index.php?module=mod_commentaire&action=liste&id=--><?//=$row['id']?><!--">-->
-            <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
-<!--            </a>-->
-            <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-            <!--
-            <p class="has-text-centered" style="margin-bottom: 2%">Aucun commentaires</p>
+                <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
+                <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
             </div>
-            -->
             <?php
-        //}
     }
     public function affiche_commentaire($tableaux)
     {
+        ?>
+            <div class="column is-8 is-offset-2">
+        <?php
       if(count($tableaux)==0){
-        echo"Soyez le premier à commenter !";
+          ?>
+              <div>
+                  <p class="has-text-centered" style="margin-bottom: 2%">Aucun commentaires</p>
+              </div>
+          <?php
       }
       else{
-        ?>
-        <div class="column is-8 is-offset-2">
-        <?php
+          $ind = 0;
         foreach ($tableaux as $row) {
           ?>
           <article class="media">
@@ -139,14 +138,16 @@ class VueArticle extends VueGenerique
                 }else{
                     $photo = 'public/image/photo-avatar-profil.png';
                 }
+                $prenom = ModeleArticle::getInfos();
               ?>
-              <img class="is-rounded" src="<?=$photo[0]['photoProfil']?>" alt="logo">
+              <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
             </p>
           </figure>
           <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>Barbara Middleton</strong>
+                  <strong><?=$prenom[$ind]['prenom'].' '.$prenom[$ind]['nom']?></strong>
+                    <?php $ind++; ?>
                   <br>
                   <?=$row['contenu']?>
                   <br>
@@ -159,12 +160,15 @@ class VueArticle extends VueGenerique
         }
         ?>
         </article>
-        <article class="media">
+        <?php
+      }
+      ?>
+              <article class="media">
           <figure class="media-left">
             <p class="image is-64x64">
               <?php
               if(isset($_SESSION)){
-                  $photo = ModeleArticle::getPhotoProfil();
+                  $photo = ModeleArticle::getCurrentPhotoProfil();
               }else{
                   $photo = 'public/image/photo-avatar-profil.png';
               }
@@ -186,14 +190,12 @@ class VueArticle extends VueGenerique
                       </p>
                   </div>
             </div>
-
           </div>
             </article>
           </div>
         </article>
-         </div>
+        </div>
         <?php
-      }
     }
 
     private static function bbc2html($contenu)

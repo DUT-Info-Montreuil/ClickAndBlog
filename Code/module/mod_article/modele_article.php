@@ -62,6 +62,20 @@ class ModeleArticle extends Connexion{
         return $result;
     }
 
+    public static function getInfos(): array{
+        $selectPrep = self::$bdd->prepare('SELECT DISTINCT user_connect.nom, user_connect.prenom FROM user_connect JOIN commentaire on user_connect.id = commentaire.id_user where commentaire.idArticle = ?');
+        $selectPrep->execute(array($_GET['id']));
+        $result = $selectPrep->fetchall();
+        return $result;
+    }
+
+    public static function getCurrentPhotoProfil(): array{
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM user_connect where id = ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        $result = $selectPrep->fetchall();
+        return $result;
+    }
+
     public function env_img(){
         // Repertoire de destination du fichier
         $repertoire = "/public/image/";
