@@ -11,10 +11,22 @@ class ModeleConnexion extends Connexion
             $_SESSION["login"] = $_POST['mail'];
             foreach ($result as $row) {
                 $_SESSION["id"] = $row['id'];
-//                $_SESSION["nom"] = $row['nom'];
-//                $_SESSION["prenom"] = $row['prenom'];
-//                $_SESSION["username"] = $row['username'];
-//                $_SESSION["username"] = $row['username'];
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function auto_connexion($mail, $password)
+    {
+        $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE email=? AND password=?');
+        $selectPrep->execute(array($mail, hash('sha256', $password)));
+        $result = $selectPrep->fetchall();
+        if (count($result) == 1) {
+            $_SESSION["login"] = $mail;
+            foreach ($result as $row) {
+                $_SESSION["id"] = $row['id'];
             }
             return true;
         } else {
@@ -27,6 +39,7 @@ class ModeleConnexion extends Connexion
         $nom = $_POST['lastname'];
         $prenom = $_POST['firstname'];
         $mail = $_POST['mail'];
+        $username = $_POST['username'];
         $mdp = $_POST['pass'];
         // Ajout de la verification si l'utilisateur existe deja
         $check_user_exist = self::$bdd->prepare('SELECT * FROM user_connect WHERE email= ?');
@@ -36,8 +49,9 @@ class ModeleConnexion extends Connexion
             return 1;
         } else {
             try {
-                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password) VALUES(?,?)');
-                $requete->execute(array($mail, hash('sha256', $mdp)));
+                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom) VALUES(?,?, ?, ?, ?)');
+                $requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom));
+                $this->auto_connexion($mail, $mdp);
                 return 0;
             } catch (PDOException $p) {
                 echo $p->getCode() . $p->getMessage();

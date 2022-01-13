@@ -23,16 +23,18 @@ class ModeleGestion extends Connexion
         $id = $_SESSION['id'];
         var_dump($current, $password, $id);
         $check_user_exist = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ? and password = ?');
-        $check_user_exist->execute(array($id, $current));
+        $check_user_exist->execute(array($id, hash('sha256', $current)));
         $result = $check_user_exist->fetchAll();
         if (count($result) < 1) {
             echo "mdp incorrect";
+            return 1;
         } else {
             try {
                 $requete = self::$bdd->prepare('UPDATE user_connect SET password = ? where id = ?');
                 $requete->execute(array(hash('sha256', $password), $id));
             } catch (PDOException $p) {
                 echo $p->getCode() . $p->getMessage();
+                return 2;
             }
         }
         header('Location: index.php?module=mod_connexion&action=deconnexion');
@@ -54,6 +56,27 @@ class ModeleGestion extends Connexion
         $selectPrep->execute(array($_SESSION['id']));
         header('Location: index.php?module=mod_connexion&action=deconnexion');
     }
+
+    public function get_favoris(){
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article INNER JOIN favoris ON article.id=favoris.url WHERE favoris.user_id= ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        return $selectPrep->fetchall();
+    }
+
+    public function get_signalements(){
+        $selectPrep = self::$bdd->prepare('SELECT signalement.id, signalement.user_id, signalement.article_id, article.titre from signalement, article WHERE signalement.article_id = article.id AND signalement.user_id = ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        return $selectPrep->fetchall();
+    }
+
+    public function delete_signalement(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM signalement WHERE id= ?');
+        $selectPrep->execute(array($_GET['id_signalement']));
+        header('Location: index.php?module=mod_gestion&action=compte');
+    }
+
+
+
 }
 
 ?>
