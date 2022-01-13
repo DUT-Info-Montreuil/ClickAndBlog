@@ -56,7 +56,9 @@ class ContArticle{
     public function categorie(){
         foreach ($this->modele->getArticleBYCateg() as $value){
             if(isset($_SESSION['login'])){
-                $this->vue->affiche_liste($value,$this->modele->verifArticleFav($value['id']));
+                if($this->modele->verifSignalement($value['id']) == FALSE){
+                    $this->vue->affiche_liste($value,$this->modele->verifArticleFav($value['id']));
+                }
             } else {
                 $this->vue->affiche_liste($value,false);
             }
