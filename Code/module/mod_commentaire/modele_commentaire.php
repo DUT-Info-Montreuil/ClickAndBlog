@@ -10,9 +10,9 @@ class ModeleCommentaire extends Connexion{
     public function ajout_commentaire(){
         $selectPrep = self::$bdd->prepare('INSERT INTO commentaire(contenu, idArticle, id_user) values(?, ?, ?)');
         $selectPrep->execute(array($_POST['comment'], $_GET['id'], $_SESSION['id']));
-        return $result = $selectPrep->fetchall();
         $idArt = $_GET['id'];
-        header("Location: index.php/moodule=mod_article&action=detail&id=$idArt");
+        header("Location: index.php?module=mod_article&action=detail&id=$idArt"); //bug rechargement page après ajout commentaire résolu 
+        return $result = $selectPrep->fetchall();
     }
 
 }
