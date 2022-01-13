@@ -23,6 +23,7 @@ class ModeleConnexion extends Connexion
         $nom = $_POST['lastname'];
         $prenom = $_POST['firstname'];
         $mail = $_POST['mail'];
+        $username = $_POST['username'];
         $mdp = $_POST['pass'];
         // Ajout de la verification si l'utilisateur existe deja
         $check_user_exist = self::$bdd->prepare('SELECT * FROM user_connect WHERE email= ?');
@@ -32,8 +33,9 @@ class ModeleConnexion extends Connexion
             return 1;
         } else {
             try {
-                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password) VALUES(?,?)');
-                $requete->execute(array($mail, hash('sha256', $mdp)));
+                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom) VALUES(?,?, ?, ?, ?)');
+                $requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom));
+
                 return 0;
             } catch (PDOException $p) {
                 echo $p->getCode() . $p->getMessage();
