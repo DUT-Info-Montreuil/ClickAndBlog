@@ -1,5 +1,6 @@
 <?php
 class ModeleArticle extends Connexion{
+    
     public function getListe(): array{
         $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE etat=TRUE');
         $selectPrep->execute();

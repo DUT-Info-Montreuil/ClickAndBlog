@@ -55,6 +55,14 @@ class ModeleGestion extends Connexion
         header('Location: index.php?module=mod_connexion&action=deconnexion');
     }
 
+    public function get_favoris(){
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article INNER JOIN favoris WHERE article.id=favoris.url AND favoris.user_id= ?;');
+        $selectPrep->execute(array($_SESSION['id']));
+        return $selectPrep->fetchall();
+    }
+
+    
+
 }
 
 ?>
