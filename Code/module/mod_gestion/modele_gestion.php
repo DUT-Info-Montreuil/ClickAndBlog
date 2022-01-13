@@ -58,9 +58,21 @@ class ModeleGestion extends Connexion
     }
 
     public function get_favoris(){
-        $selectPrep = self::$bdd->prepare('SELECT * FROM article INNER JOIN favoris WHERE article.id=favoris.url AND favoris.user_id= ?;');
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article INNER JOIN favoris ON article.id=favoris.url WHERE favoris.user_id= ?');
         $selectPrep->execute(array($_SESSION['id']));
         return $selectPrep->fetchall();
+    }
+
+    public function get_signalements(){
+        $selectPrep = self::$bdd->prepare('SELECT signalement.id, signalement.user_id, signalement.article_id, article.titre from signalement, article WHERE signalement.article_id = article.id AND signalement.user_id = ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        return $selectPrep->fetchall();
+    }
+
+    public function delete_signalement(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM signalement WHERE id= ?');
+        $selectPrep->execute(array($_GET['id_signalement']));
+        header('Location: index.php?module=mod_gestion&action=compte');
     }
 
     

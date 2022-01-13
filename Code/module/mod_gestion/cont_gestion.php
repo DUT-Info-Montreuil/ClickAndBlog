@@ -35,12 +35,17 @@ class ContGestion{
 
     public function gestion_compte()
     {
-        $this->vue->vue_compte($this->modele->get_favoris());
+        $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements());
     }
 
     public function gestion_securite()
     {
         $this->vue->vue_securite();
+    }
+
+    public function delete_signalement()
+    {
+        $this->modele->delete_signalement();
     }
 
      /**

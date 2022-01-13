@@ -91,7 +91,7 @@ class VueGestion extends VueGenerique {
          <?php
     }
 
-    public function vue_compte($favoris)
+    public function vue_compte($favoris,$signalement)
     {
         ?>
         <p class="title is-4">Vous retrouverez ici vos favoris ainsi que l'option pour supprimer votre compte</p>
@@ -140,11 +140,23 @@ class VueGestion extends VueGenerique {
                 <?php
             }
             ?>
-          </div>
-          <a href="index.php?module=mod_gestion&action=delete_compte">         
+            <p class="subtitle is-4">Mes Signalements : </p>
+            <?php
+            foreach($signalement as $row){
+                ?>
+                <div class="content">
+                    <a href="index.php?module=mod_gestion&action=delete_signalement&id_signalement=<?=$row['id']?>">
+                        <p class="subtitle"><?=$row['titre']?></p>
+                    </a>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+            <a href="index.php?module=mod_gestion&action=delete_compte">         
                 <button class="button is-danger ">Supprimer compte</button>
             </a>
-          <?php
+        <?php
     }
 
     

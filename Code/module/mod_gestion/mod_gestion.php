@@ -31,6 +31,9 @@ class ModGestion extends ModGenerique{
             case "sauvegarde_securite":
                 $this->controlleur->sauvegarde_securite();
                 break;
+            case "delete_signalement":
+                $this->controlleur->delete_signalement();
+                echo"test";
         }
     }
     public function getControlleur()
