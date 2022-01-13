@@ -31,6 +31,10 @@ if(isset($_GET['module'])){
             include 'module/mod_commentaire/mod_commentaire.php';
             $main = new ModCommentaire();
             break;
+        case "mod_paiement":
+            include 'module/mod_paiement/mod_paiement.php';
+            $main = new ModPaiement();
+            break;
         default:
             echo "Erreur";
             break;

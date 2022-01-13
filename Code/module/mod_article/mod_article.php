@@ -43,6 +43,9 @@ class ModArticle extends ModGenerique
             case "supp_like":
                 $this->controlleur->retir_like();
                 break;
+            case "ajout_payement":
+                $this->controlleur->ajout_article_payant();
+                break;
             default:
                 echo "Valeur inconnue ";
                 break;

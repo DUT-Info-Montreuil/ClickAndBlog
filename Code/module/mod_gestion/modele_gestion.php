@@ -54,7 +54,6 @@ class ModeleGestion extends Connexion
         $selectPrep->execute(array($_SESSION['id']));
         header('Location: index.php?module=mod_connexion&action=deconnexion');
     }
-
 }
 
 ?>

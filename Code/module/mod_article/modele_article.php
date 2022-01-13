@@ -117,6 +117,23 @@ class ModeleArticle extends Connexion{
             return false;
         }
     }
+    public function add_articlePayant(){
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE id=? AND user_id=? AND etat=TRUE');
+        $selectPrep->execute(array($_GET['idArticle'],$_SESSION['id']));
+        $result = $selectPrep->fetchall();
+        if (count($result) ==  1){
+            $selectPrepare = self::$bdd->prepare('INSERT INTO payant(user_id, article_id) VALUES(?,?)');
+            $selectPrepare->execute(array($_SESSION['id'],$_GET['idArticle']));
+        } else {
+            return 1;
+        }
+    }
+
+    public function verifArticlePayant($resp){
+        $selectPrep = self::$bdd->prepare('SELECT * FROM payant WHERE article_id = ?');
+        $selectPrep->execute(array($resp));
+        return $selectPrep->fetchAll();
+    }
     public function verifLike($resp): bool
     {
         $selectPrep = self::$bdd->prepare('SELECT * FROM like_article WHERE user_id = ? AND article_id = ?');
@@ -143,4 +160,5 @@ class ModeleArticle extends Connexion{
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
         header('Location: index.php');
     }
+
 }

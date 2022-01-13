@@ -24,13 +24,13 @@ class ContArticle{
         foreach ($this->modele->getDetail() as $row){
             if(isset($_SESSION['login'])){
                 if ($this->modele->verifSignalement($row['id']) == FALSE){
-                    $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']));
+                    $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']),$this->modele->verifArticlePayant($row['id']));
                     $this->vue->affiche_commentaire($this->modele->getCommentaires());
                 } else {
                     $this->vue->afficheArtIndiponible();
                 }
             } else {
-                $this->vue->affiche_detail($row,false);
+                $this->vue->affiche_detail($row,false,$this->modele->verifArticlePayant($row['id']));
             }
         }
     }
@@ -64,6 +64,9 @@ class ContArticle{
             }
 
         }
+    }
+    public function ajout_article_payant(){
+        $this->modele->add_articlePayant();
     }
 
     public function envoie_image(){

@@ -62,7 +62,7 @@ class VueArticle extends VueGenerique
         //}
     }
 
-    public static function affiche_detail($row,$like) //page article
+    public static function affiche_detail($row,$like,$result) //page article
     {
         //foreach ($tableaux as $row) {
           ?>
@@ -103,7 +103,28 @@ class VueArticle extends VueGenerique
                       </a>
                       <h2 class="subtitle is-4"><?=$row['date']?></h2>
                       <h1 class="title"><?=$row['titre']?></h1>
-                      <p><?= self::bbc2html($row['contenu']) ?></p>
+                      <p><?php
+                      if(count($result) >= 1){
+                          if (isset($_SESSION['login'])){
+                              foreach ($result as $row){
+                                  if ($row['user_id'] == $_SESSION['id']){
+                                      echo self::bbc2html($row['contenu']);
+                                  } else {
+                                      ?>
+                                      <div class="notification is-success">
+                                          Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
+                                      </div>
+                                          <?php
+                                  }
+                              }
+                          } else { ?>
+                              <div class="notification is-success">
+                                  Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
+                              </div>
+                                  <?php
+                          }
+                          ?>
+                      </p>
                   </div>
                 </div>
             </div>
@@ -118,6 +139,9 @@ class VueArticle extends VueGenerique
             -->
             <?php
         //}
+        } else {
+                          echo self::bbc2html($row['contenu']);
+                      }
     }
     public function affiche_commentaire($tableaux)
     {
@@ -227,5 +251,4 @@ class VueArticle extends VueGenerique
         </div>
 <?php
     }
-
 }
