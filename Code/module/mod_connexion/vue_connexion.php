@@ -81,7 +81,6 @@ class VueConnexion extends VueGenerique {
 
             </div>
         </form>
-        <h2>Vous avez déja un compte ?  <a href="index.php?module=mod_connexion&action=connexion" class=" has-text-info"> Connectez-vous </a></h2>
         <?php
     }
     public function form_connexion_vue($valide = ''){
@@ -117,6 +116,7 @@ class VueConnexion extends VueGenerique {
                 </p>
             </div>
         </form>
+        <h2>Vous n'avez pas de compte ?  <a href="index.php?module=mod_connexion&action=creation" class=" has-text-info"> Inscrivez-vous </a></h2>
         <?php
     }
 
