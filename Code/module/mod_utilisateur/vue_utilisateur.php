@@ -1,13 +1,15 @@
 <?php
 class VueUtilisateur extends VueGenerique {
 
-    public function vue_menu($infos)
+    public function vue_utilisateur($infos)
     {
+
+        $photo = ModeleUtilisateur::getPhotoProfil();
         ?>
         <div id="vue_gestion" class="media">
             <div class="media-left">
                 <figure class="image is-96x96">
-                        <img class="is-rounded" src="public/image/photo-avatar-profil.png" alt="Placeholder image">
+                        <img class="is-rounded" src="<?=$photo[0]['photoProfil']?>" alt="Placeholder image">
                 </figure>
             </div>
             <div class="media-content">
@@ -18,6 +20,7 @@ class VueUtilisateur extends VueGenerique {
                 <P class="subtitle is-6"><?=$infos[0]['bio']?></p>
             </div>
         </div>
+        <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
         <?php
     }
 

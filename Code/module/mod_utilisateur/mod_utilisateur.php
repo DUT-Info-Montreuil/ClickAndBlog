@@ -1,9 +1,9 @@
 <?php
-include_once 'cont_utilisateur.php.php';
+include_once 'cont_utilisateur.php';
 require_once 'module/mod_generique.php';
 class ModUtilisateur extends ModGenerique{
     public function __construct() {
-        $this->controlleur = new ContGestion();
+        $this->controlleur = new ContUtilisateur();
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
         } else {

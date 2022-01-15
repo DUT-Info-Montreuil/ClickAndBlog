@@ -164,9 +164,9 @@ class VueArticle extends VueGenerique
                             <p class="image is-64x64">
                                 <?php
                                 $photo = ModeleArticle::getPhotoProfil();
-                                $prenom = ModeleArticle::getInfos();
+                                $infos = ModeleArticle::getInfos();
                                 ?>
-                                <a href="index.php?module=mod_utilisateur&action=profil">
+                                <a href="index.php?module=mod_utilisateur&action=profil&id_user=<?=$infos[$ind]['id']?>">
                                     <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
                                 </a>
                             </p>
@@ -174,7 +174,7 @@ class VueArticle extends VueGenerique
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong><?=$prenom[$ind]['prenom'].' '.$prenom[$ind]['nom']?></strong>
+                                    <strong><?=$infos[$ind]['prenom'].' '.$infos[$ind]['nom']?></strong>
                                     <?php $ind++; ?>
                                     <br>
                                     <?=$row['contenu']?>
