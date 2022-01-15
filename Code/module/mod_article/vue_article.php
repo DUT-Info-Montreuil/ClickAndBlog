@@ -62,7 +62,7 @@ class VueArticle extends VueGenerique
         //}
     }
 
-    public static function affiche_detail($row,$like,$result) //page article
+    public static function affiche_detail($row,$like,$result,$recommandation) //page article
     {
           ?>
             <div class="columns">
@@ -127,22 +127,56 @@ class VueArticle extends VueGenerique
                               </div>
                                   <?php
                           }
-
-                        } else {
-                                          echo self::bbc2html($row['contenu']);
-                                      }
-                                  ?>
+                          ?>
                       </p>
                   </div>
                 </div>
             </div>
-        <div class="container">
-            <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
-            <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-        </div>
-        <?php
-    }
+            <div class="container">
+                <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
+                <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+            </div>
+            <?php
+        //}
+        } else {
+                          echo self::bbc2html($row['contenu']);
+                      }
+                      foreach ($recommandation as $recom_result){
+                            ?>
+                          <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
+                              <div class="card-image">
+                                  <figure class="image is-4by3">
+                                      <img src="<?=$recom_result['image']?>" alt="<?=$recom_result['alt_image']?>">
+                                  </figure>
+                              </div>
+                              <div class="card-content">
+                                  <div class="media">
+                                      <div class="media-content">
+                                          <a href="index.php?module=mod_article&action=detail&id=<?=$recom_result['id']?>">
+                                              <p class="title is-4"><?=$recom_result['titre']?></p>
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <div class="content">
+                                      <!-- TODO Mettre le debut de l'article -->
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                      Phasellus nec iaculis mauris.
+                                      <a href="#">#hashtag</a>
+                                      <a href="#">#hashtag2</a>
 
+                                      <br>
+                                      <i class="far fa-calendar"></i>
+                                      <time datetime="2016-1-1"><?=$recom_result['date']?></time>
+                                      <i class="far fa-clock"></i>
+                                      <span><?=$recom_result['time_read']?> min</span>
+                                  </div>
+                              </div>
+                          </div>
+                              <?php
+                      }
+
+
+    }
     public function affiche_commentaire($tableaux)
     {
         ?>
@@ -265,6 +299,22 @@ class VueArticle extends VueGenerique
             Vous n'êtes pas en capacité d'accéder a cet article, car vous l'avez signalé si jamais il s'agit d'une erreur n'hésitez pas à nous contacter.
         </div>
 <?php
+    }
+    public function reponseAjoutArt($code_retour){
+        switch ($code_retour){
+            case 1:
+                echo "<h1 class='title has-text-danger'>⚠️Impossible d'envoyer le fichier sur le serveur\n</h1>";
+                break;
+            case 2:
+                echo "<h1 class='title has-text-danger'> ⚠️Mauvais format de fichier seul les types de jpg et png ainsi que les types jpeg\n</h1>";
+                break;
+            case 3:
+                echo "<h1 class='title has-text-danger'>⚠️Veuillez choisir un fichier a envoyé\n</h1>";
+                break;
+            default:
+                echo "<h1 class='title has-text-success'>Article publier avec succés ✨</h1>";
+                break;
+        }
     }
 
 }

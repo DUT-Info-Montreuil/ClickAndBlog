@@ -45,7 +45,7 @@ class ModeleGestion extends Connexion
         $selectPrep = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ?');
         $selectPrep->execute(array($_SESSION['id']));
         while ($user = $selectPrep->fetch(PDO::FETCH_OBJ)) {
-            $result[] = array('nom' => $user->nom, 'prenom' => $user->prenom, 'username' => $user->username, 'bio' => $user->bio);
+            $result[] = array('nom' => $user->nom, 'prenom' => $user->prenom, 'username' => $user->username, 'bio' => $user->bio, 'admin'=>$user->admin);
         }
         return $result;
     }
@@ -73,6 +73,11 @@ class ModeleGestion extends Connexion
         $selectPrep = self::$bdd->prepare('DELETE FROM signalement WHERE id= ?');
         $selectPrep->execute(array($_GET['id_signalement']));
         header('Location: index.php?module=mod_gestion&action=compte');
+    }
+    public function getCategorie(){
+        $selectPrep = self::$bdd->prepare('SELECT *  from categorie');
+        $selectPrep->execute();
+        return $selectPrep->fetchall();
     }
 
 

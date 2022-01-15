@@ -24,7 +24,7 @@ class ContArticle{
         foreach ($this->modele->getDetail() as $row){
             if(isset($_SESSION['login'])){
                 if ($this->modele->verifSignalement($row['id']) == FALSE){
-                    $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']),$this->modele->verifArticlePayant($row['id']));
+                    $this->vue->affiche_detail($row,$this->modele->verifLike($row['id']),$this->modele->verifArticlePayant($row['id']),$this->modele->getRecommandation($row));
                     $this->vue->affiche_commentaire($this->modele->getCommentaires());
                 } else {
                     $this->vue->afficheArtIndiponible();
@@ -36,7 +36,7 @@ class ContArticle{
         }
     }
     public function ajout(){
-        $this->modele->ajout_article();
+        $this->vue->reponseAjoutArt($this->modele->ajout_article());
     }
     public function ajout_fav(){
         $this->modele->add_bookmark();
