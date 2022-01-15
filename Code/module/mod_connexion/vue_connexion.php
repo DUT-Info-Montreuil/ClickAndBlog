@@ -1,6 +1,6 @@
 <?php
 class VueConnexion extends VueGenerique {
-    public function form_ajout_vue(){
+    public function form_ajout_vue($redirection = NULL){
         ?>
         <div>
 <!--            <img src="/public/image/undraw_reading_time_gvg0.png" alt="image">-->
@@ -14,7 +14,11 @@ class VueConnexion extends VueGenerique {
                         Une fois votre compte créé, vous pourrez directement commencer à naviguer sur notre site
                     </p>
                 </div>
-                <form action="index.php?module=mod_connexion&action=connexion&action=validation" method="post">
+                <?php if($redirection == NULL): ?>
+                <form action="index.php?module=mod_connexion&action=connexion&action=validation"method="post">
+                    <?php else :?>
+                    <form action="index.php?module=mod_connexion&action=connexion&action=validation_redirection" method="post">
+                        <?php endif?>
                     <div class="field" style="width: 40%">
                         <label class="label">Nom</label>
                         <p>
@@ -83,14 +87,18 @@ class VueConnexion extends VueGenerique {
         </form>
         <?php
     }
-    public function form_connexion_vue($valide = ''){
+    public function form_connexion_vue($redirection = NULL, $valide = ''){
         ?>
         <div>
             <h1 class="title">
                 Se connecter
             </h1>
         </div>
-        <form action="index.php?module=mod_connexion&action=connexion&action=validation_connexion" method="post">
+        <?php if($redirection == NULL): ?>
+            <form action="index.php?module=mod_connexion&action=connexion&action=validation_connexion" method="post">
+        <?php else :?>
+            <form action="index.php?module=mod_connexion&action=connexion&action=validation_connexion_redirection" method="post">
+        <?php endif?>
             <div class="field" style="width: 40%">
                 <p class="control has-icons-left has-icons-right">
                     <input class="input <?=$valide ?>" type="email" id="mail" name="mail" placeholder="mail@gmail.com" required/>
@@ -116,7 +124,11 @@ class VueConnexion extends VueGenerique {
                 </p>
             </div>
         </form>
+        <?php if($redirection == NULL): ?>
         <h2>Vous n'avez pas de compte ?  <a href="index.php?module=mod_connexion&action=creation" class=" has-text-info"> Inscrivez-vous </a></h2>
+        <?php else :?>
+            <h2>Vous n'avez pas de compte ?  <a href="index.php?module=mod_connexion&action=creation_redirection" class=" has-text-info"> Inscrivez-vous </a></h2>
+        <?php endif?>
         <?php
     }
 

@@ -219,8 +219,9 @@ class VueArticle extends VueGenerique
                             </form>
                             <?php
                         }else{
+                                $_SESSION['redirection'] = $_SERVER['REQUEST_URI'];
                             ?>
-                            <h1><p><a href="index.php?module=mod_connexion&action=connexion">Connectez-vous</a> pour commenter :)</p></h1>
+                            <h1><p><a href="index.php?module=mod_connexion&action=connexion_redirection">Connectez-vous</a> pour commenter :)</p></h1>
                             <?php
                         }
                         ?>
