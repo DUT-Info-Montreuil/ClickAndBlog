@@ -1,7 +1,7 @@
 <?php
 
 class VueProfil {
-    public static function affiche_icon($content, $estConnecte)
+    public static function affiche_icon()
     {
         ?>
             <nav class="navbar is-light">

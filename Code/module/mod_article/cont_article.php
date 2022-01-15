@@ -31,6 +31,7 @@ class ContArticle{
                 }
             } else {
                 $this->vue->affiche_detail($row,false,$this->modele->verifArticlePayant($row['id']));
+                $this->vue->affiche_commentaire($this->modele->getCommentaires());
             }
         }
     }

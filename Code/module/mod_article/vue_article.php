@@ -64,7 +64,6 @@ class VueArticle extends VueGenerique
 
     public static function affiche_detail($row,$like,$result) //page article
     {
-        //foreach ($tableaux as $row) {
           ?>
             <div class="columns">
                 <div class="column is-8 is-offset-2">
@@ -128,104 +127,106 @@ class VueArticle extends VueGenerique
                               </div>
                                   <?php
                           }
-                          ?>
+
+                        } else {
+                                          echo self::bbc2html($row['contenu']);
+                                      }
+                                  ?>
                       </p>
                   </div>
                 </div>
             </div>
-            <div class="container">
-                <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
-                <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-            </div>
-            <?php
-        //}
-        } else {
-                          echo self::bbc2html($row['contenu']);
-                      }
+        <div class="container">
+            <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
+            <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+        </div>
+        <?php
     }
+
     public function affiche_commentaire($tableaux)
     {
         ?>
-            <div class="column is-8 is-offset-2">
-        <?php
-      if(count($tableaux)==0){
-          ?>
-              <div>
-                  <p class="has-text-centered" style="margin-bottom: 2%">Aucun commentaires</p>
-              </div>
-          <?php
-      }
-      else{
-          $ind = 0;
-        foreach ($tableaux as $row) {
-            ?>
-          <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-               <?php
-                if(isset($_SESSION)){
-                    $photo = ModeleArticle::getPhotoProfil();
-                }else{
-                    $photo = 'public/image/photo-avatar-profil.png';
+        <div class="column is-8 is-offset-2">
+            <?php
+            if(count($tableaux)==0){
+                ?>
+                <div>
+                    <p class="has-text-centered" style="margin-bottom: 2%">Aucun commentaires</p>
+                </div>
+                <?php
+            }
+            else{
+                $ind = 0;
+                foreach ($tableaux as $row) {
+                    ?>
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                <?php
+                                $photo = ModeleArticle::getPhotoProfil();
+                                $prenom = ModeleArticle::getInfos();
+                                ?>
+                                <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong><?=$prenom[$ind]['prenom'].' '.$prenom[$ind]['nom']?></strong>
+                                    <?php $ind++; ?>
+                                    <br>
+                                    <?=$row['contenu']?>
+                                    <br>
+                                    <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                                </p>
+                            </div>
+                    </article>
+                    <br>
+                    <?php
                 }
-                $prenom = ModeleArticle::getInfos();
-              ?>
-              <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
-            </p>
-          </figure>
-          <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong><?=$prenom[$ind]['prenom'].' '.$prenom[$ind]['nom']?></strong>
-                    <?php $ind++; ?>
-                  <br>
-                  <?=$row['contenu']?>
-                  <br>
-                  <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
-                </p>
-          </div>
-        </article>
-        <br>
-        <?php
-        }
-        ?>
-        </article>
-        <?php
-      }
-      ?>
-              <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <?php
-              if(isset($_SESSION)){
-                  $photo = ModeleArticle::getCurrentPhotoProfil();
-              }else{
-                  $photo = 'public/image/photo-avatar-profil.png';
-              }
-              ?>
-              <img class="is-rounded" src="<?=$photo[0]['photoProfil']?>" alt="logo">
-            </p>
-          </figure>
-                  <form action="index.php?module=mod_commentaire&action=ajout&id=<?=$_GET['id']?>" method="post">
-          <div class="media-content">
-            <div class="field">
-              <p class="control">
-                <input class="textarea" id="comment" name="comment" placeholder="Add a comment..."></input>
-              </p>
-            </div>
-            <div class="field">
-                  <div class="field">
-                      <p class="control">
-                          <button class="button is-info" type="submit" name="submit" value="Publier"  id="submit">
-                              Sauvegarder
-                          </button>
-                      </p>
-                  </div>
-            </div>
-          </div>
-                  </form>
+                ?>
+                </article>
+                <?php
+            }
+            ?>
+            <article class="media">
+                        <?php
+                        if(isset($_SESSION['id'])){
+                            $currentPhoto = ModeleArticle::getCurrentPhotoProfil();
+                            ?>
+                            <figure class="media-left">
+                                        <p class="image is-64x64">
+                                                    <img class="is-rounded" src="<?=$currentPhoto[0]['photoProfil']?>" alt="logo">
+                                        </p>
+                            </figure>
+                            <form action="index.php?module=mod_commentaire&action=ajout&id=<?=$_GET['id']?>" method="post">
+                                <div class="media-content">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="textarea" id="comment" name="comment" placeholder="Add a comment..."></input>
+                                        </p>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field">
+                                            <p class="control">
+                                                <button class="button is-info" type="submit" name="submit" value="Publier"  id="submit">
+                                                    Publier
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <?php
+                        }else{
+                            ?>
+                            <h1><p><a href="index.php?module=mod_connexion&action=connexion">Connectez-vous</a> pour commenter :)</p></h1>
+                            <?php
+                        }
+                        ?>
+
             </article>
-          </div>
+        </div>
         </article>
         </div>
         <?php
