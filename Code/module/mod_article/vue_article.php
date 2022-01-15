@@ -166,7 +166,9 @@ class VueArticle extends VueGenerique
                                 $photo = ModeleArticle::getPhotoProfil();
                                 $prenom = ModeleArticle::getInfos();
                                 ?>
-                                <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
+                                <a href="index.php?module=mod_utilisateur&action=profil">
+                                    <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
+                                </a>
                             </p>
                         </figure>
                         <div class="media-content">

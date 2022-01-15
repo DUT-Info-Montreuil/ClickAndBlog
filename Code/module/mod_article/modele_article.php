@@ -63,7 +63,7 @@ class ModeleArticle extends Connexion{
     }
 
     public static function getInfos(): array{
-        $selectPrep = self::$bdd->prepare('SELECT user_connect.nom, user_connect.prenom FROM user_connect JOIN commentaire on user_connect.id = commentaire.id_user where commentaire.idArticle = ?');
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.nom, user_connect.prenom, user_connect.id FROM user_connect JOIN commentaire on user_connect.id = commentaire.id_user where commentaire.idArticle = ?');
         $selectPrep->execute(array($_GET['id']));
         $result = $selectPrep->fetchall();
         return $result;
