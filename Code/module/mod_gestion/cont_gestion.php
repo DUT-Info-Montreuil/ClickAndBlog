@@ -15,7 +15,7 @@ class ContGestion{
         $this->vue->vue_profil();
     }
     public function affichage_form_art(){
-        $this->vue->vue_article();
+        $this->vue->vue_article($this->modele->getCategorie());
     }
 
     public function sauvegarde_profil()

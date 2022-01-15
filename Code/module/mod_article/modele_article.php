@@ -29,15 +29,15 @@ class ModeleArticle extends Connexion{
                     move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
                 } else {
                     // Return Code 1
-                    $messageRetour = "Impossible d'envoyer le fichier sur le serveur\n";
+                    $messageRetour = 1;
                 }
             } else {
                 // Return Code 2
-                $messageRetour = "Mauvais format de fichier seul les types de jpg et png ainsi que les types jpeg\n";
+                $messageRetour = 2;
             }
         } else {
             // Return Code 3
-            $messageRetour = "Veuillez choisir un fichier a envoyé\n";
+            $messageRetour = 3;
         }
         // return Code 4
         return $messageRetour;
@@ -153,6 +153,11 @@ class ModeleArticle extends Connexion{
         } else {
             return false;
         }
+    }
+    public function getRecommandation($resp){
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE categorie = ? AND id <> ? AND etat=TRUE');
+        $selectPrep->execute(array($resp['categorie'],$resp['id']));
+         return $selectPrep->fetchall();
     }
     public function verifSignalement($resp): bool{
         $selectPrep = self::$bdd->prepare('SELECT * FROM signalement WHERE user_id = ? AND article_id = ?');
