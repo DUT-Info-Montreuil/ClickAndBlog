@@ -27,8 +27,7 @@ class ContConnexion{
     public function vue_creation($redirection = NULL){
         if($redirection == NULL){
             $this->vue->form_ajout_vue();
-        }
-        else{
+        }else{
             $this->vue->form_ajout_vue($redirection);
         }
     }

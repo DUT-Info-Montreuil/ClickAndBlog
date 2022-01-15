@@ -29,7 +29,7 @@ class ModConnexion extends ModGenerique{
                 $this->controlleur->create();
                 break;
             case "validation_redirection":
-                $this->controlleur->create($_SESSION['redirectionl']);
+                $this->controlleur->create($_SESSION['redirection']);
                 break;
             case "validation_connexion":
                 $this->controlleur->connect();

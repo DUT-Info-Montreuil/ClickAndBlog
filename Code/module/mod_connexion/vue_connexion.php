@@ -15,9 +15,9 @@ class VueConnexion extends VueGenerique {
                     </p>
                 </div>
                 <?php if($redirection == NULL): ?>
-                <form action="index.php?module=mod_connexion&action=connexion&action=validation"method="post">
+                <form action="index.php?module=mod_connexion&action=validation"method="post">
                     <?php else :?>
-                    <form action="index.php?module=mod_connexion&action=connexion&action=validation_redirection" method="post">
+                    <form action="index.php?module=mod_connexion&action=validation_redirection" method="post">
                         <?php endif?>
                     <div class="field" style="width: 40%">
                         <label class="label">Nom</label>
