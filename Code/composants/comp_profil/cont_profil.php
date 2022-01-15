@@ -9,7 +9,7 @@ class ContProfil{
         $this->vue = new VueProfil();
     }
     public function affiche(){
-        $var = $this->vue->affiche_icon($this->modele->getContent(), true);
+        $var = $this->vue->affiche_icon();
         echo $var;
     }
 }
