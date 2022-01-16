@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class VuePaiement extends VueGenerique {
 public function success(){
     ?>

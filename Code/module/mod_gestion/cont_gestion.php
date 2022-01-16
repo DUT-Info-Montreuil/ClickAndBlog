@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'modele_gestion.php';
 include_once 'vue_gestion.php';
 class ContGestion{

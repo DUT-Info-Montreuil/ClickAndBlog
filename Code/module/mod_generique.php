@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'module/mod_connexion/cont_connexion.php';
 class ModGenerique{
     protected $action;

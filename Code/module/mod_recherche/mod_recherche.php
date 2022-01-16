@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'cont_recherche.php';
 require_once 'module/mod_generique.php';
 class ModRecherche extends ModGenerique

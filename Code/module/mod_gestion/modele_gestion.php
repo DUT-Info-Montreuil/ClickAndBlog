@@ -1,5 +1,7 @@
 <?php
-
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class ModeleGestion extends Connexion
 {
 

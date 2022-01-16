@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'modele_connexion.php';
 include_once 'vue_connexion.php';
 class ContConnexion{
