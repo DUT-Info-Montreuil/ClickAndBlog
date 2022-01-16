@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once('modele_paiement.php');
 include_once('vue_paiement.php');
 class ContPaiement{

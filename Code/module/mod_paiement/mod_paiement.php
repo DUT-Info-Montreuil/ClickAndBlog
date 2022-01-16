@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'cont_paiement.php';
 require_once 'module/mod_generique.php';
 class ModPaiement extends ModGenerique {

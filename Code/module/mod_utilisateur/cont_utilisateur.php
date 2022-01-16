@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'modele_utilisateur.php';
 include_once 'vue_utilisateur.php';
 class ContUtilisateur{

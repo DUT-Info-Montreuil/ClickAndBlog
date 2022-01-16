@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once('modele_article.php');
 include_once ('vue_article.php');
 include_once('module/mod_commentaire/cont_commentaire.php');
@@ -30,7 +33,7 @@ class ContArticle{
                     $this->vue->afficheArtIndiponible();
                 }
             } else {
-                $this->vue->affiche_detail($row,false,$this->modele->verifArticlePayant($row['id']));
+                $this->vue->affiche_detail($row,false,$this->modele->verifArticlePayant($row['id']),$this->modele->getRecommandation($row));
                 $this->vue->affiche_commentaire($this->modele->getCommentaires());
             }
         }

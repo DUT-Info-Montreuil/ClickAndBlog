@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class VueConnexion extends VueGenerique {
     public function form_ajout_vue($redirection = NULL){
         ?>

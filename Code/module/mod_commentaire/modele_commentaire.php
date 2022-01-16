@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class ModeleCommentaire extends Connexion{
 
     public function getListe(): array{

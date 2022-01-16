@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class VueUtilisateur extends VueGenerique {
 
     public function vue_utilisateur($infos)

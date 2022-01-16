@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class ModelePaiement extends Connexion {
     public function checkout(){
         require 'Stripe/init.php';
