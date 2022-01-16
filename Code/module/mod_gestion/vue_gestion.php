@@ -31,7 +31,7 @@ class VueGestion extends VueGenerique
                 <?php
                 if ($infos[0]['admin'] == 1){
                  ?>
-                  <li><a href="index.php?module=mod_gestion&action=article">Admin</a></li>
+                  <li><a href="index.php?module=mod_gestion&action=admin_option">Admin</a></li>
                   <?php
                 }
                 ?>
@@ -292,6 +292,54 @@ class VueGestion extends VueGenerique
             </div>
         </form>
         <?php
+    }
+    public function vue_admin($resp){
+        ?>
+            <h1 class="title">Administration des articles :</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><abbr title="Position">Pos</abbr></th>
+                <th>Titre</th>
+                <th><abbr title="Auteur">Auteur</abbr></th>
+                <th><abbr title="Signalement">Signalement</abbr></th>
+                <th><abbr title="Like">Like</abbr></th>
+                <th><abbr title="Categorie">Categorie</abbr></th>
+                <th><abbr title="Archive">Archive</abbr></th>
+                <th><abbr title="Publier">Publier</abbr></th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th><abbr title="Position">Pos</abbr></th>
+                <th>Titre</th>
+                <th><abbr title="Auteur">Auteur</abbr></th>
+                <th><abbr title="Signalement">Signalement</abbr></th>
+                <th><abbr title="Like">Like</abbr></th>
+                <th><abbr title="Categorie">Categorie</abbr></th>
+                <th><abbr title="Archive">Archive</abbr></th>
+                <th><abbr title="Publier">Publier</abbr></th>
+                <th>Action</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr>
+                <th>1</th>
+                <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Test article</a>
+                </td>
+                <td>Test</td>
+                <td>23</td>
+                <td>12</td>
+                <td>politique</td>
+                <td><button class="button is-danger">Archiver</button></td>
+                <td><button class="button is-success">OUI</button></td>
+                <td><button class="button is-success">Modifier</button> <button class="button is-danger">Supprimer</button></td>
+            </tr>
+            </tbody>
+        </table>
+        <h1 class="title">Administration des utilisateurs :</h1>
+<?php
     }
 }
 

@@ -48,6 +48,10 @@ class ContGestion{
         $this->modele->delete_signalement();
     }
 
+    public function admin_opt(){
+        $this->vue->vue_admin();
+    }
+
      /**
      * @return ModeleGestion
      */

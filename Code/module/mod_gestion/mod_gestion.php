@@ -34,6 +34,9 @@ class ModGestion extends ModGenerique{
             case "delete_signalement":
                 $this->controlleur->delete_signalement();
                 echo"test";
+            case "admin_option":
+                $this->controlleur->admin_opt();
+                break;
         }
     }
     public function getControlleur()

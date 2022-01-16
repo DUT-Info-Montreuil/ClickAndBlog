@@ -30,7 +30,7 @@ class ContArticle{
                     $this->vue->afficheArtIndiponible();
                 }
             } else {
-                $this->vue->affiche_detail($row,false,$this->modele->verifArticlePayant($row['id']));
+                $this->vue->affiche_detail($row,false,$this->modele->verifArticlePayant($row['id']),$this->modele->getRecommandation($row));
                 $this->vue->affiche_commentaire($this->modele->getCommentaires());
             }
         }
