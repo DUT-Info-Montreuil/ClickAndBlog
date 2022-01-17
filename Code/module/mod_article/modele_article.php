@@ -163,7 +163,7 @@ class ModeleArticle extends Connexion{
          return $selectPrep->fetchall();
     }
     public function verifSignalement($resp): bool{
-        $selectPrep = self::$bdd->prepare('SELECT * FROM signalement WHERE user_id = ? AND article_id = ?');
+        $selectPrep = self::$bdd->prepare('SELECT * FROM signalement WHERE user_id = ? AND url = ?');
         $selectPrep->execute(array($_SESSION['id'],$resp));
         $result = $selectPrep->fetchall();
         if (count($result) == 1){
@@ -173,7 +173,7 @@ class ModeleArticle extends Connexion{
         }
     }
     public function ajt_signalement(){
-        $selectPrep = self::$bdd->prepare('INSERT INTO signalement(user_id, article_id) VALUES(?,?)');
+        $selectPrep = self::$bdd->prepare('INSERT INTO signalement(user_id, url) VALUES(?,?)');
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
         header('Location: index.php');
     }
