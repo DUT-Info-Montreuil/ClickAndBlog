@@ -42,7 +42,7 @@ class ContGestion{
 
     public function gestion_compte()
     {
-        $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements());
+        $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements(),$this->modele->get_brouillon());
     }
 
     public function gestion_securite()
@@ -53,6 +53,10 @@ class ContGestion{
     public function delete_signalement()
     {
         $this->modele->delete_signalement();
+    }
+
+    public function delete_favori(){
+        $this->modele->delete_favori();
     }
 
     public function admin_opt(){

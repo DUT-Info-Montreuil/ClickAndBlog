@@ -71,6 +71,24 @@ class ModeleGestion extends Connexion
         return $selectPrep->fetchall();
     }
 
+    public function delete_signalement(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM signalement WHERE id= ?');
+        $selectPrep->execute(array($_GET['id_signalement']));
+        header('Location: index.php?module=mod_gestion&action=compte');
+    }
+
+    public function delete_favori(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE user_id= ? AND url= ?');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['url']));
+        header('Location: index.php?module=mod_gestion&action=compte');
+    }
+
+    public function get_brouillon(){
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE etat=0 AND user_id=?');
+        $selectPrep->execute(array($_SESSION['id']));
+        return $selectPrep->fetchall();
+    }
+
     public function getCategorie(){
         $selectPrep = self::$bdd->prepare('SELECT *  from categorie');
         $selectPrep->execute();
