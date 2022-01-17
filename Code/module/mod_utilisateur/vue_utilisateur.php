@@ -4,7 +4,7 @@ if(!defined('CONST_INCLUDE')){
 }
 class VueUtilisateur extends VueGenerique {
 
-    public function vue_utilisateur($infos)
+    public function vue_utilisateur($infos, $abos)
     {
 
         $photo = ModeleUtilisateur::getPhotoProfil();
@@ -24,13 +24,15 @@ class VueUtilisateur extends VueGenerique {
             </div>
         </div>
         <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+        <h2>Abonnés : </h2> <?=$abos['nbAbonnes'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
+        <h2>Abonnements :</h2> <?=$abos['nbAbonnements'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
         <?php
     }
 
     public function affiche_liste($row,$fav)
     {
         ?>
-        <div class="card" id="card_article" style="width: 30%" xmlns:a="http://www.w3.org/1999/html">
+        <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
             <div class="card-image">
                 <figure class="image is-4by3">
                     <img src="<?=$row['image']?>" alt="<?=$row['alt_image']?>">

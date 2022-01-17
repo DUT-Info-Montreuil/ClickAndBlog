@@ -139,7 +139,7 @@ class VueArticle extends VueGenerique
                       }
                       foreach ($recommandation as $recom_result){
                             ?>
-                          <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
+                          <div class="card" id="card_article_suggest" xmlns:a="http://www.w3.org/1999/html">
                               <div class="card-image">
                                   <figure class="image is-4by3">
                                       <img src="<?=$recom_result['image']?>" alt="<?=$recom_result['alt_image']?>">

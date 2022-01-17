@@ -45,6 +45,21 @@ class ModeleUtilisateur extends Connexion
         return $result;
     }
 
+    public function get_abonnements()
+    {
+        $nbAbonnements = self::$bdd->prepare('SELECT count(abonnement_utilisateur.user_id_abonne) FROM abonnement_utilisateur WHERE user_id_abonne = ?');
+        $nbAbonnements->execute(array($_GET['id_user']));
+        $resultAbonnements = $nbAbonnements->fetchAll();
+        $nbAbonnes = self::$bdd->prepare('SELECT count(abonnement_utilisateur.user_id_abonne) FROM abonnement_utilisateur WHERE user_id_abonnement = ?');
+        $nbAbonnes->execute(array($_GET['id_user']));
+        $resultAbonnes = $nbAbonnes->fetchAll();
+        $result = array (
+            "nbAbonnes"  => $resultAbonnes,
+            "nbAbonnements" => $resultAbonnements
+        );
+        return $result;
+    }
+
     public static function getPhotoProfil(): array{
         $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM user_connect where user_connect.id = ?');
         $selectPrep->execute(array($_GET['id_user']));
