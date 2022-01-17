@@ -12,7 +12,6 @@ class VueArticle extends VueGenerique
 
     public static function affiche_liste($row,$fav)
     {
-        //foreach ($tableaux as $row) {
           ?>
             <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
               <div class="card-image">
@@ -61,7 +60,6 @@ class VueArticle extends VueGenerique
               </div>
             </div>
           <?php
-        //}
     }
 
     public static function affiche_detail($row,$like,$result,$recommandation) //page article

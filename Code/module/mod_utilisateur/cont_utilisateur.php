@@ -14,7 +14,21 @@ class ContUtilisateur{
     }
 
     public function vue_profil(){
-
+        $articles = $this->modele->getListeArticles();
+        if(count($articles) > 0){
+            ?>
+                <h1><strong>Articles publiés :</strong></h1>
+            <?php
+            foreach ($articles as $value){
+                if(isset($_SESSION['login'])){
+                    if($this->modele->verifSignalement($value['id']) == FALSE){
+                        $this->vue->affiche_liste($value,$this->modele->verifArticleFav($value['id']));
+                    }
+                } else {
+                    $this->vue->affiche_liste($value,false);
+                }
+            }
+        }
     }
 
      /**
