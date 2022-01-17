@@ -54,7 +54,19 @@ class ContGestion{
     public function admin_opt(){
         $this->vue->vue_admin($this->modele->get_article());
     }
+    public function arch_art(){
+        $this->modele->archive_article();
+    }
+    public function publ_art(){
+        $this->modele->publier_art();
+    }
 
+    public function del_art(){
+        $this->modele->supprimer_art();
+    }
+    public function retir_arch(){
+        $this->modele->rerire_arch();
+    }
      /**
      * @return ModeleGestion
      */

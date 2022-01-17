@@ -318,7 +318,7 @@ class VueGestion extends VueGenerique
             ?>
             <tr>
                 <th><?=$rep['id']?></th>
-                <td><a href="index.php?module=mod_article&action=detail&id=<?=$rep['id']?>" title="Leicester City F.C."><?=$rep['titre']?></a>
+                <td><a href="index.php?module=mod_article&action=detail&id=<?=$rep['id']?>"><?=$rep['titre']?></a>
                 </td>
                 <td><?=$rep['user_id']?></td>
                 <?php if ($rep['nbSignalements'] >= 7):?>
@@ -328,13 +328,17 @@ class VueGestion extends VueGenerique
                 <?php endif ?>
                 <td><?=$rep['nbLikes']?></td>
                 <td><?=$rep['categorie']?></td>
-                <td><button class="button is-danger">Archiver</button></td>
+                <?php if ($rep['archive'] == 0):?>
+                <td><a href="index.php?module=mod_gestion&action=archiver_art&idArticle=<?=$rep['id']?>"><button class="button is-danger">Archiver</button></a></td>
+                <?php else: ?>
+                    <td><a href="index.php?module=mod_gestion&action=retirer_archive&idArticle=<?=$rep['id']?>"><button class="button is-danger">Retirer Archive</button></a></td>
+                <?php endif ?>
                 <?php if ($rep['etat'] == 0):?>
-                    <td><button class="button is-success">OUI</button></td>
+                    <td><a href="index.php?module=mod_gestion&action=publier_art&idArticle=<?=$rep['id']?>"><button class="button is-success">OUI</button></a></td>
                 <?php else: ?>
                     <td>Article deja publier</td>
                     <?php endif ?>
-                <td><button class="button is-success">Modifier</button> <button class="button is-danger">Supprimer</button></td>
+                <td><a href="index.php?module=mod_gestion&action=supprimer_art&idArticle=<?=$rep['id']?>"><button class="button is-success">Modifier</button> <button class="button is-danger">Supprimer</button></a></td>
             </tr>
             <?php
             }

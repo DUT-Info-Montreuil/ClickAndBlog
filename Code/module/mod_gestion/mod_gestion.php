@@ -36,9 +36,21 @@ class ModGestion extends ModGenerique{
                 break;
             case "delete_signalement":
                 $this->controlleur->delete_signalement();
-                echo"test";
+                break;
             case "admin_option":
                 $this->controlleur->admin_opt();
+                break;
+            case "archiver_art":
+                $this->controlleur->arch_art();
+                break;
+            case "retirer_archive":
+                $this->controlleur->retir_arch();
+                break;
+            case 'publier_art':
+                $this->controlleur->publ_art();
+                break;
+            case 'supprimer_art':
+                $this->controlleur->del_art();
                 break;
         }
     }
