@@ -33,6 +33,9 @@ class ModGestion extends ModGenerique{
             case "securite":
                 $this->controlleur->gestion_securite();
                 break;
+            case "modif_article_vue":
+                $this->controlleur->modif_article_vue();
+                break;
             case "sauvegarde_securite":
                 $this->controlleur->sauvegarde_securite();
                 break;

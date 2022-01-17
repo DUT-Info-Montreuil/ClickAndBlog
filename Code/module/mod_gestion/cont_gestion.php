@@ -39,7 +39,12 @@ class ContGestion{
     public function delete_compte_admin(){
         $this->modele->supp_compte_adm();
     }
+    public function modif_article_vue(){
+        foreach ($this->modele->getArtById() as $row){
+            $this->vue->vue_article_modif($this->modele->getCategorie(),$row);
+        }
 
+    }
     public function gestion_compte()
     {
         $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements(),$this->modele->get_brouillon());

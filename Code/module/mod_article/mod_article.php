@@ -28,6 +28,9 @@ class ModArticle extends ModGenerique
             case "ajout":
                 $this->controlleur->ajout();
                 break;
+            case "update_article":
+                $this->controlleur->modif_article();
+                break;
             case "categorie":
                 $this->controlleur->categorie();
                 break;

@@ -345,7 +345,7 @@ class VueGestion extends VueGenerique
                 <?php else: ?>
                     <td>Article deja publier</td>
                     <?php endif ?>
-                <td><button class="button is-success">Modifier</button><a href="index.php?module=mod_gestion&action=supprimer_art&idArticle=<?=$rep['id']?>"><button class="button is-danger">Supprimer</button></a></td>
+                <td><a href="index.php?module=mod_gestion&action=modif_article_vue&idArticle=<?=$rep['id']?>"><button class="button is-success">Modifier</button></a><a href="index.php?module=mod_gestion&action=supprimer_art&idArticle=<?=$rep['id']?>"><button class="button is-danger">Supprimer</button></a></td>
             </tr>
             <?php
             }
@@ -381,7 +381,7 @@ class VueGestion extends VueGenerique
                     <td><?=$usr['bio']?></td>
                     <td><?=$usr['nbSignalements']?></td>
                     <td><?=$usr['articles_favoris']?></td>
-                    <td><button class="button is-success">Modifier</button><a href="index.php?module=mod_gestion&action=delete_compte_adm&idUser=<?=$usr['id']?>"><button class="button is-danger">Supprimer</button></a></td>
+                    <td><a href=""></a><button class="button is-success">Modifier</button><a href="index.php?module=mod_gestion&action=delete_compte_adm&idUser=<?=$usr['id']?>"><button class="button is-danger">Supprimer</button></a></td>
                 </tr>
                 <?php
             }
@@ -390,6 +390,73 @@ class VueGestion extends VueGenerique
         </table>
 <?php
     }
+    public function vue_article_modif($categorie,$article){
+        ?>
+        <h1 class="title is-2">Modifier un article :</h1>
+        <br>
+        <form action="index.php?module=mod_article&action=update_article&idArticle=<?=$article['id']?>" method="post" enctype="multipart/form-data">
+            <div class="field">
+                <label for="titre">Entrer le nom du titre: </label>
+                <input class="input" type="text" name="titre" id="titre" placeholder="<?=$article['titre']?>" required>
+            </div>
+            <div class="field">
+                <label for="contenue">Entrer un contenue: </label>
+                <textarea id="contenue" cols="86" rows="20" name="contenue" placeholder="<?=$article['contenu']?>"></textarea>
+            </div>
+            <div class="field">
+                <label>Entrer la catégorie de l'article : </label>
+                <div class="select">
+                    <select name="categories_art" id="categories_art">
+                        <?php
+                        foreach ($categorie as $display_cat) {
+                            ?>
+                            <option>
+                                <?= $display_cat['titre'] ?>
+                            </option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="image">Image a envoyer : </label>
+                <div class="file is-boxed">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="image" id="image" placeholder="<?=$article['image']?>">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        <span class="file-label">
+                        Choisissez un fichier...
+                        </span>
+                    </span>
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <label for="alt_image">Entrer la description de l'image : </label>
+                <input class="input" type="text" name="alt_image" id="alt_image" placeholder="<?=$article['alt_image']?>">
+            </div>
+            <div class="field">
+                <label for="date">Entrer la date : </label>
+                <input type="date" name="date" id="date" placeholder="<?=$article['date']?>">
+            </div>
+            <div class="field">
+                <label>Publiez l'article : </label>
+                <input type="radio" name="etat" id="checkTrue" value="1">
+                <label for="checkTrue">OUI</label>
+                <input type="radio" name="etat" id="checkFalse" value="0">
+                <label for="checkFalse">NON</label>
+            </div>
+            <div class="field">
+                <button class="button" type="submit" name="submit">Envoyer</button>
+            </div>
+        </form>
+<?php
+    }
+
 }
 
 ?>

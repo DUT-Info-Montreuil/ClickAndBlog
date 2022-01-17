@@ -56,7 +56,9 @@ class ContArticle{
     public  function retir_like(){
         $this->modele->retirer_like();
     }
-
+    public function modif_article(){
+        $this->modele->modifi_article();
+    }
     public function categorie(){
         foreach ($this->modele->getArticleBYCateg() as $value){
             if(isset($_SESSION['login'])){

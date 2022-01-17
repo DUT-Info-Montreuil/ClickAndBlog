@@ -177,5 +177,36 @@ class ModeleArticle extends Connexion{
         $selectPrep->execute(array($_SESSION['id'],$_GET['idArticle']));
         header('Location: index.php');
     }
+    public function modifi_article(){
+        $messageRetour ="";
+        $messageRetour;
+        $dossier_destination = "public/image/";
+        $fichier_destination =  $dossier_destination . basename($_FILES["image"]["name"]);
+        $image_extension = strtolower(pathinfo($fichier_destination, PATHINFO_EXTENSION));
+        // Mise en place des verification
+        if (!empty($_FILES["image"]["tmp_name"])){
+            $typeAutoriser = array('jpg','png','jpeg');
+            if (in_array($image_extension,$typeAutoriser)){
+                $selectPrep = self::$bdd->prepare("UPDATE article SET titre = ?, contenu = ?,categorie = ?, image = ? , alt_image = ?, date = ?, time_read = ?,etat = ?,user_id = ? WHERE id = ?");
+                if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$_POST['categories_art'],$fichier_destination,$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat'],$_SESSION['id'],$_GET['idArticle']))){
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
+                } else {
+                    // Return Code 1
+                    //$messageRetour = 1;
+                    echo "1";
+                }
+            } else {
+                // Return Code 2
+                //$messageRetour = 2;
+                echo "2";
+            }
+        } else {
+            $selectPrep = self::$bdd->prepare("UPDATE article SET titre = ?, contenu = ?,categorie = ? , alt_image = ?, date = ?, time_read = ?,etat = ?,user_id = ? WHERE id = ?");
+            $selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$_POST['categories_art'],$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat'],$_SESSION['id'],$_GET['idArticle']));
+        }
+        // return Code 4
+        //return $messageRetour;
+        echo "4";
+    }
 
 }

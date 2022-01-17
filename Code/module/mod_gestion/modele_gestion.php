@@ -115,10 +115,6 @@ class ModeleGestion extends Connexion
         $requete = self::$bdd->prepare('UPDATE article SET archive = 0 where id = ?');
         $requete->execute(array($_GET['idArticle']));
     }
-
-//    public function modif_article(){
-//
-//    }
     public function get_usr(){
         $selectPrep = self::$bdd->prepare('SELECT *  from user_connect');
         $selectPrep->execute();
@@ -129,6 +125,12 @@ class ModeleGestion extends Connexion
         $selectPrep->execute(array($_GET['idUser']));
     }
 
+    public function getArtById()
+    {
+        $selectPrep = self::$bdd->prepare('SELECT *  from article WHERE id = ?');
+        $selectPrep->execute(array($_GET['idArticle']));
+        return $selectPrep->fetchall();
+    }
 }
 
 ?>
