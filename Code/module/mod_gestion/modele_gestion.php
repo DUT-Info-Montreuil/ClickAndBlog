@@ -77,6 +77,12 @@ class ModeleGestion extends Connexion
         header('Location: index.php?module=mod_gestion&action=compte');
     }
 
+    public function delete_favori(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM favoris WHERE user_id= ? AND url= ?');
+        $selectPrep->execute(array($_SESSION['id'],$_GET['url']));
+        header('Location: index.php?module=mod_gestion&action=compte');
+    }
+
     public function get_brouillon(){
         $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE etat=0 AND user_id=?');
         $selectPrep->execute(array($_SESSION['id']));

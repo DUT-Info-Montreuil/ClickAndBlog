@@ -152,6 +152,7 @@ class VueGestion extends VueGenerique
                             <a href="index.php?module=mod_article&action=detail&id=<?= $row['url'] ?>">
                                 <p class="title is-4"><?= $row['titre'] ?></p>
                             </a>
+                            <a href="index.php?module=mod_gestion&action=delete_favori&url=<?=$row['url']?>"><button class="button is-success">retirer fav</button></a>
                             <?php elseif ($type==1) : ?>
                             <a href="index.php?module=mod_gestion&action=publier_art&idArticle=<?=$row['id']?>"><button class="button is-success">publier</button></a>
                             <?php else : ?>

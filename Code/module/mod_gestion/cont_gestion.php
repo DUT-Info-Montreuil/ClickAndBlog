@@ -51,6 +51,10 @@ class ContGestion{
         $this->modele->delete_signalement();
     }
 
+    public function delete_favori(){
+        $this->modele->delete_favori();
+    }
+
     public function admin_opt(){
         $this->vue->vue_admin($this->modele->get_article());
     }
