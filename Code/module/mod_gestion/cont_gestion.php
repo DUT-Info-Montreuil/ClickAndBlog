@@ -38,7 +38,7 @@ class ContGestion{
 
     public function gestion_compte()
     {
-        $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements());
+        $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements(),$this->modele->get_brouillon());
     }
 
     public function gestion_securite()

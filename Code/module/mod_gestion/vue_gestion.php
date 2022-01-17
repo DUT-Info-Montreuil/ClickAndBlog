@@ -104,22 +104,22 @@ class VueGestion extends VueGenerique
         <?php
     }
 
-    public function vue_compte($favoris, $signalement)
+    public function vue_compte($favoris, $signalement, $brouillon)
     {
         ?>
         <p class="title is-4">Vous retrouverez ici vos favoris ainsi que l'option pour supprimer votre compte</p>
         <div class="media-content">
             <p class="subtitle is-4">Mes Favoris : </p>
             <?php
-            VueGestion::vue_article_gestion($favoris);
+            VueGestion::vue_article_gestion($favoris,0);
             ?>
             <p class="subtitle is-4">Mes Signalements : </p>
             <?php
-            VueGestion::vue_article_gestion($signalement);
+            VueGestion::vue_article_gestion($signalement,999);
             ?>
             <P class="subtitle is-4">Mes brouillons : </p>
             <?php
-            
+            VueGestion::vue_article_gestion($brouillon,1)
             ?>
         </div>
         <a href="index.php?module=mod_gestion&action=delete_compte">
@@ -128,7 +128,7 @@ class VueGestion extends VueGenerique
         <?php
     }
 
-    public static function vue_article_gestion($articles){
+    public static function vue_article_gestion($articles,$type){
         foreach ($articles as $row) {
             ?>
             <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
@@ -148,9 +148,15 @@ class VueGestion extends VueGenerique
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content">
+                            <?php if ($type==0) : ?>
                             <a href="index.php?module=mod_article&action=detail&id=<?= $row['url'] ?>">
                                 <p class="title is-4"><?= $row['titre'] ?></p>
                             </a>
+                            <?php elseif ($type==1) : ?>
+                            <a href="index.php?module=mod_gestion&action=publier_art&idArticle=<?=$row['id']?>"><button class="button is-success">publier</button></a>
+                            <?php else : ?>
+                            <a href="index.php?module=mod_gestion&action=delete_signalement&id_signalement=<?= $row['id'] ?>"><button class="button is-success">désignaler</button></a>
+                            <?php endif ?>
                         </div>
                     </div>
                     <div class="content">
