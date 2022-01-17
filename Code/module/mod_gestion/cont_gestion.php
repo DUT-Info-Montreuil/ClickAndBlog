@@ -36,6 +36,10 @@ class ContGestion{
         $this->modele->delete_compte();
     }
 
+    public function delete_compte_admin(){
+        $this->modele->supp_compte_adm();
+    }
+
     public function gestion_compte()
     {
         $this->vue->vue_compte($this->modele->get_favoris(),$this->modele->get_signalements());
@@ -52,7 +56,7 @@ class ContGestion{
     }
 
     public function admin_opt(){
-        $this->vue->vue_admin($this->modele->get_article());
+        $this->vue->vue_admin($this->modele->get_article(),$this->modele->get_usr());
     }
     public function arch_art(){
         $this->modele->archive_article();

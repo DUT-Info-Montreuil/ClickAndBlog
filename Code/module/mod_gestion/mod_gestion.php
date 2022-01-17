@@ -25,6 +25,8 @@ class ModGestion extends ModGenerique{
             case "delete_compte":
                 $this->controlleur->delete_compte();
                 break;
+            case "delete_compte_adm":
+                $this->controlleur->delete_compte_admin();
             case "compte":
                 $this->controlleur->gestion_compte();
                 break;

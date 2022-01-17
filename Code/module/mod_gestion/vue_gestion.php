@@ -295,7 +295,7 @@ class VueGestion extends VueGenerique
         </form>
         <?php
     }
-    public function vue_admin($resp){
+    public function vue_admin($resp,$listeUsr){
         ?>
             <h1 class="title">Administration des articles :</h1>
         <table class="table">
@@ -338,7 +338,7 @@ class VueGestion extends VueGenerique
                 <?php else: ?>
                     <td>Article deja publier</td>
                     <?php endif ?>
-                <td><a href="index.php?module=mod_gestion&action=supprimer_art&idArticle=<?=$rep['id']?>"><button class="button is-success">Modifier</button> <button class="button is-danger">Supprimer</button></a></td>
+                <td><button class="button is-success">Modifier</button><a href="index.php?module=mod_gestion&action=supprimer_art&idArticle=<?=$rep['id']?>"><button class="button is-danger">Supprimer</button></a></td>
             </tr>
             <?php
             }
@@ -346,6 +346,41 @@ class VueGestion extends VueGenerique
             </tbody>
         </table>
         <h1 class="title">Administration des utilisateurs :</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom d'utilisateur :</th>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Bio</th>
+                <th>Signalement</th>
+                <th>Favoris</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($listeUsr as $usr){
+                ?>
+                <tr>
+                    <th><?=$usr['id']?></th>
+                    <td><a href="index.php?module=mod_utilisateur&action=profil&id_user=<?=$usr['id']?>"><?=$usr['username']?></a>
+                    </td>
+                    <td><?=$usr['email']?></td>
+                    <td><?=$usr['nom']?></td>
+                    <td><?=$usr['prenom']?></td>
+                    <td><?=$usr['bio']?></td>
+                    <td><?=$usr['nbSignalements']?></td>
+                    <td><?=$usr['articles_favoris']?></td>
+                    <td><button class="button is-success">Modifier</button><a href="index.php?module=mod_gestion&action=delete_compte_adm&idUser=<?=$usr['id']?>"><button class="button is-danger">Supprimer</button></a></td>
+                </tr>
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
 <?php
     }
 }

@@ -101,6 +101,15 @@ class ModeleGestion extends Connexion
 //    public function modif_article(){
 //
 //    }
+    public function get_usr(){
+        $selectPrep = self::$bdd->prepare('SELECT *  from user_connect');
+        $selectPrep->execute();
+        return $selectPrep->fetchall();
+    }
+    public function supp_compte_adm(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM user_connect where id = ?');
+        $selectPrep->execute(array($_GET['idUser']));
+    }
 
 }
 
