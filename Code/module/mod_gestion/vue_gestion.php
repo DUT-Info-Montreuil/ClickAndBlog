@@ -301,43 +301,44 @@ class VueGestion extends VueGenerique
         <table class="table">
             <thead>
             <tr>
-                <th><abbr title="Position">Pos</abbr></th>
+                <th>id</th>
                 <th>Titre</th>
-                <th><abbr title="Auteur">Auteur</abbr></th>
-                <th><abbr title="Signalement">Signalement</abbr></th>
-                <th><abbr title="Like">Like</abbr></th>
-                <th><abbr title="Categorie">Categorie</abbr></th>
-                <th><abbr title="Archive">Archive</abbr></th>
-                <th><abbr title="Publier">Publier</abbr></th>
+                <th>Auteur</th>
+                <th>Signalement</th>
+                <th>Like</th>
+                <th>Categorie</th>
+                <th>Archive</th>
+                <th>Publier</th>
                 <th>Action</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-                <th><abbr title="Position">Pos</abbr></th>
-                <th>Titre</th>
-                <th><abbr title="Auteur">Auteur</abbr></th>
-                <th><abbr title="Signalement">Signalement</abbr></th>
-                <th><abbr title="Like">Like</abbr></th>
-                <th><abbr title="Categorie">Categorie</abbr></th>
-                <th><abbr title="Archive">Archive</abbr></th>
-                <th><abbr title="Publier">Publier</abbr></th>
-                <th>Action</th>
-            </tr>
-            </tfoot>
             <tbody>
+            <?php
+            foreach ($resp as $rep){
+            ?>
             <tr>
-                <th>1</th>
-                <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Test article</a>
+                <th><?=$rep['id']?></th>
+                <td><a href="index.php?module=mod_article&action=detail&id=<?=$rep['id']?>" title="Leicester City F.C."><?=$rep['titre']?></a>
                 </td>
-                <td>Test</td>
-                <td>23</td>
-                <td>12</td>
-                <td>politique</td>
+                <td><?=$rep['user_id']?></td>
+                <?php if ($rep['nbSignalements'] >= 7):?>
+                <td class="is-danger"><?=$rep['nbSignalements']?></td>
+                <?php else: ?>
+                    <td><?=$rep['nbSignalements']?></td>
+                <?php endif ?>
+                <td><?=$rep['nbLikes']?></td>
+                <td><?=$rep['categorie']?></td>
                 <td><button class="button is-danger">Archiver</button></td>
-                <td><button class="button is-success">OUI</button></td>
+                <?php if ($rep['etat'] == 0):?>
+                    <td><button class="button is-success">OUI</button></td>
+                <?php else: ?>
+                    <td>Article deja publier</td>
+                    <?php endif ?>
                 <td><button class="button is-success">Modifier</button> <button class="button is-danger">Supprimer</button></td>
             </tr>
+            <?php
+            }
+?>
             </tbody>
         </table>
         <h1 class="title">Administration des utilisateurs :</h1>

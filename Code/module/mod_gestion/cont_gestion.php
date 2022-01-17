@@ -52,7 +52,7 @@ class ContGestion{
     }
 
     public function admin_opt(){
-        $this->vue->vue_admin();
+        $this->vue->vue_admin($this->modele->get_article());
     }
 
      /**

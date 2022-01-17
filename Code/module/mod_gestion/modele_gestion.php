@@ -81,7 +81,11 @@ class ModeleGestion extends Connexion
         $selectPrep->execute();
         return $selectPrep->fetchall();
     }
-
+    public function get_article(){
+        $selectPrep = self::$bdd->prepare('SELECT *  from article');
+        $selectPrep->execute();
+        return $selectPrep->fetchall();
+    }
 
 
 }
