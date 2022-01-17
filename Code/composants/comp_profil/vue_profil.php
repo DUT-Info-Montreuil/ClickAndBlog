@@ -1,7 +1,9 @@
 <?php
-
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class VueProfil {
-    public static function affiche_icon($content, $estConnecte)
+    public static function affiche_icon()
     {
         ?>
             <nav class="navbar is-light">
@@ -50,7 +52,7 @@ class VueProfil {
                     <div class="navbar-item">
                         <div class="field is-grouped">
                             <p class="control">
-                                <a class="button is-light" href="index.php?module=mod_connexion&action=creation">
+                                <a class="button is-light" href="index.php?module=mod_connexion&action=connexion">
                         <span class="icon">
                             <i class="fas fa-user" style="color: #70a1ff"></i>
                         </span>
@@ -76,7 +78,7 @@ class VueProfil {
                                 </div>
                                 <div class="dropdown-menu menu_deroulant" id="dropdown-menu4" role="menu">
                                     <div class="dropdown-content has-background-light">
-                                        <a href="#" class="dropdown-item">
+                                        <a href="index.php?module=mod_gestion&action=profil" class="dropdown-item">
                                             Profil
                                         </a>
                                         <hr class="dropdown-divider">

@@ -1,8 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 class ModeleProfil extends Connexion{
-    public function getContent(): String{
-        $result = "Hello world !";
-        return $result;
-    }
 
 }

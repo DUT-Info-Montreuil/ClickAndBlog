@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once('cont_commentaire.php');
 require_once 'module/mod_generique.php';
 class ModCommentaire extends ModGenerique{
@@ -12,9 +15,6 @@ class ModCommentaire extends ModGenerique{
         switch($this->action){
             case "liste":
                 $this->controlleur->liste();
-                break;
-            case "form":
-                $this->controlleur->form_ajout();
                 break;
             case "ajout":
                 $this->controlleur->ajout();

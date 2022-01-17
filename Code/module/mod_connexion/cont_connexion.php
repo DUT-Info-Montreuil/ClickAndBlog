@@ -1,4 +1,7 @@
 <?php
+if(!defined('CONST_INCLUDE')){
+    die('interdit !');
+}
 include_once 'modele_connexion.php';
 include_once 'vue_connexion.php';
 class ContConnexion{
@@ -8,9 +11,14 @@ class ContConnexion{
         $this->modele = new ModeleConnexion();
         $this->vue = new VueConnexion();
     }
-    public function connect(){
+    public function connect($redirection = NULL){
         if ($this->modele->verif_pwd()){
-            header("Location: index.php");
+            if($redirection == NULL){
+                header("Location: index.php");
+            }
+            else{
+                header("Location: $redirection");
+            }
         } else {
             $this->vue->form_failed();
         }
@@ -19,19 +27,34 @@ class ContConnexion{
         $this->modele->decon_user();
     }
 
-    public function vue_creation(){
-        $this->vue->form_ajout_vue();
+    public function vue_creation($redirection = NULL){
+        if($redirection == NULL){
+            $this->vue->form_ajout_vue();
+        }else{
+            $this->vue->form_ajout_vue($redirection);
+        }
     }
 
-    public function vue_connexion(){
-        $this->vue->form_connexion_vue();
+    public function vue_connexion($redirection = NULL){
+        if($redirection == NULL){
+            $this->vue->form_connexion_vue();
+        }
+        else{
+            $this->vue->form_connexion_vue($redirection, '');
+        }
     }
 
-    public function create(){
-        if ($this->modele->verif_creation()){
-            header("Location: index.php");
+    public function create($redirection = NULL){
+        $result = $this->modele->verif_creation();
+        if ($result == 0){
+            var_dump($redirection);
+            if($redirection == NULL){
+                header("Location: index.php");
+            }else{
+                header("Location: $redirection");
+            }
         } else {
-            $this->vue->creation_failed();
+            $this->vue->creation_failed($result);
         }
     }
 

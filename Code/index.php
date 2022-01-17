@@ -23,6 +23,22 @@ if(isset($_GET['module'])){
             include 'module/mod_favoris/mod_favoris.php';
             $main = new ModFavoris();
             break;
+        case "mod_gestion":
+            include 'module/mod_gestion/mod_gestion.php';
+            $main = new ModGestion();
+            break;
+        case "mod_commentaire":
+            include 'module/mod_commentaire/mod_commentaire.php';
+            $main = new ModCommentaire();
+            break;
+        case "mod_paiement":
+            include 'module/mod_paiement/mod_paiement.php';
+            $main = new ModPaiement();
+            break;
+        case "mod_utilisateur":
+            include 'module/mod_utilisateur/mod_utilisateur.php';
+            $main = new ModUtilisateur();
+            break;
         default:
             echo "Erreur";
             break;
