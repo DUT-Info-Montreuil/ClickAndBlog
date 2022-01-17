@@ -134,10 +134,6 @@ class VueArticle extends VueGenerique
                   </div>
                 </div>
             </div>
-            <div class="container">
-                <h1 class="has-text-centered"><strong>Commentaires</strong></h1>
-                <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-            </div>
             <?php
         //}
         } else {
@@ -176,8 +172,13 @@ class VueArticle extends VueGenerique
                           </div>
                               <?php
                       }
+                      ?>
+                    <div class="container" id="head_com">
+                        <h1 class="has-text-centered is-size-4"><strong>Commentaires</strong></h1>
+                        <hr>
+                    </div>
 
-
+<?php
     }
     public function affiche_commentaire($tableaux)
     {
