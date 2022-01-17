@@ -81,7 +81,26 @@ class ModeleGestion extends Connexion
         $selectPrep->execute();
         return $selectPrep->fetchall();
     }
+    public function archive_article(){
+        $requete = self::$bdd->prepare('UPDATE article SET archive = 1 where id = ?');
+        $requete->execute(array($_GET['idArticle']));
+    }
+    public function publier_art(){
+        $requete = self::$bdd->prepare('UPDATE article SET etat = 1 where id = ?');
+        $requete->execute(array($_GET['idArticle']));
+    }
+    public function supprimer_art(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM article where id = ?');
+        $selectPrep->execute(array($_GET['idArticle']));
+    }
+    public function rerire_arch(){
+        $requete = self::$bdd->prepare('UPDATE article SET archive = 0 where id = ?');
+        $requete->execute(array($_GET['idArticle']));
+    }
 
+//    public function modif_article(){
+//
+//    }
 
 }
 

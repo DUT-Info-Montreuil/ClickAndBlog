@@ -156,13 +156,6 @@ class VueArticle extends VueGenerique
                                       </div>
                                   </div>
                                   <div class="content">
-                                      <!-- TODO Mettre le debut de l'article -->
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                      Phasellus nec iaculis mauris.
-                                      <a href="#">#hashtag</a>
-                                      <a href="#">#hashtag2</a>
-
-                                      <br>
                                       <i class="far fa-calendar"></i>
                                       <time datetime="2016-1-1"><?=$recom_result['date']?></time>
                                       <i class="far fa-clock"></i>
