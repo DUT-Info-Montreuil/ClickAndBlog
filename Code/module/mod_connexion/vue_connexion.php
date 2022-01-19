@@ -18,9 +18,9 @@ class VueConnexion extends VueGenerique {
                     </p>
                 </div>
                 <?php if($redirection == NULL): ?>
-                <form action="index.php?module=mod_connexion&action=validation"method="post">
+                <form action="index.php?module=mod_connexion&action=validation"method="post" enctype="multipart/form-data">
                     <?php else :?>
-                    <form action="index.php?module=mod_connexion&action=validation_redirection" method="post">
+                    <form action="index.php?module=mod_connexion&action=validation_redirection" method="post" enctype="multipart/form-data">
                         <?php endif?>
                     <div class="field" style="width: 40%">
                         <label class="label">Nom</label>
@@ -80,6 +80,21 @@ class VueConnexion extends VueGenerique {
                     </span>
                         </p>
                     </div>
+                        <div class="field" style="width: 40%">
+                            <div class="file is-boxed">
+                                <label class="file-label">
+                                    <input class="file-input" type="file" name="image" id="image">
+                                    <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        <span class="file-label">
+                        Choisissez un fichier...
+                        </span>
+                    </span>
+                                </label>
+                            </div>
+                        </div>
                     <div class="field">
                         <p class="control">
                             <input class="button is-info" type="submit" name="submit"  value="S'inscrire"  id="submit" disabled/>
