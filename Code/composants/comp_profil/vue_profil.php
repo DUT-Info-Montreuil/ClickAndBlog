@@ -81,7 +81,6 @@ class VueProfil {
                     <div class="field has-addons" id="barre_de_recherche">
                         <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
                     </div>
-<!--                    <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">-->
             </div>
             </div>
       <?php  

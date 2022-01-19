@@ -45,7 +45,7 @@ class ModeleUtilisateur extends Connexion
         return $result;
     }
 
-    public function get_abonnements()
+    public function getNbAbonnements()
     {
         $nbAbonnements = self::$bdd->prepare('SELECT count(abonnement_utilisateur.user_id_abonne) FROM abonnement_utilisateur WHERE user_id_abonne = ?');
         $nbAbonnements->execute(array($_GET['id_user']));
@@ -70,6 +70,22 @@ class ModeleUtilisateur extends Connexion
         }else{
             return false;
         }
+    }
+
+    public function getAbonnes()
+    {
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.* FROM user_connect INNER JOIN abonnement_utilisateur ON user_connect.id = abonnement_utilisateur.user_id_abonne WHERE abonnement_utilisateur.user_id_abonnement = ?');
+        $selectPrep->execute(array($_GET['id_user']));
+        $result = $selectPrep->fetchAll();
+        return $result;
+    }
+
+    public function getAbonnements()
+    {
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.* FROM user_connect INNER JOIN abonnement_utilisateur ON user_connect.id = abonnement_utilisateur.user_id_abonnement WHERE abonnement_utilisateur.user_id_abonne = ?; ');
+        $selectPrep->execute(array($_GET['id_user']));
+        $result = $selectPrep->fetchAll();
+        return $result;
     }
 
     public function suivreOuPas($dejaAbonne)
