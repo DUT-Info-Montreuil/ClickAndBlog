@@ -106,6 +106,12 @@ class ModeleGestion extends Connexion
         return $result = $selectPrep->fetchall();
     }
 
+    public function delete_article(){
+        $selectPrep = self::$bdd->prepare('DELETE FROM article WHERE id= ?');
+        $selectPrep->execute(array($_GET['idArticle']));
+        header('Location: index.php?module=mod_gestion&action=compte');
+    }
+
     public function archive_article(){
         $requete = self::$bdd->prepare('UPDATE article SET archive = 1 where id = ?');
         $requete->execute(array($_GET['idArticle']));

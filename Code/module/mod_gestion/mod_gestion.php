@@ -45,6 +45,9 @@ class ModGestion extends ModGenerique{
             case "delete_favori":
                 $this->controlleur->delete_favori();
                 break;
+            case "delete_article":
+                $this->controlleur->delete_article();
+                break;
             case "admin_option":
                 $this->controlleur->admin_opt();
                 break;
