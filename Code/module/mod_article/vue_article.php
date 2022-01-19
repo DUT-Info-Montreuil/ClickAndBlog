@@ -133,10 +133,13 @@ class VueArticle extends VueGenerique
                 </div>
             </div>
             <?php
-        //}
         } else {
                           echo self::bbc2html($row['contenu']);
                       }
+                      if(!empty($recommandation)){
+                      ?>
+        <h1>Recommandation :</h1>
+            <?php
                       foreach ($recommandation as $recom_result){
                             ?>
                           <div class="card" id="card_article" xmlns:a="http://www.w3.org/1999/html">
@@ -162,13 +165,13 @@ class VueArticle extends VueGenerique
                               </div>
                           </div>
                               <?php
+                        }
                       }
                       ?>
                     <div class="container" id="head_com">
                         <h1 class="has-text-centered is-size-4"><strong>Commentaires</strong></h1>
                         <hr>
                     </div>
-
 <?php
     }
     public function affiche_commentaire($tableaux)
