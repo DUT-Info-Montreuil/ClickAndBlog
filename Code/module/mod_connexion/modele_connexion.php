@@ -51,7 +51,7 @@ class ModeleConnexion extends Connexion
             return 1;
         } else {
             try {
-                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom) VALUES(?,?, ?, ?, ?)');
+                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom,photoProfil) VALUES(?,?, ?, ?, ?,?)');
                 $requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom));
                 $this->auto_connexion($mail, $mdp);
                 return 0;
