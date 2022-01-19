@@ -50,6 +50,7 @@ if(isset($_GET['module'])){
 $contenuTampon = $main->getControlleur()->getVue()->getAffichage();
 require_once 'template/header.php';
 ?>
+<section class="result"></section>
 <section class="container">
 <?php
 echo $contenuTampon;
