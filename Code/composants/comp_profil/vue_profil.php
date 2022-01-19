@@ -44,6 +44,38 @@ class VueProfil {
                         <div class="column">
                         <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=technologie">technologie</a>
                         </div>
+                            <script type="text/javascript">
+                                $(document).ready(function(){
+                                    $('#productName').autocomplete({
+                                        search: function(event, ui){
+                                            $('.container').hide();
+                                        },
+                                        source: "search.php"
+                                    }).data('ui-autocomplete')._renderItem = function(ul, item){
+                                        return $('<div class="results">')
+                                            .data('item.autocomplete', item)
+                                            .append('<div class="card" id="card_article">'+'<div class="card-content">'+'<div class="media">'+
+                                                '<div class="media-content">'+
+                                                '<a href="index.php?module=mod_article&action=detail&id='+item.value+'">'+item.label+'</a>' + '<date> '+item.date+' </date>' + '</div>'+'</div>'+'</div>'+'</div>'
+                                            ).appendTo($('.result'));  };
+                                    $('#productName').keyup(function() {
+                                        // If value is not empty
+                                        if ($(this).val().length == 0) {
+                                            // Hide the element
+                                            console.log("empty")
+                                            $('.container').show();
+                                            $('.results').hide();
+                                        } else {
+                                            // Otherwise show it
+                                            $('.results').show();
+                                        }
+                                    }).keyup();
+                                });
+                            </script>
+                            <div class="field has-addons">
+                                    <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
