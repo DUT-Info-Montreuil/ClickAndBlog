@@ -103,6 +103,13 @@ class ModeleGestion extends Connexion
         header('Location: index.php?module=mod_gestion&action=compte');
     }
 
+    public static function getCurrentPhotoProfil(): array{
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM user_connect where id = ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        $result = $selectPrep->fetchall();
+        return $result;
+    }
+
     public function get_brouillon(){
         $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE etat=0 AND user_id=?');
         $selectPrep->execute(array($_SESSION['id']));

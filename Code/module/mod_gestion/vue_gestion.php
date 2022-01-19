@@ -10,15 +10,16 @@ class VueGestion extends VueGenerique
         ?>
         <div id="vue_gestion" class="media">
             <div class="media-left">
+                        <?php
+                            if(isset($_SESSION['id'])){
+                                $currentPhoto = ModeleGestion::getCurrentPhotoProfil();
+                            }
+                        ?>
                 <figure class="image is-96x96">
-                    <img class="is-rounded" src="public/image/photo-avatar-profil.png" alt="Placeholder image">
+                    <img class="is-rounded" src="<?=$currentPhoto[0]['photoProfil']?>" alt="Placeholder image">
                 </figure>
             </div>
             <div class="media-content">
-                <!--                <p class="title is-4">--><?//=$_SESSION["prenom"]," ",$_SESSION["nom"]
-                ?><!--</p>-->
-                <!--                <p class="subtitle is-6">@--><?//=$_SESSION["username"]
-                ?><!--</p>-->
                 <p class="title is-4"><?= $infos[0]['nom'], " ", $infos[0]['prenom'] ?></p>
                 <p class="subtitle is-6"><?= $infos[0]['username'] ?></p>
                 <P class="subtitle is-6"><?= $infos[0]['bio'] ?></p>

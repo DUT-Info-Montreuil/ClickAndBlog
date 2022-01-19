@@ -37,6 +37,7 @@ class VueUtilisateur extends VueGenerique {
                         </div>
                 </form>
                 <?php endif ?>
+                <?php else:?>
                 <?php endif ?>
             </div>
         </div>
