@@ -45,7 +45,7 @@ class VueGestion extends VueGenerique
     public function vue_profil()
     {
         ?>
-        <form action="index.php?module=mod_gestion&action=sauvegarde_profil" method="post">
+        <form action="index.php?module=mod_gestion&action=sauvegarde_profil" method="post" enctype="multipart/form-data">
             <div class="field">
                 <label class="label is-medium">Modifiez vos informations :</label>
                 <div class="control has-icons-left has-icons-right">
@@ -92,7 +92,21 @@ class VueGestion extends VueGenerique
                     </span>
                 </div>
             </div>
-
+            <div class="field">
+                    <div class="file is-boxed">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="image" id="image">
+                            <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        <span class="file-label">
+                        Choisissez un fichier...
+                        </span>
+                    </span>
+                        </label>
+                    </div>
+            </div>
             <div class="field">
                 <p class="control">
                     <button class="button is-info">
@@ -352,7 +366,7 @@ class VueGestion extends VueGenerique
                 <th><?=$rep['id']?></th>
                 <td><a href="index.php?module=mod_article&action=detail&id=<?=$rep['id']?>"><?=$rep['titre']?></a>
                 </td>
-                <td><?=$rep['user_id']?></td>
+                <td><?=$rep['email']?></td>
                 <?php if ($rep['nbSignalements'] >= 7):?>
                 <td class="is-danger"><?=$rep['nbSignalements']?></td>
                 <?php else: ?>
@@ -406,7 +420,7 @@ class VueGestion extends VueGenerique
                     <td><?=$usr['bio']?></td>
                     <td><?=$usr['nbSignalements']?></td>
                     <td><?=$usr['articles_favoris']?></td>
-                    <td><a href=""></a><button class="button is-success">Modifier</button><a href="index.php?module=mod_gestion&action=delete_compte_adm&idUser=<?=$usr['id']?>"><button class="button is-danger">Supprimer</button></a></td>
+                    <td><a href="index.php?module=mod_gestion&action=delete_compte_adm&idUser=<?=$usr['id']?>"><button class="button is-danger">Supprimer</button></a></td>
                 </tr>
                 <?php
             }

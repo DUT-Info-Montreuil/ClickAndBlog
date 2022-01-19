@@ -20,7 +20,7 @@
     <!-- TinyMCE -->
     <script src="composants/Js/TinyMce/tinymce.min.js"></script>
     <!-- JS -->
-    <script defer src="scripts.js"></script>
+    <script defer src="scripts.js?1"></script>
     <!-- ScriptTinyMCE -->
     <script src="composants/Js/Script/tiny.js"></script>
     <!-- Stripe-->

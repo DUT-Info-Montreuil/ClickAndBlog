@@ -7,15 +7,27 @@ class ModeleGestion extends Connexion
 
     public function sauvegarde_profil()
     {
-        $selectPrep = self::$bdd->prepare('UPDATE user_connect SET nom = ? where id = ?');
-        $selectPrep->execute(array($_POST['nom'], $_SESSION['id']));
-        $selectPrep = self::$bdd->prepare('UPDATE user_connect SET prenom = ? where id = ?');
-        $selectPrep->execute(array($_POST['prenom'], $_SESSION['id']));
-        $selectPrep = self::$bdd->prepare('UPDATE user_connect SET username = ? where id = ?');
-        $selectPrep->execute(array($_POST['username'], $_SESSION['id']));
-        $selectPrep = self::$bdd->prepare('UPDATE user_connect SET bio = ? where id = ?');
-        $selectPrep->execute(array($_POST['bio'], $_SESSION['id']));
-        header('Location: index.php?module=mod_gestion&action=profil');
+        $messageRetour ="";
+        $messageRetour;
+        $dossier_destination = "public/image/";
+        $fichier_destination =  $dossier_destination . basename($_FILES["image"]["name"]);
+        $image_extension = strtolower(pathinfo($fichier_destination, PATHINFO_EXTENSION));
+        // Mise en place des verification
+        if (!empty($_FILES["image"]["tmp_name"])){
+            $typeAutoriser = array('jpg','png','jpeg');
+            if (in_array($image_extension,$typeAutoriser)){
+                $selectPrep = self::$bdd->prepare('UPDATE user_connect SET nom = ?, prenom = ?, username= ?, bio = ?, photoProfil = ? where id = ?');
+                if ($selectPrep->execute(array($_POST['nom'],$_POST['prenom'],$_POST['username'],$_POST['bio'],$fichier_destination,$_SESSION['id']))){
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
+                } else {
+                    echo 1;
+                }
+            } else {
+                echo 2;
+            }
+        }
+
+        //header('Location: index.php?module=mod_gestion&action=profil');
     }
 
     public function sauvegarde_securite()
@@ -95,7 +107,7 @@ class ModeleGestion extends Connexion
         return $selectPrep->fetchall();
     }
     public function get_article(){
-        $selectPrep = self::$bdd->prepare('SELECT *  from article');
+        $selectPrep = self::$bdd->prepare('SELECT article.*,user_connect.email from article INNER JOIN user_connect ON article.user_id = user_connect.id');
         $selectPrep->execute();
         return $selectPrep->fetchall();
     }
@@ -115,6 +127,7 @@ class ModeleGestion extends Connexion
     public function archive_article(){
         $requete = self::$bdd->prepare('UPDATE article SET archive = 1 where id = ?');
         $requete->execute(array($_GET['idArticle']));
+        header('Location: index.php?module=mod_gestion&action=admin_option');
     }
     public function publier_art(){
         $requete = self::$bdd->prepare('UPDATE article SET etat = 1 where id = ?');
@@ -127,6 +140,7 @@ class ModeleGestion extends Connexion
     public function rerire_arch(){
         $requete = self::$bdd->prepare('UPDATE article SET archive = 0 where id = ?');
         $requete->execute(array($_GET['idArticle']));
+        header('Location: index.php?module=mod_gestion&action=admin_option');
     }
     public function get_usr(){
         $selectPrep = self::$bdd->prepare('SELECT *  from user_connect');
@@ -136,6 +150,7 @@ class ModeleGestion extends Connexion
     public function supp_compte_adm(){
         $selectPrep = self::$bdd->prepare('DELETE FROM user_connect where id = ?');
         $selectPrep->execute(array($_GET['idUser']));
+        header('Location: index.php?module=mod_gestion&action=admin_option');
     }
 
     public function getArtById()

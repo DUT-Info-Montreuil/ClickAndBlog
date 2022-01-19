@@ -124,7 +124,8 @@ class VueArticle extends VueGenerique
                           } else {
                               ?>
                                   <div class="notification is-success">
-                                      Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
+                                      <?php $_SESSION['redirection'] = $_SERVER['REQUEST_URI']?>
+                                      Cet article est payant paye sur ce <a href="index.php?module=mod_connexion&action=connexion_redirection">lien.</a>
                                   </div>
                               <?php
                           }
