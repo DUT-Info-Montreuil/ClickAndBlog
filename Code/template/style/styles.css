@@ -11,6 +11,12 @@
     margin-left: auto;
 }
 
+#barre_de_recherche{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px
+}
+
 .menu_deroulant>div{
     color: #70a1ff;
 }
@@ -22,6 +28,7 @@
     display: inline-flex;
     flex-direction: column;
 }
+
 .card-image>figure>img{
     border-radius:15px;
 }
@@ -42,6 +49,17 @@
     margin-right: auto;
     width: 300px
 }
+
+#card_recherche{
+    display: inline-block;
+    width:30%;
+    border-radius:15px;
+    margin-top: 1%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+
 
 #abos button{
     border-radius: 50px;

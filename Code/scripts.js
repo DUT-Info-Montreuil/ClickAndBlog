@@ -30,6 +30,35 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal($modal);
         });
     }
+    //script recherche
+    $(document).ready(function(){
+        $('#productName').autocomplete({
+            search: function(event, ui){
+                $('.container').hide();
+            },
+            source: "search.php"
+        }).data('ui-autocomplete')._renderItem = function(ul, item){
+            return $('<div class="results">')
+                .data('item.autocomplete', item)
+                .append('<div class="card" id="card_recherche">'+'<div class="card-content">'+'<div class="media">'+
+                    '<div class="media-content">'+
+                    '<a href="index.php?module=mod_article&action=detail&id='+item.value+'">'+item.label+'</a>' + '<date> '+item.date+' </date>' + '</div>'+'</div>'+'</div>'+'</div>'
+                ).appendTo($('.result'));  };
+        $('#productName').keyup(function() {
+            // If value is not empty
+            if ($(this).val().length == 0) {
+                // Hide the element
+                $('.container').show();
+                $('.results').hide();
+            } else {
+                // Otherwise show it
+                $('.results').empty();
+                $('.results').show();
+            }
+        }).keyup();
+    });
+
+    //affichage des abonnements
 
     // Add a click event on buttons to open a specific modal
     (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {

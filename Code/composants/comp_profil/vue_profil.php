@@ -7,24 +7,6 @@ class VueProfil {
     {
         ?>
             <nav class="navbar is-light">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="index.php">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <a class="button is-light" href="#">
-                        <span class="icon">
-                            <i class="fas fa-bars" style="color: #70a1ff"></i>
-                        </span>
-                                </a>
-                            </p>
-                        </div>
-                    </a>
-                    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
 
                 <div id="navbarExampleTransparentExample" class="navbar-menu" >
                     <div class="navbar-start" id="categories">
@@ -44,38 +26,7 @@ class VueProfil {
                         <div class="column">
                         <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=technologie">technologie</a>
                         </div>
-                            <script type="text/javascript">
-                                $(document).ready(function(){
-                                    $('#productName').autocomplete({
-                                        search: function(event, ui){
-                                            $('.container').hide();
-                                        },
-                                        source: "search.php"
-                                    }).data('ui-autocomplete')._renderItem = function(ul, item){
-                                        return $('<div class="results">')
-                                            .data('item.autocomplete', item)
-                                            .append('<div class="card" id="card_article">'+'<div class="card-content">'+'<div class="media">'+
-                                                '<div class="media-content">'+
-                                                '<a href="index.php?module=mod_article&action=detail&id='+item.value+'">'+item.label+'</a>' + '<date> '+item.date+' </date>' + '</div>'+'</div>'+'</div>'+'</div>'
-                                            ).appendTo($('.result'));  };
-                                    $('#productName').keyup(function() {
-                                        // If value is not empty
-                                        if ($(this).val().length == 0) {
-                                            // Hide the element
-                                            $('.container').show();
-                                            $('.results').hide();
-                                        } else {
-                                            // Otherwise show it
-                                            $('.results').empty();
-                                            $('.results').show();
-                                        }
-                                    }).keyup();
-                                });
-                            </script>
-                            <div class="field has-addons">
-                                    <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -129,6 +80,10 @@ class VueProfil {
                     <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
                     <h1 style="text-align: center; color: #70a1ff; font-size: larger"><a href="index.php"> Click & Blog </a></h1>
                     <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+                <div class="field has-addons" id="barre_de_recherche">
+                    <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
+                </div>
+            </div>
             </div>
       <?php  
     }
