@@ -29,6 +29,12 @@ class ModeleArticle extends Connexion{
                 $selectPrep = self::$bdd->prepare("INSERT INTO article(titre, contenu,categorie, image, alt_image, date, time_read,etat,user_id) VALUES(?,?,?,?,?,?,?,?,?)");
                 if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$_POST['categories_art'],$fichier_destination,$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat'],$_SESSION['id']))){
                     move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
+                    // Recupere l'id du insert pour l'ajouter dans la table payant
+                    $idInsert =self::$bdd->lastInsertId();
+                    if ($_POST['etat'] == TRUE){
+                        $select = self::$bdd->prepare("INSERT INTO payant(article_id, user_id) VALUES(?,?)");
+                        $select->execute(array($idInsert,$_SESSION['id']));
+                    }
                 } else {
                     // Return Code 1
                     $messageRetour = 1;
@@ -186,6 +192,11 @@ class ModeleArticle extends Connexion{
         if (!empty($_FILES["image"]["tmp_name"])){
             $typeAutoriser = array('jpg','png','jpeg');
             if (in_array($image_extension,$typeAutoriser)){
+                if ($_POST['etat'] == TRUE){
+                    $select = self::$bdd->prepare("INSERT INTO payant(article_id, user_id) VALUES(?,?)");
+                    $select->execute(array($_GET['idArticle'],$_SESSION['id']));
+
+                }
                 $selectPrep = self::$bdd->prepare("UPDATE article SET titre = ?, contenu = ?,categorie = ?, image = ? , alt_image = ?, date = ?, time_read = ?,etat = ?,user_id = ? WHERE id = ?");
                 if($selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$_POST['categories_art'],$fichier_destination,$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat'],$_SESSION['id'],$_GET['idArticle']))){
                     move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
@@ -200,6 +211,11 @@ class ModeleArticle extends Connexion{
                 echo "2";
             }
         } else {
+            if ($_POST['etat'] == TRUE){
+                $select = self::$bdd->prepare("INSERT INTO payant(article_id, user_id) VALUES(?,?)");
+                $select->execute(array($_GET['idArticle'],$_SESSION['id']));
+
+            }
             $selectPrep = self::$bdd->prepare("UPDATE article SET titre = ?, contenu = ?,categorie = ? , alt_image = ?, date = ?, time_read = ?,etat = ?,user_id = ? WHERE id = ?");
             $selectPrep->execute(array($_POST['titre'],$_POST['contenue'],$_POST['categories_art'],$_POST['alt_image'],$_POST['date'], $this->temps_lecture($_POST['contenue']),$_POST['etat'],$_SESSION['id'],$_GET['idArticle']));
         }

@@ -297,6 +297,13 @@ class VueGestion extends VueGenerique
                 <input type="date" name="date" id="date">
             </div>
             <div class="field">
+                <label>Article payant : </label>
+                <input type="radio" name="prix" id="checkTrue" value="1">
+                <label for="checkTrue">OUI</label>
+                <input type="radio" name="prix" id="checkFalse" value="0">
+                <label for="checkFalse">NON</label>
+            </div>
+            <div class="field">
                 <label>Publiez l'article : </label>
                 <input type="radio" name="etat" id="checkTrue" value="1">
                 <label for="checkTrue">OUI</label>
@@ -449,6 +456,13 @@ class VueGestion extends VueGenerique
             <div class="field">
                 <label for="date">Entrer la date : </label>
                 <input type="date" name="date" id="date" placeholder="<?=$article['date']?>">
+            </div>
+            <div class="field">
+                <label>Article payant : </label>
+                <input type="radio" name="prix" id="checkTrue" value="1">
+                <label for="checkTrue">OUI</label>
+                <input type="radio" name="prix" id="checkFalse" value="0">
+                <label for="checkFalse">NON</label>
             </div>
             <div class="field">
                 <label>Publiez l'article : </label>
