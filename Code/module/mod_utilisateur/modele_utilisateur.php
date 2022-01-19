@@ -60,6 +60,42 @@ class ModeleUtilisateur extends Connexion
         return $result;
     }
 
+    public function estDejaAbonne()
+    {
+        $estAbonne = self::$bdd->prepare('SELECT * FROM abonnement_utilisateur WHERE user_id_abonne = ? and user_id_abonnement = ?');
+        $estAbonne->execute(array($_SESSION['id'], $_GET['id_user']));
+        $result = $estAbonne->fetchAll();
+        if(count($result) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function suivreOuPas($dejaAbonne)
+    {
+        if(!$dejaAbonne){
+            ModeleUtilisateur::suivre();
+        }else{
+            ModeleUtilisateur::nePlusSuivre();
+        }
+        $id = $_GET['id_user'];
+        header("Location: index.php?module=mod_utilisateur&action=profil&id_user=$id&essai=$dejaAbonne");
+    }
+
+    public static function suivre()
+    {
+        $estAbonne = self::$bdd->prepare('INSERT INTO abonnement_utilisateur(user_id_abonne, user_id_abonnement) VALUES(?, ?)');
+        $estAbonne->execute(array($_SESSION['id'], $_GET['id_user']));
+        $result = $estAbonne->fetchAll();
+    }
+    public static function nePlusSuivre()
+    {
+        $estAbonne = self::$bdd->prepare('DELETE FROM abonnement_utilisateur WHERE user_id_abonne = ? and user_id_abonnement = ?');
+        $estAbonne->execute(array($_SESSION['id'], $_GET['id_user']));
+        $result = $estAbonne->fetchAll();
+    }
+
     public static function getPhotoProfil(): array{
         $selectPrep = self::$bdd->prepare('SELECT user_connect.photoProfil FROM user_connect where user_connect.id = ?');
         $selectPrep->execute(array($_GET['id_user']));

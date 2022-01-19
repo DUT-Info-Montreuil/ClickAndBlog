@@ -10,7 +10,7 @@ class ContUtilisateur{
     public function __construct() {
         $this->modele = new ModeleUtilisateur();
         $this->vue = new VueUtilisateur();
-        $this->vue->vue_utilisateur($this->modele->get_infos(), $this->modele->get_abonnements());
+        $this->vue->vue_utilisateur($this->modele->get_infos(), $this->modele->get_abonnements(), ContUtilisateur::estAbonne());
     }
 
     public function vue_profil(){
@@ -32,7 +32,18 @@ class ContUtilisateur{
     }
 
     public function abonnement(){
+        $this->modele->suivreOuPas($this->modele->estDejaAbonne());
+    }
 
+    public function estAbonne()
+    {
+        if(!$this->modele->estDejaAbonne())
+        {
+            return 'suivre';
+        }
+        else{
+            return 'ne plus suivre';
+        }
     }
 
      /**
