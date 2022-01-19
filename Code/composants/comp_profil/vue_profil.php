@@ -7,7 +7,6 @@ class VueProfil {
     {
         ?>
             <nav class="navbar is-light">
-
                 <div id="navbarExampleTransparentExample" class="navbar-menu" >
                     <div class="navbar-start" id="categories">
                         <div class="columns navbar-item">

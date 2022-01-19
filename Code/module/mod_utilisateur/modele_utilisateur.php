@@ -80,7 +80,7 @@ class ModeleUtilisateur extends Connexion
             ModeleUtilisateur::nePlusSuivre();
         }
         $id = $_GET['id_user'];
-        header("Location: index.php?module=mod_utilisateur&action=profil&id_user=$id&essai=$dejaAbonne");
+        header("Location: index.php?module=mod_utilisateur&action=profil&id_user=$id");
     }
 
     public static function suivre()

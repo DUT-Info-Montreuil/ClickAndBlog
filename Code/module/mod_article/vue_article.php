@@ -27,11 +27,11 @@ class VueArticle extends VueGenerique
                     </a>
                     <?php if(isset($_SESSION['login']) && $fav == true): ?>
                     <a href="index.php?module=mod_article&action=supp_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
-                        <i class="fas fa-bookmark"></i>
+                        <i class="fas fa-star"></i>
                     </a>
                     <?php elseif(isset($_SESSION['login'])): ?>
                     <a href="index.php?module=mod_article&action=ajout_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
-                        <i class="far fa-bookmark subtitle"></i>
+                        <i class="far fa-star subtitle"></i>
                     </a>
                     <?php endif ?>
                 </div>

@@ -28,6 +28,7 @@ class VueUtilisateur extends VueGenerique {
                     $link = "index.php?module=mod_connexion&action=connexion_redirection";
                 }
                 ?>
+                <?php if($_GET['id_user'] != $_SESSION['id']):?>
                 <form action="<?=$link?>" method="post">
                         <div class="field">
                             <p class="control">
@@ -35,6 +36,7 @@ class VueUtilisateur extends VueGenerique {
                             </p>
                         </div>
                 </form>
+                <?php endif ?>
             </div>
         </div>
         <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7; width: 30%" >
