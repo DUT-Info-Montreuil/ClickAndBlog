@@ -4,7 +4,7 @@ if(!defined('CONST_INCLUDE')){
 }
 class VueUtilisateur extends VueGenerique {
 
-    public function vue_utilisateur($infos, $abos)
+    public function vue_utilisateur($infos, $abos, $suivre = "suivre")
     {
 
         $photo = ModeleUtilisateur::getPhotoProfil();
@@ -16,16 +16,46 @@ class VueUtilisateur extends VueGenerique {
                 </figure>
             </div>
             <div class="media-content">
-<!--                <p class="title is-4">--><?//=$_SESSION["prenom"]," ",$_SESSION["nom"]?><!--</p>-->
-<!--                <p class="subtitle is-6">@--><?//=$_SESSION["username"]?><!--</p>-->
                 <p class="title is-4"><?=$infos[0]['nom']," ",$infos[0]['prenom']?></p>
                 <p class="subtitle is-6"><?=$infos[0]['username']?></p>
                 <P class="subtitle is-6"><?=$infos[0]['bio']?></p>
+                <form action="index.php?module=mod_utilisateur&action=abonnement" method="post">
+                        <div class="field">
+                            <p class="control">
+                                <input class="button has-background-info-light" style="border-radius: 20px" type="submit" name="submit"  value="<?=$suivre?>"  id="submit"/>
+                            </p>
+                        </div>
+                </form>
             </div>
         </div>
-        <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-        <h2>Abonnés : </h2> <?=$abos['nbAbonnes'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
-        <h2>Abonnements :</h2> <?=$abos['nbAbonnements'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
+        <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7; width: 30%" >
+        <?php
+        $this->affiche_abonnés($abos);
+    }
+
+    public function affiche_abonnés($abos){
+        ?>
+        <div id="modal-js-example" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+                <div class="box">
+                    <p>abos</p>
+                    liste des abos
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        <div id="abos">
+            <button class="button js-modal-trigger" data-target="modal-js-example" >
+                <h2>Abonnés : </h2> <?=$abos['nbAbonnes'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
+            </button>
+            <button class="button js-modal-trigger" data-target="modal-js-example">
+                <h2>Abonnements :</h2> <?=$abos['nbAbonnements'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
+            </button>
+        </div>
+
         <?php
     }
 
