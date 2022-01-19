@@ -16,6 +16,9 @@ class ModUtilisateur extends ModGenerique{
             case "profil":
                 $this->controlleur->vue_profil();
                 break;
+            case "abonnement":
+                $this->controlleur->abonnement();
+                break;
         }
     }
     public function getControlleur()
