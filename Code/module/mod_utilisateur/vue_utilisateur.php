@@ -4,9 +4,8 @@ if(!defined('CONST_INCLUDE')){
 }
 class VueUtilisateur extends VueGenerique {
 
-    public function vue_utilisateur($infos, $abos, $suivre)
+    public function vue_utilisateur($infos, $abos, $abonnes, $abonnement, $suivre)
     {
-
         $photo = ModeleUtilisateur::getPhotoProfil();
         ?>
         <div id="vue_gestion" class="media" xmlns="http://www.w3.org/1999/html">
@@ -43,34 +42,99 @@ class VueUtilisateur extends VueGenerique {
         </div>
         <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7; width: 30%" >
         <?php
-        $this->affiche_abonnés($abos);
+        $this->affiche_abos($abos, $abonnes, $abonnement);
     }
-
-    public function affiche_abonnés($abos){
+    public function affiche_abos($abos, $abonnes, $abonnements){
         ?>
-        <div id="modal-js-example" class="modal">
+
+        <div id="modal-js-example1" class="modal">
             <div class="modal-background"></div>
 
             <div class="modal-content">
-                <div class="box">
-                    <p>abos</p>
-                    liste des abos
+                <div class="box has-background-lighter">
+                    <div class="modal-content has-background-light" style="padding: 2%; border-radius: 10px; width: 50%">
+                        <h1 class="subtitle">Abonnés</h1>
+                        <ul>
+                            <?php
+                                $ind = 0;
+                                foreach ($abonnes as $row) {
+                                    ?>
+                                    <li>
+                                        <a>
+                                        <div class="media" xmlns="http://www.w3.org/1999/html">
+                                            <div class="media-left">
+                                                <figure class="image is-32x32">
+                                                    <img src="<?=$row['photoProfil']?>" alt="logo" class="image is-32x32 is-rounded">
+                                                </figure>
+                                            </div>
+                                            <div class="media-content">
+                                                <p><?=$row['prenom']. ' ' .$row['nom']?></p>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </li>
+                                    <br>
+                                    <?php
+                                }
+                            ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
+
+        <div id="modal-js-example2" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+                <div class="box">
+                    <div class="modal-content has-background-light" style="padding: 2%; border-radius: 10px">
+                        <h1 class="subtitle">Abonnements</h1>
+                        <ul>
+                            <?php
+                            $ind = 0;
+                            foreach ($abonnements as $row) {
+                                ?>
+                                <li>
+                                    <a>
+                                        <div class="media" xmlns="http://www.w3.org/1999/html">
+                                            <div class="media-left">
+                                                <figure class="image is-32x32">
+                                                    <img src="<?=$row['photoProfil']?>" alt="logo" class="image is-32x32 is-rounded">
+                                                </figure>
+                                            </div>
+                                            <div class="media-content">
+                                                <p><?=$row['prenom']. ' ' .$row['nom']?></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
         <div id="abos">
-            <button class="button js-modal-trigger" data-target="modal-js-example" >
+            <button class="button js-modal-trigger" data-target="modal-js-example1" >
                 <h2>Abonnés : </h2> <?=$abos['nbAbonnes'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
             </button>
-            <button class="button js-modal-trigger" data-target="modal-js-example">
+            <button class="button js-modal-trigger" data-target="modal-js-example2">
                 <h2>Abonnements :</h2> <?=$abos['nbAbonnements'][0]['count(abonnement_utilisateur.user_id_abonne)']?>
             </button>
         </div>
-
         <?php
     }
+
+
 
     public function affiche_liste($row,$fav)
     {

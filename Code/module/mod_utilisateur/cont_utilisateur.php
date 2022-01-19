@@ -10,7 +10,7 @@ class ContUtilisateur{
     public function __construct() {
         $this->modele = new ModeleUtilisateur();
         $this->vue = new VueUtilisateur();
-        $this->vue->vue_utilisateur($this->modele->get_infos(), $this->modele->get_abonnements(), ContUtilisateur::estAbonne());
+        $this->vue->vue_utilisateur($this->modele->get_infos(), $this->modele->getNbAbonnements(), $this->modele->getAbonnes(), $this->modele->getAbonnements(), ContUtilisateur::estAbonne());
     }
 
     public function vue_profil(){
