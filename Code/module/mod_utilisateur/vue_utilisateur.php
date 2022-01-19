@@ -28,6 +28,7 @@ class VueUtilisateur extends VueGenerique {
                     $link = "index.php?module=mod_connexion&action=connexion_redirection";
                 }
                 ?>
+                <?php if(isset($_SESSION['id'])):?>
                 <?php if($_GET['id_user'] != $_SESSION['id']):?>
                 <form action="<?=$link?>" method="post">
                         <div class="field">
@@ -36,6 +37,7 @@ class VueUtilisateur extends VueGenerique {
                             </p>
                         </div>
                 </form>
+                <?php endif ?>
                 <?php endif ?>
             </div>
         </div>
@@ -87,11 +89,11 @@ class VueUtilisateur extends VueGenerique {
                 </a>
                 <?php if(isset($_SESSION['login']) && $fav == true): ?>
                     <a href="index.php?module=mod_article&action=supp_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
-                        <i class="fas fa-bookmark"></i>
+                        <i class="fas fa-star"></i>
                     </a>
                 <?php elseif(isset($_SESSION['login'])): ?>
                     <a href="index.php?module=mod_article&action=ajout_favoris&idArticle=<?=$row['id']?>" class="is-pulled-right">
-                        <i class="far fa-bookmark subtitle"></i>
+                        <i class="far fa-star subtitle"></i>
                     </a>
                 <?php endif ?>
             </div>
