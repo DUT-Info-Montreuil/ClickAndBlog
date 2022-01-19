@@ -189,7 +189,6 @@ class VueArticle extends VueGenerique
             else{
                 $ind = 0;
                 foreach ($tableaux as $row) {
-                    var_dump($row);
                     ?>
                     <article class="media">
                         <figure class="media-left">
@@ -197,7 +196,6 @@ class VueArticle extends VueGenerique
                                 <?php
                                 $photo = ModeleArticle::getPhotoProfil();
                                 $infos = ModeleArticle::getInfos();
-                                var_dump($infos);
                                 ?>
                                 <a href="index.php?module=mod_utilisateur&action=profil&id_user=<?=$infos[$ind]['id']?>">
                                     <img class="is-rounded" src="<?=$photo[$ind]['photoProfil']?>" alt="logo">
