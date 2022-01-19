@@ -31,6 +31,10 @@ class ContUtilisateur{
         }
     }
 
+    public function abonnement(){
+
+    }
+
      /**
      * @return ModeleUtilisateur
      */

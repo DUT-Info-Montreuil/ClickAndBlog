@@ -4,7 +4,7 @@ if(!defined('CONST_INCLUDE')){
 }
 class VueUtilisateur extends VueGenerique {
 
-    public function vue_utilisateur($infos, $abos)
+    public function vue_utilisateur($infos, $abos, $suivre = "suivre")
     {
 
         $photo = ModeleUtilisateur::getPhotoProfil();
@@ -19,6 +19,13 @@ class VueUtilisateur extends VueGenerique {
                 <p class="title is-4"><?=$infos[0]['nom']," ",$infos[0]['prenom']?></p>
                 <p class="subtitle is-6"><?=$infos[0]['username']?></p>
                 <P class="subtitle is-6"><?=$infos[0]['bio']?></p>
+                <form action="index.php?module=mod_utilisateur&action=abonnement" method="post">
+                        <div class="field">
+                            <p class="control">
+                                <input class="button has-background-info-light" style="border-radius: 20px" type="submit" name="submit"  value="<?=$suivre?>"  id="submit"/>
+                            </p>
+                        </div>
+                </form>
             </div>
         </div>
         <hr style="margin:auto; margin-bottom: 2%; color:black; background-color:#70a1ff; height:5px; opacity: 0.7; width: 30%" >
@@ -34,7 +41,7 @@ class VueUtilisateur extends VueGenerique {
             <div class="modal-content">
                 <div class="box">
                     <p>abos</p>
-                    <!-- Your content -->
+                    liste des abos
                 </div>
             </div>
 
