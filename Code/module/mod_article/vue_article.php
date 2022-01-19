@@ -121,11 +121,12 @@ class VueArticle extends VueGenerique
                                   </div>
                                   <?php
                               }
-                          } else { ?>
-                              <div class="notification is-success">
-                                  Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
-                              </div>
-                                  <?php
+                          } else {
+                              ?>
+                                  <div class="notification is-success">
+                                      Cet article est payant paye sur ce <a href="index.php?module=mod_paiement&action=payer&idArticle=<?=$row['id']?>">lien.</a>
+                                  </div>
+                              <?php
                           }
                           ?>
                       </p>
