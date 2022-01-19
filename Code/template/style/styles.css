@@ -37,22 +37,34 @@
     display: inline-flex;
     flex-direction: column;
 }
-
-hr{
-    width:15%;
-    color:black;
-    background-color:#70a1ff;
-    height:5px;
-    opacity: 0.7;
+#abos{
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px
 }
+
+#abos button{
+    border-radius: 50px;
+}
+
+/*hr{*/
+/*    width:15%;*/
+/*    color:black;*/
+/*    background-color:#70a1ff;*/
+/*    height:5px;*/
+/*    opacity: 0.7;*/
+/*}*/
+
 .subtile{
     color: #70a1ff;
 }
 
 #vue_gestion{
-    margin-left: 40%;
-    margin-top: 4%;
-    margin-bottom: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    margin-top: 3%;
+    margin-bottom: 2%;
 }
 
 #vue_gestion .media-content{
