@@ -157,22 +157,24 @@ class VueGestion extends VueGenerique
                             <a href="index.php?module=mod_article&action=detail&id=<?= $row['url'] ?>">
                                 <p class="title is-4"><?= $row['titre'] ?></p>
                             </a>
-                            <a href="index.php?module=mod_gestion&action=delete_signalement&id_signalement=<?= $row['id'] ?>"><button class="button is-success">désignaler</button></a>
+                            <a href="index.php?module=mod_gestion&action=delete_signalement&id_signalement=<?= $row['id'] ?>"><button class="button is-danger">désignaler</button></a>
                             <?php elseif ($type==1) : ?>
                             <a href="index.php?module=mod_article&action=detail&id=<?= $row['id'] ?>">
                                 <p class="title is-4"><?= $row['titre'] ?></p>
                             </a>
-                            <a href="index.php?module=mod_gestion&action=publier_art&idArticle=<?=$row['id']?>"><button class="button is-success">publier</button></a>
+                            <a href="index.php?module=mod_gestion&action=modif_article_vue&idArticle=<?=$row['id']?>"><button class="button is-success">Modifier</button></a>
+                            <a href="index.php?module=mod_gestion&action=publier_art&idArticle=<?=$row['id']?>"><button class="button is-danger">publier</button></a>
                             <?php elseif ($type==2) : ?>
                             <a href="index.php?module=mod_article&action=detail&id=<?= $row['id'] ?>">
                                 <p class="title is-4"><?= $row['titre'] ?></p>
                             </a>
-                            <a href="index.php?module=mod_gestion&action=delete_article&idArticle=<?=$row['id']?>"><button class="button is-success">supprimer</button></a>
+                            <a href="index.php?module=mod_gestion&action=modif_article_vue&idArticle=<?=$row['id']?>"><button class="button is-success">Modifier</button></a>
+                            <a href="index.php?module=mod_gestion&action=delete_article&idArticle=<?=$row['id']?>"><button class="button is-danger">supprimer</button></a>
                             <?php else : ?>
                             <a href="index.php?module=mod_article&action=detail&id=<?= $row['url'] ?>">
                                 <p class="title is-4"><?= $row['titre'] ?></p>
                             </a>
-                            <a href="index.php?module=mod_gestion&action=delete_favori&url=<?=$row['url']?>"><button class="button is-success">retirer fav</button></a>
+                            <a href="index.php?module=mod_gestion&action=delete_favori&url=<?=$row['url']?>"><button class="button is-danger">retirer fav</button></a>
                             <?php endif ?>
                         </div>
                     </div>
