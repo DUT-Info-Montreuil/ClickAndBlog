@@ -37,12 +37,16 @@ class ContUtilisateur{
 
     public function estAbonne()
     {
-        if(!$this->modele->estDejaAbonne())
-        {
+        if(isset($_SESSION['id'])){
+            if(!$this->modele->estDejaAbonne())
+            {
+                return 'suivre';
+            }
+            else{
+                return 'ne plus suivre';
+            }
+        }else{
             return 'suivre';
-        }
-        else{
-            return 'ne plus suivre';
         }
     }
 

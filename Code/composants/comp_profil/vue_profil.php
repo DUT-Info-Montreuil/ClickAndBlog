@@ -26,7 +26,6 @@ class VueProfil {
                         <div class="column">
                         <a class="has-text-black" href="index.php?module=mod_article&action=categorie&nom_categorie=technologie">technologie</a>
                         </div>
-
                         </div>
                     </div>
                 </div>
@@ -80,9 +79,10 @@ class VueProfil {
                     <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
                     <h1 style="text-align: center; color: #70a1ff; font-size: larger"><a href="index.php"> Click & Blog </a></h1>
                     <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
-                <div class="field has-addons" id="barre_de_recherche">
-                    <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
-                </div>
+                    <div class="field has-addons" id="barre_de_recherche">
+                        <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
+                    </div>
+                    <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
             </div>
             </div>
       <?php  
