@@ -99,6 +99,13 @@ class ModeleGestion extends Connexion
         $selectPrep->execute();
         return $selectPrep->fetchall();
     }
+
+    public function getMesArticles(): array{
+        $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE etat=TRUE and user_id = ?');
+        $selectPrep->execute(array($_SESSION['id']));
+        return $result = $selectPrep->fetchall();
+    }
+
     public function archive_article(){
         $requete = self::$bdd->prepare('UPDATE article SET archive = 1 where id = ?');
         $requete->execute(array($_GET['idArticle']));
