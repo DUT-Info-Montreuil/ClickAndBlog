@@ -62,11 +62,11 @@ class VueProfil {
                                         // If value is not empty
                                         if ($(this).val().length == 0) {
                                             // Hide the element
-                                            console.log("empty")
                                             $('.container').show();
                                             $('.results').hide();
                                         } else {
                                             // Otherwise show it
+                                            $('.results').empty();
                                             $('.results').show();
                                         }
                                     }).keyup();
