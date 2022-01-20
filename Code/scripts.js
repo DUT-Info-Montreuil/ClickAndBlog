@@ -1,3 +1,4 @@
+//lors de la création
 function check_pass() {
     if (document.getElementById('pass').value ==
         document.getElementById('confirm_pass').value) {
@@ -7,14 +8,16 @@ function check_pass() {
     }
 }
 
-function check_update_pass() {
-    if (document.getElementById('password').value ==
-        document.getElementById('confirm_pass_update').value) {
-        document.getElementById('submit_pw').disabled = false;
+//lors de la modification du mot de passe depuis les paramètres
+function check_pass2() {
+    if (document.getElementById('pass2').value ==
+        document.getElementById('confirm_pass2').value) {
+        document.getElementById('submit2').disabled = false;
     } else {
-        document.getElementById('submit_pw').disabled = true;
+        document.getElementById('submit2').disabled = true;
     }
 }
+
 
 //script recherche
 $(document).ready(function () {

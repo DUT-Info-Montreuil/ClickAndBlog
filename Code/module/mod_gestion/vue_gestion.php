@@ -263,8 +263,8 @@ class VueGestion extends VueGenerique
 
             <div class="field" style="width: 50%">
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-medium" type="password" id="password" name="password"
-                           onchange="check_update_pass()" placeholder="Nouveau mot de passe">
+                    <input class="input is-medium" type="password" id="pass2" name="pass2"
+                           onchange="check_pass2()" placeholder="Nouveau mot de passe">
                     <span class="icon is-medium is-left">
                           <i class="fas fa-user"></i>
                     </span>
@@ -276,8 +276,8 @@ class VueGestion extends VueGenerique
 
             <div class="field" style="width: 50%">
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-medium" type="password" id="confirm_update_pass" name="confirm_update_pass"
-                           onchange="check_update_pass()" placeholder="Confirmer nouveau mot de passe">
+                    <input class="input is-medium" type="password" id="confirm_pass2" name="confirm_pass2"
+                           onchange="check_pass2()" placeholder="Confirmer nouveau mot de passe">
                     <span class="icon is-medium is-left">
                           <i class="fas fa-user"></i>
                     </span>
@@ -289,7 +289,7 @@ class VueGestion extends VueGenerique
 
             <div class="field">
                 <p class="control">
-                    <button class="button is-info" id="submit_pw" name="submit" value="Sauvegarder">
+                    <button class="button is-info" id="submit2" name="submit2" value="Sauvegarder" disabled>
                         Sauvegarder
                     </button>
                 </p>
