@@ -14,8 +14,8 @@ class ModelePaiement extends Connexion
 
         //header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost:80/PHPS3/ProjetS3/ClickAndBlog/Code';
-
+//        $YOUR_DOMAIN = 'http://localhost:80/PHPS3/ProjetS3/ClickAndBlog/Code';
+            $YOUR_DOMAIN = 'https://localhost/progWeb/ClickAndBlog/Code';
         $checkout_session = \Stripe\Checkout\Session::create([
             'line_items' => [[
                 'price_data' => [

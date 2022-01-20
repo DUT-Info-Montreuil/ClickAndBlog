@@ -22,6 +22,9 @@ class ModCommentaire extends ModGenerique
             case "ajout":
                 $this->controlleur->ajout();
                 break;
+            case "delete":
+                $this->controlleur->delete();
+                break;
             default:
                 echo "Valeur inconnue ";
                 break;

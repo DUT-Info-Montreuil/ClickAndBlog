@@ -56,6 +56,21 @@ class ModeleArticle extends Connexion
         return $messageRetour;
     }
 
+    public static function option_delete_comm($info) {
+        $admin = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ? AND admin = TRUE');
+        $admin->execute(array($_SESSION['id']));
+        $result_admin = $admin->fetchall();
+        if(count($result_admin) > 0) {
+            return true;
+        }
+        elseif ($info['id_user'] == $_SESSION['id']) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function getArticleBYCateg(): array
     {
         $selectPrep = self::$bdd->prepare('SELECT * FROM article WHERE categorie = ? AND etat=TRUE');
@@ -80,7 +95,7 @@ class ModeleArticle extends Connexion
 
     public static function getInfos(): array
     {
-        $selectPrep = self::$bdd->prepare('SELECT user_connect.nom, user_connect.prenom, user_connect.id FROM user_connect JOIN commentaire on user_connect.id = commentaire.id_user where commentaire.idArticle = ? ORDER BY commentaire.idCommentaire ');
+        $selectPrep = self::$bdd->prepare('SELECT user_connect.nom, user_connect.prenom, user_connect.id, commentaire.idCommentaire FROM user_connect JOIN commentaire on user_connect.id = commentaire.id_user where commentaire.idArticle = ? ORDER BY commentaire.idCommentaire ');
         $selectPrep->execute(array($_GET['id']));
         $result = $selectPrep->fetchall();
         return $result;

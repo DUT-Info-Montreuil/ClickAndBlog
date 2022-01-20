@@ -2,7 +2,6 @@
 if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
-
 class VueArticle extends VueGenerique
 {
 
@@ -185,7 +184,6 @@ class VueArticle extends VueGenerique
         </div>
         <?php
     }
-
     public function affiche_commentaire($tableaux)
     {
         ?>
@@ -216,12 +214,29 @@ class VueArticle extends VueGenerique
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong><?= $infos[$ind]['prenom'] . ' ' . $infos[$ind]['nom'] ?></strong>
-                                    <?php $ind++; ?>
+                                    <strong><?=$infos[$ind]['prenom'].' '.$infos[$ind]['nom']?></strong>
                                     <br>
                                     <?= htmlspecialchars($row['contenu']) ?>
                                     <br>
-                                    <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                                <?php if(ModeleArticle::option_delete_comm($infos[$ind]) == true): ?>
+                                    <?php
+//                                    var_dump($infos[$ind]['idCommentaire']);
+                                    ?>
+                                    <form action="index.php?module=mod_commentaire&action=delete&id=<?=$_GET['id']?>&id_com=<?=$infos[$ind]['idCommentaire']?>" method="post">
+                                        <div class="media-content">
+                                            <div class="field">
+                                                <div class="field">
+                                                    <p class="control">
+                                                        <button class="button is-danger" style="width: 5%; height: 18px; font-size: 12px;" type="submit" name="submit" value="Publier"  id="submit">
+                                                            suppr
+                                                        </button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <?php endif ?>
+                                    <?php $ind++; ?>
                                 </p>
                             </div>
                     </article>
@@ -282,7 +297,7 @@ class VueArticle extends VueGenerique
 
     private static function bbc2html($contenu)
     {
-        $search = array(
+        $search = array (
             '/(\[b\])(.*?)(\[\/b\])/',
             '/(\[i\])(.*?)(\[\/i\])/',
             '/(\[u\])(.*?)(\[\/u\])/',

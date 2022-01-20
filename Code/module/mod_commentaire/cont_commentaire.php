@@ -21,6 +21,10 @@ class ContCommentaire
         $this->modele->ajout_commentaire();
     }
 
+    public function delete(){
+        $this->modele->supprimer_commentaire();
+    }
+
     /**
      * @return ModeleCommentaire
      */
