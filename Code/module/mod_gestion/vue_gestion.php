@@ -125,22 +125,37 @@ class VueGestion extends VueGenerique
         ?>
         <p class="title is-4">Vous retrouverez ici vos favoris ainsi que l'option pour supprimer votre compte</p>
         <div class="media-content">
-            <P class="subtitle is-4">Mes Articles :</p>
+        <?php if(empty($mesArticles) & empty($favoris) & empty($signalement) & empty($brouillon)):?>
+            <p>Désolée il n'y a rien a afficher ici !!!</p>
+        <?php endif;?>
+            <?php if (empty($mesArticles)):?>
+            <?php else: ?>
+            <p class="subtitle is-4">Mes Articles :</p>
             <?php
             VueGestion::vue_article_gestion($mesArticles,2);
             ?>
+        <?php endif; ?>
+            <?php if (empty($favoris)):?>
+            <?php else:?>
             <p class="subtitle is-4">Mes Favoris : </p>
             <?php
             VueGestion::vue_article_gestion($favoris,999);
             ?>
+            <?php endif; ?>
+            <?php if (empty($signalement)):?>
+            <?php else:?>
             <p class="subtitle is-4">Mes Signalements : </p>
             <?php
             VueGestion::vue_article_gestion($signalement,0);
             ?>
-            <P class="subtitle is-4">Mes brouillons : </p>
+            <?php endif;?>
+            <?php if (empty($brouillon)): ?>
+            <?php else:?>
+            <p class="subtitle is-4">Mes brouillons : </p>
             <?php
             VueGestion::vue_article_gestion($brouillon,1)
             ?>
+            <?php endif;?>
         </div>
         <a href="index.php?module=mod_gestion&action=delete_compte">
             <button class="button is-danger ">Supprimer compte</button>
