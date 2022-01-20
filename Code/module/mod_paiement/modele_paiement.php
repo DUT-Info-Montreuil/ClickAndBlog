@@ -1,9 +1,13 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
-class ModelePaiement extends Connexion {
-    public function checkout(){
+
+class ModelePaiement extends Connexion
+{
+    // Module de paiement du site web
+    public function checkout()
+    {
         require 'Stripe/init.php';
 // This is your test secret API key.
         \Stripe\Stripe::setApiKey('sk_test_51KHSX0Hfm0vTSHwadnCPM5sODDg8XJ1bfPKEg7sneA1RB1kZ2JaaKfJBWbVA4vfXzY8JpSV09weJbKa1XBRoDKV400Z5hlDYgA');
@@ -24,7 +28,7 @@ class ModelePaiement extends Connexion {
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => $YOUR_DOMAIN . '/index.php?module=mod_article&action=ajout_payement&idArticle='.$_GET['idArticle'],
+            'success_url' => $YOUR_DOMAIN . '/index.php?module=mod_article&action=ajout_payement&idArticle=' . $_GET['idArticle'],
             'cancel_url' => $YOUR_DOMAIN . '/index.php?module=mod_paiement&action=cancel',
         ]);
 

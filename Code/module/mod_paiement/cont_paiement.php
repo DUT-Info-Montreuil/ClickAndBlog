@@ -1,25 +1,31 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
 include_once('modele_paiement.php');
 include_once('vue_paiement.php');
-class ContPaiement{
+
+class ContPaiement
+{
     protected $modele;
     private $vue;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->modele = new ModelePaiement();
         $this->vue = new VuePaiement();
     }
-    public function payer(){
+
+    public function payer()
+    {
         $this->modele->checkout();
     }
-    public function payer_affichage(){
-        $this->vue->display_checkout();
-    }
-    public function echec_affichage(){
+
+    public function echec_affichage()
+    {
         $this->vue->cancel();
     }
+
     /**
      * @return ModelePaiement
      */

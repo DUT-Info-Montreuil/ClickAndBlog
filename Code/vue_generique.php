@@ -1,13 +1,16 @@
 <?php
 
-class VueGenerique {
+class VueGenerique
+{
 
-    public function __Construct() {
+    public function __Construct()
+    {
         ob_start();
     }
 
-    public static function getAffichage(){
+    public static function getAffichage()
+    {
         return ob_get_clean();
     }
-    
+
 }

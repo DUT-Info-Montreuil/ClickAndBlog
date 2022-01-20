@@ -3,7 +3,9 @@
 header("content-type: application/json");
 require_once('connexion.php');
 Connexion::initConnexion();
-class Search extends Connexion {
+
+class Search extends Connexion
+{
     public static function moteur_recherche()
     {
         if (isset($_GET['term'])) {
@@ -17,4 +19,5 @@ class Search extends Connexion {
         }
     }
 }
+
 Search::moteur_recherche();

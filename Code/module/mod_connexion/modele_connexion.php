@@ -1,7 +1,8 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
+
 class ModeleConnexion extends Connexion
 {
     public function verif_pwd()
@@ -60,9 +61,9 @@ class ModeleConnexion extends Connexion
                     $typeAutoriser = array('jpg', 'png', 'jpeg');
                     if (in_array($image_extension, $typeAutoriser)) {
                         $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom,photoProfil) VALUES(?,?, ?, ?, ?,?)');
-                        if ($requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom,$fichier_destination))) {
+                        if ($requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom, $fichier_destination))) {
                             move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
-                        }else{
+                        } else {
                             return 3;
                         }
 
