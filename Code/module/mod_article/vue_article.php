@@ -338,16 +338,16 @@ class VueArticle extends VueGenerique
     {
         switch ($code_retour) {
             case 1:
-                echo "<h1 class='title has-text-danger'>⚠️Impossible d'envoyer le fichier sur le serveur\n</h1>";
+                echo "<h1 class='title has-text-danger'>⚠️Impossible d'envoyer le fichier sur le serveur.\n</h1>";
                 break;
             case 2:
-                echo "<h1 class='title has-text-danger'> ⚠️Mauvais format de fichier seul les types de jpg et png ainsi que les types jpeg\n</h1>";
+                echo "<h1 class='title has-text-danger'> ⚠️Mauvais format de fichier, seul les formats JPG, JPEG et PNG sont autorisés.\n</h1>";
                 break;
             case 3:
-                echo "<h1 class='title has-text-danger'>⚠️Veuillez choisir un fichier a envoyé\n</h1>";
+                echo "<h1 class='title has-text-danger'>⚠️Veuillez choisir un fichier a envoyer\n</h1>";
                 break;
             default:
-                echo "<h1 class='title has-text-success'>Article publier avec succés ✨</h1>";
+                echo "<h1 class='title has-text-success'>Article publié avec succés ✨</h1>";
                 break;
         }
     }
