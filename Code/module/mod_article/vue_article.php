@@ -218,6 +218,7 @@ class VueArticle extends VueGenerique
                                     <br>
                                     <?= htmlspecialchars($row['contenu']) ?>
                                     <br>
+                                <?php if(isset($_SESSION['id'])): ?>
                                 <?php if(ModeleArticle::option_delete_comm($infos[$ind]) == true): ?>
                                     <?php
 //                                    var_dump($infos[$ind]['idCommentaire']);
@@ -235,6 +236,7 @@ class VueArticle extends VueGenerique
                                             </div>
                                         </div>
                                     </form>
+                                <?php endif ?>
                                 <?php endif ?>
                                     <?php $ind++; ?>
                                 </p>
