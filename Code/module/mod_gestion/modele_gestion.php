@@ -42,7 +42,7 @@ class ModeleGestion extends Connexion
     public function sauvegarde_securite()
     {
         $current = $_POST['current'];
-        $password = $_POST['password'];
+        $password = $_POST['pass2'];
         $id = $_SESSION['id'];
         var_dump($current, $password, $id);
         $check_user_exist = self::$bdd->prepare('SELECT * FROM user_connect WHERE id = ? and password = ?');
