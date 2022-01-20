@@ -101,11 +101,13 @@ class VueArticle extends VueGenerique
                     </i>
                 </span>
     <?php endif ?>
+            <?php if (isset($_SESSION['login'])):?>
         <a href="index.php?module=mod_article&action=ajout_signalement&idArticle=<?= $row['id'] ?>">
             <button class="button is-warning">
                 <i class="fas fa-exclamation-triangle"></i>
             </button>
         </a>
+    <?php endif;?>
         <h2 class="subtitle is-4"><?= $row['date'] ?></h2>
         <h1 class="title"><?= $row['titre'] ?></h1>
         <p><?php

@@ -259,7 +259,7 @@ class ModeleArticle extends Connexion
         }
         // return Code 4
         //return $messageRetour;
-        echo "4";
+        header('Location: index.php?module=mod_article&action=detail&id=' . $_GET['idArticle']);
     }
 
 }

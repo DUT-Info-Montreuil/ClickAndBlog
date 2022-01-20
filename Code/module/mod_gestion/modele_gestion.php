@@ -168,6 +168,7 @@ class ModeleGestion extends Connexion
     {
         $selectPrep = self::$bdd->prepare('DELETE FROM article where id = ?');
         $selectPrep->execute(array($_GET['idArticle']));
+        header('Location: index.php?module=mod_gestion&action=admin_option');
     }
 
     public function rerire_arch()
