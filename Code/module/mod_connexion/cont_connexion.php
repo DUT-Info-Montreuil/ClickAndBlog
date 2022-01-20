@@ -1,56 +1,64 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
 include_once 'modele_connexion.php';
 include_once 'vue_connexion.php';
-class ContConnexion{
+
+class ContConnexion
+{
     protected $modele;
     private $vue;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->modele = new ModeleConnexion();
         $this->vue = new VueConnexion();
     }
-    public function connect($redirection = NULL){
-        if ($this->modele->verif_pwd()){
-            if($redirection == NULL){
+
+    public function connect($redirection = NULL)
+    {
+        if ($this->modele->verif_pwd()) {
+            if ($redirection == NULL) {
                 header("Location: index.php");
-            }
-            else{
+            } else {
                 header("Location: $redirection");
             }
         } else {
             $this->vue->form_failed();
         }
     }
-    public function deconnect(){
+
+    public function deconnect()
+    {
         $this->modele->decon_user();
     }
 
-    public function vue_creation($redirection = NULL){
-        if($redirection == NULL){
+    public function vue_creation($redirection = NULL)
+    {
+        if ($redirection == NULL) {
             $this->vue->form_ajout_vue();
-        }else{
+        } else {
             $this->vue->form_ajout_vue($redirection);
         }
     }
 
-    public function vue_connexion($redirection = NULL){
-        if($redirection == NULL){
+    public function vue_connexion($redirection = NULL)
+    {
+        if ($redirection == NULL) {
             $this->vue->form_connexion_vue();
-        }
-        else{
+        } else {
             $this->vue->form_connexion_vue($redirection, '');
         }
     }
 
-    public function create($redirection = NULL){
+    public function create($redirection = NULL)
+    {
         $result = $this->modele->verif_creation();
-        if ($result == 0){
-            var_dump($redirection);
-            if($redirection == NULL){
+        if ($result == 0) {
+            if ($redirection == NULL) {
                 header("Location: index.php");
-            }else{
+            } else {
                 header("Location: $redirection");
             }
         } else {
@@ -58,7 +66,7 @@ class ContConnexion{
         }
     }
 
-        /**
+    /**
      * @return ModeleArticle
      */
     public function getModele(): ModeleConnexion
@@ -75,4 +83,5 @@ class ContConnexion{
     }
 
 }
+
 ?>

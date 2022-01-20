@@ -1,5 +1,5 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
 
@@ -10,20 +10,4 @@ class VueCommentaire extends VueGenerique
     {
         parent::__Construct();
     }
-
-    public static function form_ajout_commentaire(){
-      ?>
-        <form action="index.php?module=mod_article&action=ajout" method="post" class="form-example">
-          <div class="form-example">
-              <div class="control">
-                  <textarea class="textarea" placeholder="laissez un commentaire :)"></textarea>
-              </div>
-          </div>
-          <div class="form-example">
-            <button type="submit" name="submit">Envoyer</button>
-          </div>
-        </form>
-      <?php
-    }
-
 }

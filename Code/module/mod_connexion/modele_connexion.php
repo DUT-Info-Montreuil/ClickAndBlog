@@ -1,7 +1,8 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
+
 class ModeleConnexion extends Connexion
 {
     public function verif_pwd()
@@ -38,6 +39,11 @@ class ModeleConnexion extends Connexion
 
     public function verif_creation()
     {
+        $messageRetour = "";
+        $messageRetour;
+        $dossier_destination = "public/image/";
+        $fichier_destination = $dossier_destination . basename($_FILES["image"]["name"]);
+        $image_extension = strtolower(pathinfo($fichier_destination, PATHINFO_EXTENSION));
         $nom = $_POST['lastname'];
         $prenom = $_POST['firstname'];
         $mail = $_POST['mail'];
@@ -51,8 +57,23 @@ class ModeleConnexion extends Connexion
             return 1;
         } else {
             try {
-                $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom) VALUES(?,?, ?, ?, ?)');
-                $requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom));
+                if (!empty($_FILES["image"]["tmp_name"])) {
+                    $typeAutoriser = array('jpg', 'png', 'jpeg');
+                    if (in_array($image_extension, $typeAutoriser)) {
+                        $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom,photoProfil) VALUES(?,?, ?, ?, ?,?)');
+                        if ($requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom, $fichier_destination))) {
+                            move_uploaded_file($_FILES["image"]["tmp_name"], $fichier_destination);
+                        } else {
+                            return 3;
+                        }
+
+                    } else {
+                        return 4;
+                    }
+                } else {
+                    $requete = self::$bdd->prepare('INSERT INTO user_connect(email, password, username, nom, prenom) VALUES(?,?, ?, ?, ?)');
+                    $requete->execute(array($mail, hash('sha256', $mdp), $username, $nom, $prenom));
+                }
                 $this->auto_connexion($mail, $mdp);
                 return 0;
             } catch (PDOException $p) {

@@ -7,25 +7,6 @@ class VueProfil {
     {
         ?>
             <nav class="navbar is-light">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="index.php">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <a class="button is-light" href="#">
-                        <span class="icon">
-                            <i class="fas fa-bars" style="color: #70a1ff"></i>
-                        </span>
-                                </a>
-                            </p>
-                        </div>
-                    </a>
-                    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-
                 <div id="navbarExampleTransparentExample" class="navbar-menu" >
                     <div class="navbar-start" id="categories">
                         <div class="columns navbar-item">
@@ -97,6 +78,10 @@ class VueProfil {
                     <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
                     <h1 style="text-align: center; color: #70a1ff; font-size: larger"><a href="index.php"> Click & Blog </a></h1>
                     <hr style="width:100%; margin:auto; color:black; background-color:#70a1ff; height:5px; opacity: 0.7;">
+                    <div class="field has-addons" id="barre_de_recherche">
+                        <input class="input is-rounded" type="text" id="productName" name="term" placeholder="rechercher....">
+                    </div>
+            </div>
             </div>
       <?php  
     }

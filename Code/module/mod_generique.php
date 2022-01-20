@@ -1,19 +1,23 @@
 <?php
-if(!defined('CONST_INCLUDE')){
+if (!defined('CONST_INCLUDE')) {
     die('interdit !');
 }
 include_once 'module/mod_connexion/cont_connexion.php';
-class ModGenerique{
+
+class ModGenerique
+{
     protected $action;
     protected $controlleur;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->controlleur = new ContConnexion();
-        if(isset($_GET['action'])){
+        if (isset($_GET['action'])) {
             $this->action = $_GET['action'];
         } else {
             $this->controlleur;
         }
-        switch($this->action){
+        switch ($this->action) {
             case "connexion":
                 $this->controlleur->connect();
                 break;
@@ -30,4 +34,5 @@ class ModGenerique{
     }
 
 }
+
 ?>

@@ -5,8 +5,8 @@ require_once 'connexion.php';
 require_once 'vue_generique.php';
 Connexion::initConnexion();
 
-if(isset($_GET['module'])){
-    switch ($_GET['module']){
+if (isset($_GET['module'])) {
+    switch ($_GET['module']) {
         case "mod_article":
             include 'module/mod_article/mod_article.php';
             $main = new ModArticle();
@@ -50,7 +50,8 @@ if(isset($_GET['module'])){
 $contenuTampon = $main->getControlleur()->getVue()->getAffichage();
 require_once 'template/header.php';
 ?>
-<section class="container">
+    <section class="result"></section>
+    <section class="container">
 <?php
 echo $contenuTampon;
 require_once 'template/footer.php';
